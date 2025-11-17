@@ -1,0 +1,113 @@
+<header>
+    <div class="header-container">
+        <a href="index.html" id="logo-link-cadastro" class="logo-link">
+            <img src="public/images/logo-semear.png" alt="Logo Semear" class="logo" style="width: 200px; height: 44px;">
+        </a>
+        <nav>
+            <a href="#" id="nav-inicio-cadastro">Início</a>
+            <a href="#" id="nav-hubs-cadastro">Hubs</a>
+            <a href="#" id="nav-loja-cadastro">Loja</a>
+            <a href="#" class="active">Cadastrar planta</a> </nav>
+        <div class="header-right">
+            <a href="#" class="nav-item-destaque" id="nav-minha-conta-cadastro">Minha Conta</a>
+            <button class="btn-login" id="login-link-cadastro">Sair</button>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <h1 class="page-title">Cadastrar nova planta</h1>
+    <p class="page-subtitle">Preencha a ficha técnica e as informações de venda do seu produto.</p>
+
+    <form id="cadastro-planta-form" class="checkout-layout"> <div class="checkout-details">
+            <section class="form-section">
+                <h2 class="section-title">Ficha técnica</h2>
+                
+                <div class="form-group">
+                    <label for="planta-nome-cientifico">Nome científico</label>
+                    <input type="text" id="planta-nome-cientifico" name="nome-cientifico" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planta-nomes-populares">Nomes populares (separados por vírgula)</label>
+                    <input type="text" id="planta-nomes-populares" name="nomes-populares" placeholder="Ex: Physalis, Canapum, Juá-de-capote">
+                </div>
+
+                <div class="form-group-grid-2">
+                    <div class="form-group">
+                        <label for="planta-solo">Tipos de solo adequados</label>
+                        <input type="text" id="planta-solo" name="solo" placeholder="Ex: Arenoso, bem drenado">
+                    </div>
+                    <div class="form-group">
+                        <label for="planta-clima">Clima ideal</label>
+                        <input type="text" id="planta-clima" name="clima" placeholder="Ex: Tropical, Subtropical">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="planta-cuidados">Orientações de cuidados</label>
+                    <textarea id="planta-cuidados" name="cuidados" rows="6" placeholder="Descreva as principais orientações de plantio, rega, adubação, etc..."></textarea>
+                </div>
+            </section>
+        </div>
+        
+        <div class="checkout-summary">
+            <section class="form-section">
+                <h2 class="section-title">Informações de venda</h2>
+
+                <div class="form-group">
+                    <label for="planta-preco">Preço (R$)</label>
+                    <input type="number" id="planta-preco" name="preco" min="0.01" step="0.01" placeholder="12.50" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planta-estoque">Estoque inicial (unidades)</label>
+                    <input type="number" id="planta-estoque" name="estoque" min="1" step="1" placeholder="100" required>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 30px;">Imagem do produto</h2>
+                
+                <div class="form-group">
+                    <label for="planta-imagem">Upload da foto</label>
+                    <input type="file" id="planta-imagem" name="imagem" accept="image/png, image/jpeg">
+                    <div class="image-preview" id="image-preview-container">
+                        <span id="image-preview-text">Prévia da imagem</span>
+                        <img src="" alt="Prévia da Imagem" id="image-preview-img">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="cadastrar-planta-btn">Cadastrar produto</button>
+            </section>
+        </div>
+        
+    </form>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <a href="index.html">
+            <img src="public/images/logo-semear.png" alt="Semear Logo" class="footer-logo" style="width: 200px; height: 60px;">
+        </a>
+        
+        <div class="footer-contact">
+            Conecte-se conosco<br><br>
+            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br>
+            | Endereço: Rua das Sementes, 123 - Brasília - DF
+        </div>
+        <div class="social-links">
+            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube" class="social-icon" style="width: 15px; height: 15px;"/></a>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-links">
+            <a href="#">Suporte e FAQ</a>
+            <span>|</span>
+            <a href="#">Política de privacidade</a>
+            <span>|</span>
+            <a href="#">Termos de uso</a>
+        </div>
+        <p class="copyright">© 2024 Semear - Todos os direitos reservados</p>
+    </div>
+</footer>

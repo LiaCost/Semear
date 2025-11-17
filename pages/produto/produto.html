@@ -1,0 +1,116 @@
+<header class="main-header">
+    <a href="#" id="logo-link-produto" class="logo-link">
+        <img src="public/images/logo-semear.png" alt="Logo Semear">
+    </a>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" id="nav-inicio-produto" class="nav-item">Início</a></li>
+            <li><a href="#" class="nav-item">Promoções</a></li>
+            <li><a href="#" class="nav-item">Catálogo de Sementes</a></li>
+            <li><a href="#" id="nav-loja-produto" class="nav-item-ativo">Loja</a></li>
+        </ul>
+    </nav>
+    <div class="utility-bar">
+        <a href="#" id="nav-carrinho-produto" class="icon-link" title="Carrinho">
+            <img src="public/images/icon-park-outline-shopping.svg" alt="Carrinho" class="nav-icon">
+        </a>
+        <a href="#" class="icon-link" title="Acessibilidade">
+            <img src="public/images/carbon-accessibility-alt.svg" alt="Acessibilidade" class="nav-icon">
+            <span>ACESSIBILIDADE</span>
+        </a>    
+        <a href="#" class="nav-item-destaque">FAQ</a>
+        <div class="lang-selector icon-link">
+            <img src="public/images/emojione-v-1-flag-for-brazil.svg" alt="Bandeira do Brasil" class="flag-icon">
+            <span>PT-BR</span>
+            <img src="public/images/weui-arrow-outlined.svg" alt="Selecionar idioma" class="arrow-down">
+        </div>
+        <a href="#" id="nav-login-produto" class="btn-entrar">Entrar</a>
+    </div>
+</header>
+
+<main class="main-content-produto">
+    <div class="container-produto">
+        
+        <div class="produto-detalhe-layout">
+            <div class="produto-imagem-container">
+                <img src="" alt="Imagem do Produto" id="produto-imagem">
+            </div>
+            <div class="produto-info-container">
+                <h1 id="produto-titulo"></h1>
+                <p id="produto-descricao"></p>
+                <div class="produto-preco" id="produto-preco"></div>
+                
+                <div class="produto-botoes">
+                    <div class="quantity-control-produto">
+                        <button class="quantity-btn" id="qty-minus">-</button>
+                        <span class="quantity-value" id="qty-value">1</span>
+                        <button class="quantity-btn" id="qty-plus">+</button>
+                    </div>
+                    <button class="btn-add-to-cart-produto">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="avaliacoes-layout">
+            
+            <div class="avaliacoes-lista-container">
+                <h2 class="section-title">Avaliações dos Clientes</h2>
+                <div id="avaliacoes-lista">
+                    </div>
+            </div>
+
+            <div class="avaliacoes-form-container">
+                <h2 class="section-title">Deixe sua avaliação</h2>
+                <form id="avaliacao-form">
+                    <div class="form-group">
+                        <label for="avaliacao-nome">Seu Nome</label>
+                        <input type="text" id="avaliacao-nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sua Nota</label>
+                        <div class="estrelas-input">
+                            <span data-value="1">&#9734;</span>
+                            <span data-value="2">&#9734;</span>
+                            <span data-value="3">&#9734;</span>
+                            <span data-value="4">&#9734;</span>
+                            <span data-value="5">&#9734;</span>
+                        </div>
+                        <input type="hidden" id="avaliacao-nota" name="nota" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="avaliacao-comentario">Seu Comentário</label>
+                        <textarea id="avaliacao-comentario" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit-avaliacao">Enviar Avaliação</button>
+                </form>
+            </div>
+
+        </div>
+        </div>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <img src="public/images/logo-semear.png" alt="Logo Semear" class="footer-logo"/>
+        <div class="footer-contact-info">
+            Conecte-se Conosco<br/><br/>
+            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br/>
+            Endereço: Rua das Sementes, 123 - Brasília - DF
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook"/></a>
+            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram"/></a>
+            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin"/></a>
+            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube"/></a>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-links">
+            <a href="#">Suporte e FAQ</a><span class="separator">|</span>
+            <a href="#">Política de Privacidade</a><span class="separator">|</span>
+            <a href="#">Termos de Uso</a>
+        </div>
+        <p class="footer-copyright">© 2024 Semear - Todos os direitos reservados</p>
+    </div>
+</footer>

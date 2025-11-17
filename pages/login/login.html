@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="pages/login/login.css">
+
+<div class="login-container">
+    
+    <div class="background-shape"></div>
+
+    <div class="logo-section">
+        <a href="index.html">
+             <img src="public/images/source-logo-semear-2.png" alt="Logo Semear" />
+        </a>
+    </div>
+
+    <div class="form-section">
+
+        <form id="login-form" class="form-wrapper">
+            <img src="public/images/icon-user.svg" alt="Ícone de usuário" class="user-icon" />
+
+            <div class="form-group">
+                <img src="public/images/ic-outline-email.svg" alt="Ícone email" class="icon-input"/>
+                <input type="email" id="login-email" placeholder="Email ou telefone" required>
+            </div>
+
+            <div class="form-group">
+                <img src="public/images/uil-padlock.svg" alt="Ícone senha" class="icon-input"/>
+                <input type="password" id="login-pass" placeholder="Senha" required>
+            </div>
+
+            <div class="form-options">
+                <label class="lembrar-me">
+                    <input type="checkbox" id="lembrar"> Lembrar-me
+                </label>
+                <a href="#" class="esqueceu-senha" id="show-forgot">Esqueceu a senha?</a>
+            </div>
+
+            <div id="login-message-area"></div>
+            
+            <button type="submit" class="btn-submit">Entrar</button>
+            
+            <p class="nao-tem-conta">
+                Não tem uma conta? <a href="#" id="show-register">Inscrever-se</a>
+            </p>
+
+            <div class="social-login">
+                <p class="entrar-com">Entrar com</p>
+                <div class="social-icons">
+                    <img src="public/images/ic-baseline-facebook.svg" alt="Facebook" />
+                    <img src="public/images/ri-google-fill.svg" alt="Google" />
+                    <img src="public/images/mdi-apple.svg" alt="Apple" />
+                </div>
+            </div>
+        </form>
+
+        <form id="register-form" class="form-wrapper" style="display: none;">
+            
+            <img src="public/images/icon-user.svg" alt="Ícone de usuário" class="user-icon" />
+            <h3 class="register-title" >Criar conta</h3>
+
+            <div class="form-group">
+                <img src="public/images/uil-user.svg" alt="Ícone email" class="icon-input"/>
+                <input type="text" id="reg-name" placeholder="Nome completo" required>
+            </div>
+            
+            <div class="form-group">
+                <img src="public/images/ic-outline-email.svg" alt="Ícone email" class="icon-input"/>
+                <input type="email" id="reg-email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <img src="public/images/uil-padlock.svg" alt="Ícone senha" class="icon-input"/>
+                <input type="password" id="reg-pass" placeholder="Senha" required>
+            </div>
+
+            <div class="user-type-selection">
+                <p>Eu sou:</p>
+                <label>
+                    <input type="radio" name="userType" value="cliente" checked> Cliente
+                </label>
+                <label>
+                    <input type="radio" name="userType" value="vendedor"> Vendedor
+                </label>
+            </div>
+            
+            <button type="submit" class="btn-submit">Cadastrar</button>
+            
+            <p class="nao-tem-conta">
+                Já tem uma conta? <a href="#" id="show-login">Fazer Login</a>
+            </p>
+        </form>
+
+        <form id="forgot-form" class="form-wrapper" style="display: none;">
+            
+            <img src="public/images/icon-user.svg" alt="Ícone de usuário" class="user-icon" />
+            
+            <h3 class="register-title">Recuperar senha</h3>
+            
+            <p class="forgot-instructions">
+                Digite seu email e enviaremos um link para redefinir sua senha.
+            </p>
+
+            <div class="form-group">
+                <img src="public/images/ic-outline-email.svg" alt="Ícone email" class="icon-input"/>
+                <input type="email" id="forgot-email" placeholder="Seu email" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">Enviar Link</button>
+            
+            <p class="nao-tem-conta">
+                Lembrou a senha? <a href="#" id="show-login-from-forgot">Fazer Login</a>
+            </p>
+        </form>
+
+    </div><footer class="rodape">
+        © 2024 Semear - Todos os direitos reservados
+    </footer>
+</div>

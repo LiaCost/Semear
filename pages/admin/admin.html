@@ -1,0 +1,88 @@
+<div class="admin-layout">
+    
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <img src="public/images/logo-semear.png" alt="Logo Semear" class="admin-logo">
+        </div>
+    <nav class="admin-nav">
+        <a href="#" class="admin-nav-link active" data-page="relatorios">
+            <img src="public\images\lsicon_report-outline.svg" alt="Relatórios" class="nav-icon"> Relatórios
+        </a>
+        <a href="#" class="admin-nav-link" data-page="produtos">
+            <img src="public\images\fluent-mdl2_product-release.svg" alt="Produtos" class="nav-icon"> Gerenciar produtos
+        </a>
+        <a href="#" class="admin-nav-link" data-page="usuarios">
+            <img src="public\images\ix_user-management.svg" alt="Usuários" class="nav-icon"> Gerenciar usuários
+        </a>
+        <a href="#" id="admin-sair" class="admin-nav-link">
+            <img src="public\images\mynaui_logout.svg" alt="Sair" class="nav-icon"> Sair
+        </a>
+    </nav>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-main-header">
+            <h1 id="admin-page-title">Relatórios administrativos</h1>
+            <div class="admin-user-info">
+                Bem-vindo, <strong>Admin</strong>
+            </div>
+        </header>
+        
+        <div class="admin-content" id="admin-content-area">
+            
+            <section id="page-relatorios" class="admin-page-section">
+                <div class="admin-widget-grid">
+                    <div class="admin-widget">
+                        <h4>Total de vendas (simulado)</h4>
+                        <p class="widget-valor">R$ 1.250,50</p>
+                    </div>
+                    <div class="admin-widget">
+                        <h4>Novos pedidos</h4>
+                        <p class="widget-valor">15</p>
+                    </div>
+                    <div class="admin-widget">
+                        <h4>Novos usuários</h4>
+                        <p class="widget-valor">42</p>
+                    </div>
+                    <div class="admin-widget">
+                        <h4>Produtos em estoque</h4>
+                        <p class="widget-valor">230</p>
+                    </div>
+                </div>
+
+                <div class="admin-grid-2">
+                    <div class="admin-card">
+                        <h3>Vendas por categoria</h3>
+                        <img src="public/images/placeholder-grafico-pizza.png" alt="Gráfico de Vendas por Categoria" class="admin-grafico-placeholder">
+                    </div>
+                    <div class="admin-card">
+                        <h3>Produtos mais buscados</h3>
+                        <ol class="admin-lista">
+                            <li>1. Semente de pitaya</li>
+                            <li>2. Semente de lavanda</li>
+                            <li>3. Semente de arroz</li>
+                            <li>4. Semente de tomate</li>
+                            <li>5. Semente de melancia</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-produtos" class="admin-page-section" style="display: none;">
+                <div class="admin-card">
+                    <h3>Gerenciamento de produtos</h3>
+                    <p>Aqui você pode adicionar, editar ou remover produtos da loja.</p>
+                    <button id="admin-ir-cadastro-planta" class="admin-btn-primary">Adicionar novo produto</button>
+                    </div>
+            </section>
+
+            <section id="page-usuarios" class="admin-page-section" style="display: none;">
+                <div class="admin-card">
+                    <h3>Gerenciamento de usuários</h3>
+                    <p>Aqui você pode ver a lista de clientes e vendedores.</p>
+                    </div>
+            </section>
+
+        </div>
+    </main>
+</div>

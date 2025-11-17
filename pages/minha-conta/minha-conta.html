@@ -1,0 +1,102 @@
+<header>
+    <div class="header-container">
+        <a href="#" id="logo-link-conta" class="logo-link">
+            <img src="public/images/logo-semear.png" alt="Logo Semear" class="logo" style="width: 200px; height: 44px;">
+        </a>
+        <nav>
+            <a href="#" id="nav-inicio-conta">Início</a>
+            <a href="#" id="nav-hubs-conta">Hubs</a>
+            <a href="#" id="nav-loja-conta">Loja</a>
+            <a href="#" id="nav-cadastro-planta-conta">Cadastrar Planta</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="nav-item-destaque active">Minha Conta</a>
+            <button class="btn-login" id="nav-sair-conta">Sair</button>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <h1 class="page-title">Minha Conta</h1>
+    <p class="page-subtitle">Gerencie suas informações pessoais, pedidos e configurações.</p>
+
+    <div class="account-layout">
+        
+        <div class="account-tabs">
+            <a href="#" class="account-tab-link active" data-tab="perfil">Meu Perfil</a>
+            <a href="#" class="account-tab-link" data-tab="pedidos">Meus Pedidos</a>
+            <a href="#" class="account-tab-link" data-tab="config">Configurações</a>
+        </div>
+
+        <div class="account-content-wrapper">
+            
+            <section id="tab-perfil" class="account-content active">
+                <form id="perfil-form" class="form-section">
+                    <h2 class="section-title">Informações Pessoais</h2>
+                    <div class="form-group-grid-2">
+                        <div class="form-group">
+                            <label for="perfil-nome">Nome Completo</label>
+                            <input type="text" id="perfil-nome" name="nome" value="Admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="perfil-email">Email</label>
+                            <input type="email" id="perfil-email" name="email" value="admin@semear.com" required>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title" style="margin-top: 20px;">Alterar Senha</h2>
+                    <div class="form-group">
+                        <label for="perfil-senha-atual">Senha Atual</label>
+                        <input type="password" id="perfil-senha-atual" placeholder="••••••••">
+                    </div>
+                    <div class="form-group-grid-2">
+                        <div class="form-group">
+                            <label for="perfil-senha-nova">Nova Senha</label>
+                            <input type="password" id="perfil-senha-nova" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label for="perfil-senha-confirma">Confirmar Nova Senha</label>
+                            <input type="password" id="perfil-senha-confirma" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary" style="max-width: 300px;">Salvar Alterações</button>
+                </form>
+            </section>
+
+            <section id="tab-pedidos" class="account-content">
+                <h2 class="section-title">Histórico de Pedidos</h2>
+                <div class="order-history-item">
+                    <div class="order-info">
+                        <span class="order-id">Pedido #12345</span>
+                        <span class="order-date">Data: 16/11/2025</span>
+                        <span class="order-status">Status: Enviado</span>
+                    </div>
+                    <div class="order-total">
+                        <span class="price">R$ 12,50</span>
+                    </div>
+                </div>
+                <div class="order-history-item">
+                    <div class="order-info">
+                        <span class="order-id">Pedido #12300</span>
+                        <span class="order-date">Data: 10/11/2025</span>
+                        <span class="order-status">Status: Entregue</span>
+                    </div>
+                    <div class="order-total">
+                        <span class="price">R$ 25,00</span>
+                    </div>
+                </div>
+                </section>
+
+            <section id="tab-config" class="account-content">
+                <h2 class="section-title">Configurações da Conta</h2>
+                <p>Em breve...</p>
+            </section>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        </div>
+</footer>

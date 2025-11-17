@@ -1,0 +1,458 @@
+/* pages/home/home.css */
+
+
+/* 1. Importação das Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;600;700;800&family=Sarala:wght@700&display=swap');
+
+/* 2. Estilos Globais e Variáveis */
+:root {
+    --font-principal: 'Montserrat', sans-serif;
+    --font-secundaria: 'Sarala', sans-serif;
+    --font-auxiliar: 'Inter', sans-serif;
+}
+
+/* Estilos de 'body' e 'a' globais. 
+   O ideal é movê-los para um CSS global (ex: css/main.css)
+   mas por enquanto vamos manter aqui para a página funcionar.
+*/
+body {
+    background-color: #1D0D07;
+    color: white;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    overflow-wrap: break-word;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 3. Classes de Tipografia (Base) */
+.titulo-hero {
+    font-family: var(--font-principal);
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+/* ... (Cole TODO o resto do seu CSS aqui) ... */
+.titulo-secao {
+    font-family: var(--font-principal);
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.subtitulo-hero {
+    font-family: var(--font-principal);
+    font-size: 24px;
+    font-weight: 500;
+}
+.card-titulo {
+    font-family: var(--font-principal);
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.card-descricao {
+    font-family: var(--font-secundaria);
+    /* Fonte Sarala */
+    font-size: 13px;
+    font-weight: 700;
+}
+.link-cta {
+    /* CTA = Call to Action */
+    font-family: var(--font-principal);
+    font-size: 24px;
+    font-weight: 400;
+}
+.sobre-subtitulo {
+    font-family: var(--font-principal);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.sobre-texto {
+    font-family: var(--font-principal);
+    font-size: 15px;
+    font-weight: 400;
+}
+.depoimento-citacao {
+    font-family: var(--font-principal);
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.depoimento-autor {
+    font-family: var(--font-principal);
+    font-size: 15px;
+    font-weight: 600;
+}
+.footer-contato {
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.footer-copyright {
+    font-family: var(--font-auxiliar);
+    /* Fonte Inter */
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* 4. CSS DE LAYOUT (Seções e Grids) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+.hero-section {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.section-divider {
+    width: 141px;
+    height: 1px;
+    background: white;
+    margin: 20px auto 40px auto;
+}
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+/* 5. Estilo dos Cards (Padrão: transparentes) */
+.card {
+    background: rgba(217, 217, 217, 0.30);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card .seed-pic,
+.seed-card .seed-pic {
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.card .icon-pic {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+.card .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+.btn-card {
+    display: inline-block;
+    width: 175px;
+    height: 55px;
+    line-height: 55px;
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 100px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    text-align: center;
+    font-size: 24px;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    color: white;
+    margin-top: auto;
+    padding: 0;
+}
+.btn-cta-section {
+    display: inline-block;
+    width: 322px;
+    height: 55px;
+    line-height: 55px;
+    margin-top: 40px;
+    background: rgba(92, 59, 46, 0.50);
+    border-radius: 100px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+}
+
+/* 5b. SEÇÃO HUBS (SEMENTES) */
+.seed-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.seed-carousel::-webkit-scrollbar {
+    display: none;
+}
+.seed-card {
+    background: #443B38;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
+}
+.seed-card .card-titulo {
+    color: white;
+}
+.seed-card .card-descricao {
+    color: #CFC5C1;
+    margin-bottom: 20px;
+}
+.btn-seed-card {
+    display: inline-block;
+    width: 175px;
+    height: 55px;
+    line-height: 55px;
+    background: #6A5F5C;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 24px;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    color: #E0D5CF;
+    margin-top: auto;
+    padding: 0;
+}
+.btn-cta-hubs {
+    display: inline-block;
+    height: 55px;
+    line-height: 55px;
+    padding: 0 40px;
+    margin-top: 40px;
+    background: #554844;
+    border-radius: 100px;
+    font-size: 24px;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    color: #E0D5CF;
+}
+
+/* 6. HEADER (Cabeçalho) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #110703;
+    flex-wrap: wrap;
+}
+.header-logo {
+    height: 40px;
+    width: auto;
+}
+.main-nav-list {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+.utility-bar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-icon {
+    width: 24px;
+    height: 26px;
+    margin-right: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+.flag-icon {
+    border-radius: 20%;
+    object-fit: cover;
+}
+.dropdown-arrow {
+    width: 12px;
+    height: 12px;
+    margin-left: -2px;
+}
+.link-navegacao {
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 400;
+}
+.link-navegacao-destaque {
+    font-family: var(--font-principal);
+    font-weight: 600;
+    font-size: 13px;
+    vertical-align: middle;
+}
+.link-navegacao-ativo {
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 6px;
+}
+.link-navegacao-ativo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+.lang-selector .link-navegacao {
+    font-size: 13px;
+    font-weight: 400;
+}
+.btn-entrar {
+    background: rgba(140, 80, 34, 0.50);
+    border-radius: 5px;
+    outline: 1px white solid;
+    padding: 7px 21px;
+    font-size: 13px;
+    font-weight: 400;
+    backdrop-filter: blur(2px);
+    cursor: pointer; /* Adicionado para links */
+}
+.btn-entrar .link-navegacao {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* 7. Rodapé */
+.main-footer {
+    background: #110703;
+    padding: 40px 20px;
+    text-align: center;
+}
+.footer-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 30px;
+}
+.footer-contact-info {
+    margin-bottom: 25px;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+    margin: 25px 0;
+}
+.social-icons img {
+    width: 15px;
+    height: 15px;
+}
+.footer-divider {
+    width: 100%;
+    max-width: 886px;
+    height: 1px;
+    background: white;
+    margin: 20px auto;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.footer-links span {
+    display: block;
+}
+.footer-copyright {
+    margin-top: 25px;
+}
+
+/* 8. SEÇÃO DEPOIMENTOS (CARROSSEL) */
+.testimonial-section {
+    background-color: #552E10;
+}
+.testimonial-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.testimonial-carousel::-webkit-scrollbar {
+    display: none;
+}
+.testimonial-card {
+    background: #6B4F3F;
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    min-width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #E0D5CF;
+}
+.testimonial-card .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+.testimonial-card .depoimento-citacao {
+    font-family: var(--font-principal);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.testimonial-card .depoimento-autor {
+    font-family: var(--font-principal);
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+.carousel-dots {
+    text-align: center;
+    padding-top: 20px;
+}
+.carousel-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.carousel-dot.active {
+    background-color: #9A9A9A;
+}

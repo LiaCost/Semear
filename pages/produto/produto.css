@@ -1,0 +1,239 @@
+/* pages/produto/produto.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;600;700;800&family=Sarala:wght@700&display=swap');
+
+:root {
+    --font-principal: 'Montserrat', sans-serif;
+    --cor-fundo-header: #110703;
+    --cor-fundo-main: #110703;
+    --cor-preco: #5CA773;
+    --cor-estrela: #FFD700; /* Dourado */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+
+body {
+    background-color: var(--cor-fundo-main);
+    color: white;
+    font-family: var(--font-principal);
+}
+
+/* --- Header (Copiado de vendas.css) --- */
+.main-header {
+    background-color: var(--cor-fundo-header);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    height: 81px;
+}
+.logo-link img { height: 44px; width: auto; }
+.main-nav ul { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
+.main-nav a { font-family: var(--font-principal); font-size: 13px; font-weight: 400; cursor: pointer; padding: 10px; position: relative; }
+.nav-item-ativo { font-weight: 800; position: relative; padding-bottom: 6px; }
+.nav-item-ativo::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background-color: white; }
+.utility-bar { display: flex; align-items: center; gap: 20px; font-family: var(--font-principal); font-size: 13px; }
+.utility-bar .icon-link { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.utility-bar .nav-icon { width: 24px; height: 24px; }
+.utility-bar .lang-selector { display: flex; align-items: center; gap: 8px; }
+.lang-selector .flag-icon { width: 24px; height: 24px; border-radius: 20%; }
+.lang-selector .arrow-down { width: 12px; height: 12px; }
+.utility-bar .nav-item-destaque { font-weight: 600; font-size: 13px; cursor: pointer; }
+.btn-entrar { background: rgba(140, 80, 34, 0.50); border-radius: 5px; outline: 1px white solid; padding: 7px 21px; font-size: 13px; font-weight: 400; backdrop-filter: blur(2px); cursor: pointer; color: white; }
+/* --- Fim do Header --- */
+
+/* --- Conteúdo Principal da Página --- */
+.main-content-produto {
+    background-color: var(--cor-fundo-main);
+    padding: 60px 40px;
+}
+.container-produto {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-divider { border: none; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 60px 0; }
+.section-title { font-size: 28px; font-weight: 600; margin-bottom: 30px; }
+
+/* --- Layout de Detalhe do Produto --- */
+.produto-detalhe-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+.produto-imagem-container img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.produto-info-container h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.produto-info-container p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.produto-preco {
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--cor-preco);
+    margin-bottom: 30px;
+}
+.produto-botoes {
+    display: flex;
+    gap: 20px;
+}
+.quantity-control-produto {
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 16px;
+}
+.quantity-control-produto .quantity-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.quantity-control-produto .quantity-value {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px;
+}
+.btn-add-to-cart-produto {
+    background-color: rgba(115, 44, 2, 0.40); /* Cor do botão do card */
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    cursor: pointer;
+    flex-grow: 1;
+}
+.btn-add-to-cart-produto:hover {
+    background-color: rgba(140, 80, 34, 0.8);
+}
+
+/* --- Layout da Seção de Avaliação --- */
+.avaliacoes-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+}
+
+/* Lista de Avaliações (Esquerda) */
+.avaliacoes-lista-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+.avaliacao-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.avaliacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.avaliacao-nome {
+    font-size: 18px;
+    font-weight: 600;
+}
+.avaliacao-estrelas {
+    font-size: 20px;
+    color: var(--cor-estrela);
+}
+.avaliacao-comentario {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.6;
+}
+#avaliacoes-lista:empty::after {
+    content: "Nenhuma avaliação para este produto ainda. Seja o primeiro!";
+    color: #888;
+    font-style: italic;
+}
+
+/* Formulário de Avaliação (Direita) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.form-group input,
+.form-group textarea {
+    background: rgba(92, 59, 46, 0.50);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.estrelas-input {
+    display: flex;
+    cursor: pointer;
+}
+.estrelas-input span {
+    font-size: 30px;
+    color: #888; /* Cor da estrela vazia */
+    transition: color 0.2s;
+}
+.estrelas-input span:hover,
+.estrelas-input span.selecionada {
+    color: var(--cor-estrela);
+}
+.btn-submit-avaliacao {
+    background: #58AA58;
+    color: white;
+    font-size: 18px;
+    font-family: 'Sarala', sans-serif;
+    font-weight: 700;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+.btn-submit-avaliacao:hover {
+    background: #4a904a;
+}
+
+/* --- Footer (Copiado de vendas.css) --- */
+.main-footer { background: var(--cor-fundo-header); padding: 40px 20px; text-align: center; font-family: var(--font-principal); }
+.footer-logo { width: 200px; height: auto; margin: 0 auto 30px auto; }
+.footer-contact-info { font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 25px; }
+.social-icons { display: flex; justify-content: center; gap: 27px; margin: 25px 0; }
+.social-icons img { width: 15px; height: 15px; }
+.footer-divider { width: 100%; max-width: 886px; height: 1px; background: white; margin: 20px auto; border: 0; }
+.footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px; font-weight: 400; }
+.footer-links .separator { color: white; }
+.footer-copyright { margin-top: 25px; font-family: var(--font-auxiliar); font-size: 12px; font-weight: 400; }

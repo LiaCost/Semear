@@ -1,0 +1,157 @@
+<header>
+    <div class="header-container">
+        <a href="index.html" id="logo-link-carrinho">
+            <img src="public/images/logo-semear.png" alt="Semear Logo" class="logo" style="width: 200px; height: 44px;">
+        </a>
+        
+        <nav>
+            <a href="#" id="nav-inicio-link-carrinho">Início</a>          
+            <a href="#">Promoções</a>
+            <a href="#">Catálogo de Sementes</a>
+            <a href="#" id="nav-loja-link-carrinho" class="active">Loja</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="cart-icon">
+                <a href="#" id="cart-link-vendas" class="icon-link" title="Carrinho">
+                    <img src="public/images/icon-park-outline-shopping.svg" alt="Carrinho" class="nav-icon">
+                </a>
+                <div class="cart-badge">1</div>
+            </div>
+            
+
+            <span class="accessibility">ACESSIBILIDADE</span>          
+            <span class="faq">FAQ</span>
+
+            <div class="language-selector">
+                <img src="public/images/emojione-v-1-flag-for-brazil.svg" alt="Bandeira do Brasil" style="width: 20px; height: 20px; border-radius: 50%;">
+                <span>PT-BR</span>
+                <img src="public/images/weui-arrow-outlined.svg" alt="seta" style="width: 12px; height: 12px;">
+            </div>
+            
+            <button class="btn-login" id="login-link-carrinho">Entrar</button>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <h1 class="page-title">Meu carrinho</h1>
+    <hr class="divider">
+
+    <div class="cart-section">
+        <div class="cart-item">
+            <img src="public/images/pitaya.png" alt="Sementes de pitaya" class="product-image" style="width: 400px; height: 400px;">
+            
+            <div class="product-details">
+                <h2 class="product-title">Sementes de pitaya: 10 sementes</h2>
+                <p class="product-status">Em estoque e pronto para envio.</p>
+                
+                <div class="quantity-control">
+                    <button class="quantity-btn" id="qty-minus">-</button>
+                    <span class="quantity-value" id="qty-value">1</span>
+                    <button class="quantity-btn" id="qty-plus">+</button>
+                </div>
+                
+                <div class="product-price">
+                    <span class="price">R$ 12,50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="shipping-section">
+        <h2 class="section-title">Frete</h2>
+        <div class="shipping-calculator">
+            <input type="text" class="shipping-input" placeholder="00000-000" maxlength="9">
+            <button class="btn-calculate">Calcular</button>
+        </div>
+    </div>
+
+    <div class="order-summary">
+        <h2 class="section-title">Resumo do pedido</h2>
+        
+        <div class="summary-row">
+            <span class="summary-label">Subtotal</span>
+            <span class="price">R$ 12,50</span>
+        </div>
+        
+        <div class="summary-row">
+            <span class="summary-label total">Total do pedido</span>
+            <span class="price">R$ 12,50</span>
+        </div>
+    </div>
+
+    <p class="coupon-info">Possui cupom? Utilize-o na página de pagamento e aproveite!</p>
+
+    <div class="action-buttons">
+        <button class="btn-secondary" id="continue-shopping-link">Escolher mais produtos</button>
+        <!-- MUDANÇA AQUI: Renomeado e com ID -->
+        <button class="btn-primary" id="go-to-checkout-link">Ir para pagamento</button>
+    </div>
+</main>
+
+<section class="recommendations-section">
+    <h2 class="recommendations-title">Aproveite e leve também</h2>
+    
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="public/images/arroz.png" alt="Semente de arroz">
+            <div class="product-info">
+                <h3 class="product-name">Semente de arroz: 10 sementes</h3>
+                <p class="product-card-price">R$ 6,50</p>
+            </div>
+            <button class="btn-add-cart">Adicionar ao carrinho</button>
+        </div>
+        <div class="product-card">
+            <img src="public/images/tomate.png" alt="Semente de tomate">
+            <div class="product-info">
+                <h3 class="product-name">Semente de tomate: 20 sementes</h3>
+                <p class="product-card-price">R$ 6,50</p>
+            </div>
+            <button class="btn-add-cart">Adicionar ao carrinho</button>
+        </div>
+        <div class="product-card">
+            <img src="public/images/cenoura.png" alt="Semente de cenoura">
+            <div class="product-info">
+                <h3 class="product-name">Semente de cenoura: 20 sementes</h3>
+                <p class="product-card-price">R$ 8,50</p>
+            </div>
+            <button class="btn-add-cart">Adicionar ao carrinho</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <a href="index.html"> 
+            <img src="public/images/logo-semear.png" alt="Semear Logo" class="footer-logo" style="width: 200px; height: 60px;">
+        </a>
+         
+        <div class="footer-contact">
+            Conecte-se conosco<br><br>
+            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br>
+            | Endereço: Rua das Sementes, 123 - Brasília - DF
+        </div>
+
+        <div class="social-links">
+            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube" class="social-icon" style="width: 15px; height: 15px;"/></a>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-links">
+            <a href="#">Suporte e FAQ</a>
+            <span>|</span>
+            <a href="#">Política de privacidade</a>
+            <span>|</span>
+            <a href="#">Termos de uso</a>
+        </div>
+
+        <p class="copyright">© 2024 Semear - Todos os direitos reservados</p>
+    </div>
+</footer>

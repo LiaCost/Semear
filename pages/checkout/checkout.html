@@ -1,0 +1,201 @@
+<header>
+    <div class="header-container">
+        <a href="#" id="logo-link-checkout">
+            <img src="public/images/logo-semear.png" alt="Semear Logo" class="logo" style="width: 200px; height: 44px;">
+        </a>
+        <nav>
+            <a href="#" id="nav-inicio-link-checkout">Início</a>
+            <a href="#" id="nav-loja-link-checkout">Loja</a>
+            <a href="#" id="nav-carrinho-link-checkout" class="active">Carrinho</a> 
+        </nav>
+        <div class="header-right">
+            <span class="accessibility">ACESSIBILIDADE</span>          
+            <span class="faq">FAQ</span>
+            <div class="language-selector">
+                <img src="public/images/emojione-v-1-flag-for-brazil.svg" alt="Bandeira do Brasil" style="width: 20px; height: 20px; border-radius: 50%;">
+                <span>PT-BR</span>
+                <img src="public/images/weui-arrow-outlined.svg" alt="seta" style="width: 12px; height: 12px;">
+            </div>
+            <button class="btn-login" id="login-link-checkout">Entrar</button>
+        </div>
+    </div>
+</header>
+
+<!-- Conteúdo Principal -->
+<main class="main-content">
+    <h1 class="page-title">Finalizar Compra</h1>
+
+    <div class="checkout-layout">
+        
+        <!-- Coluna da Esquerda: Formulários -->
+        <div class="checkout-details">
+            
+            <!-- Seção de Endereço -->
+            <section class="form-section">
+                <h2 class="section-title">Endereço de Entrega</h2>
+                <form id="shipping-form">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group-grid-2">
+                        <div class="form-group">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Endereço</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group-grid-2">
+                        <div class="form-group">
+                            <label for="number">Número</label>
+                            <input type="text" id="number" name="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complement">Complemento (Opcional)</label>
+                            <input type="text" id="complement" name="complement">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" required>
+                    </div>
+                    <div class="form-group-grid-2">
+                        <div class="form-group">
+                            <label for="city">Cidade</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Estado</label>
+                            <select id="state" name="state" required>
+                                <option value="">Selecione...</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="GO">Goiás</option>
+                                <!-- Adicionar outros estados -->
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Seção de Pagamento -->
+            <section class="form-section">
+                <h2 class="section-title">Forma de Pagamento</h2>
+                <form id="payment-form">
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="credit-card" checked>
+                            <span>Cartão de Crédito</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="pix">
+                            <span>PIX</span>
+                        </label>
+                    </div>
+
+                    <!-- Campos do Cartão (Default) -->
+                    <div id="credit-card-fields">
+                        <div class="form-group">
+                            <label for="card-name">Nome no Cartão</label>
+                            <input type="text" id="card-name" name="card-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Número do Cartão</label>
+                            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="form-group-grid-2">
+                            <div class="form-group">
+                                <label for="card-expiry">Validade</label>
+                                <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" name="card-cvv" placeholder="000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info do PIX (Oculto) -->
+                    <div id="pix-fields" style="display: none;">
+                        <p class="pix-instructions">
+                            Um código PIX será gerado após a confirmação do pedido.
+                        </p>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+        
+        <!-- Coluna da Direita: Resumo -->
+        <div class="checkout-summary">
+            <h2 class="section-title">Resumo do Pedido</h2>
+            
+            <!-- Lista de Itens (Exemplo) -->
+            <div class="summary-item-list">
+                <div class="summary-item">
+                    <img src="public/images/pitaya.png" alt="Pitaya">
+                    <div class="summary-item-info">
+                        <span class="summary-item-name">Sementes de pitaya (x1)</span>
+                        <span class="summary-item-price">R$ 12,50</span>
+                    </div>
+                </div>
+                <!-- Mais itens seriam adicionados aqui dinamicamente -->
+            </div>
+
+            <!-- Resumo Financeiro -->
+            <div class="order-summary-box">
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="price">R$ 12,50</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Frete</span>
+                    <span class="price">R$ 0,00</span>
+                </div>
+                <hr class="divider-soft">
+                <div class="summary-row total">
+                    <span class="summary-label">Total do pedido</span>
+                    <span class="price">R$ 12,50</span>
+                </div>
+            </div>
+
+            <button class="btn-primary" id="place-order-btn">Finalizar Pedido</button>
+        </div>
+        
+    </div>
+</main>
+
+<!-- Footer (Consistente) -->
+<footer>
+    <div class="footer-container">
+        <img src="public/images/logo-semear.png" alt="Semear Logo" class="footer-logo" style="width: 200px; height: 60px;">
+        <div class="footer-contact">
+            Conecte-se Conosco<br><br>
+            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br>
+            | Endereço: Rua das Sementes, 123 - Brasília - DF
+        </div>
+        <div class="social-links">
+            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin" class="social-icon" style="width: 15px; height: 15px;"/></a>
+            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube" class="social-icon" style="width: 15px; height: 15px;"/></a>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-links">
+            <a href="#">Suporte e FAQ</a>
+            <span>|</span>
+            <a href="#">Política de Privacidade</a>
+            <span>|</span>
+            <a href="#">Termos de Uso</a>
+        </div>
+        <p class="copyright">© 2024 Semear - Todos os direitos reservados</p>
+    </div>
+</footer>

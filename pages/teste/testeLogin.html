@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semear Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            background-color: #552E10;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Tipografia personalizada */
+        .entrar,
+        .senha,
+        .email-ou-telefone {
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .esqueceu-senha,
+        .inscrever-se {
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .lembrar-me,
+        .nao-tem-conta,
+        .entrar-com {
+            color: white;
+            font-size: 12px;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .rodape {
+            color: white;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%; min-height: 100vh; position: relative; overflow: hidden">
+
+        <!-- Fundo rotacionado -->
+        <div
+            style="width: 726.89px; height: 1231.30px; left: 49.31px; top: -242px; position: absolute; transform: rotate(17deg); transform-origin: top left; background: #1D0D07; z-index: 0;">
+        </div>
+
+        <!-- Logo -->
+        <img style="width: 455px; height: 127px; left: 68px; top: 236px; position: absolute; z-index: 1;"
+            src="public/images/source-logo-semear-2.png" alt="Logo" />
+
+        <!-- Ícone circular com imagem -->
+        <div style="width: 130px; height: 130px; left: 1010px; top: 106px; position: absolute; overflow: hidden; z-index: 1;">
+        <img src="public/images/icon-user.svg" alt="Ícone de usuário"
+            style="width: 101.56px; height: 101.56px; position: absolute; left: 14.22px; top: 14.22px; border-radius: 50%;" />
+        </div>
+
+        <!-- Botão Entrar -->
+        <div
+            style="width: 322px; height: 37px; left: 914px; top: 404px; position: absolute; background: rgba(140, 80, 34, 0.50); border-radius: 5px; outline: 1px white solid; outline-offset: -1px; z-index: 1;">
+            <div class="entrar" style="width: 65px; left: 128px; top: 8px; position: absolute; text-align: center;">
+                Entrar</div>
+        </div>
+
+        <!-- Campo Senha com ícone -->
+        <div
+        style="width: 322px; height: 37px; left: 914px; top: 325px; position: absolute; background: rgba(92, 59, 46, 0.50); border-radius: 5px; outline: 1px white solid; outline-offset: -1px; backdrop-filter: blur(2px); z-index: 1;">
+        
+        <!-- Texto -->
+        <div class="senha" style="width: 65px; left: 29px; top: 8px; position: absolute; text-align: center;">Senha</div>
+
+        <!-- Ícone como imagem -->
+        <img src="public/images/uil-padlock.svg" alt="Ícone de senha"
+            style="width: 24px; height: 24px; left: 5px; top: 6px; position: absolute;" />
+        </div>
+
+
+       <!-- Campo Email ou telefone com ícone -->
+        <div
+        style="width: 322px; height: 37px; left: 914px; top: 262px; position: absolute; background: rgba(92, 59, 46, 0.50); border-radius: 5px; outline: 1px white solid; outline-offset: -1px; backdrop-filter: blur(2px); z-index: 1;">
+        
+        <!-- Texto -->
+        <div class="email-ou-telefone"
+            style="width: 149px; left: 31px; top: 8px; position: absolute; text-align: center;">
+            Email ou telefone
+        </div>
+
+        <!-- Ícone como imagem -->
+        <img src="public/images/uil-user.svg" alt="Ícone de email"
+            style="width: 24px; height: 24px; left: 7px; top: 6px; position: absolute;" />
+        </div>
+
+
+        <!-- Textos auxiliares -->
+        <div class="esqueceu-senha" style="left: 1112px; top: 370px; position: absolute; text-align: center;">Esqueceu a
+            senha?</div>
+        <div class="inscrever-se" style="left: 1035px; top: 454px; position: absolute; text-align: center;">Inscrever-se
+        </div>
+        <div class="lembrar-me" style="left: 936px; top: 370px; position: absolute; text-align: center;">Lembrar-me
+        </div>
+        <div class="nao-tem-conta" style="left: 917px; top: 454px; position: absolute; text-align: center;">Não tem uma
+            conta?</div>
+
+        <!-- Checkbox -->
+        <div
+            style="width: 13px; height: 12px; left: 919px; top: 371px; position: absolute; background: rgba(217, 217, 217, 0.50); border-radius: 2px; z-index: 1;">
+        </div>
+
+        <!-- Entrar com -->
+        <div class="entrar-com" style="left: 1041px; top: 497px; position: absolute; text-align: center;">Entrar com
+        </div>
+
+        <!-- Ícones sociais -->
+        <!-- Ícones sociais como imagens -->
+    <img src="public/images/ic-baseline-facebook.svg" alt="Facebook" style="width: 30px; height: 30px; left: 1020px; top: 522px; position: absolute; z-index: 1;" />
+    <img src="public/images/ri-google-fill.svg" alt="Google" style="width: 30px; height: 30px; left: 1060px; top: 522px; position: absolute; z-index: 1;" />
+    <img src="public/images/mdi-apple.svg" alt="Apple" style="width: 30px; height: 30px; left: 1100px; top: 522px; position: absolute; z-index: 1;" />
+
+    <!-- Rodapé -->
+
+        <!-- Rodapé -->
+        <div class="rodape" style="left: 586px; top: 597px; position: absolute;">© 2024 Semear - Todos os direitos
+            reservados</div>
+
+    </div>
+</body>
+
+</html>

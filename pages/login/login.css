@@ -1,0 +1,262 @@
+/* pages/login/login.css */
+/* Recriação do layout original do Figma (com rotate e position: absolute) */
+body {
+    background-color: #552E10; /* A cor de fundo principal da sua tela de login */
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+/* --- Configuração Global --- */
+.login-container {
+    width: 100%;
+    min-height: 100vh; /* Garante altura total */
+    position: relative; /* Contexto para posicionamento absoluto */
+    overflow: hidden; /* Esconde partes do shape rotacionado */
+    background-color: #552E10;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/* --- Fundo Rotacionado (Do seu Figma) --- */
+.background-shape {
+    width: 726.89px;
+    height: 1231.30px;
+    left: 49.31px;
+    top: -242px;
+    position: absolute;
+    transform: rotate(17deg);
+    transform-origin: top left;
+    background: #1D0D07;
+    z-index: 0;
+}
+
+/* --- Seção da Logo (Esquerda) --- */
+.logo-section {
+    position: absolute;
+    left: 68px;
+    top: 236px;
+    z-index: 1;
+}
+.logo-section img {
+    width: 455px;
+    height: 127px;
+}
+
+/* --- Seção do Formulário (Direita) --- */
+.form-section {
+    /* Esta div apenas agrupa os formulários */
+    position: relative;
+    z-index: 1;
+}
+
+.form-wrapper {
+    /* Define a posição do formulário na tela */
+    position: absolute;
+    left: 914px;
+    top: 106px; /* Posição do ícone de usuário */
+    width: 322px; /* Largura dos seus campos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#register-form.form-wrapper {
+    top: 40px; /* Puxa o form de cadastro para CIMA */
+}
+
+/* --- MUDANÇA AQUI: Posiciona o form de "esqueceu senha" --- */
+#forgot-form.form-wrapper {
+    top: 106px; /* Mesma posição do login */
+}
+
+/* --- Ícone de Usuário (Topo do Form) --- */
+.user-icon {
+    width: 101.56px;
+    height: 101.56px;
+    border-radius: 50%;
+    margin-bottom: 30px; /* Espaço abaixo do ícone */
+}
+
+/* --- Campos de Input (Email, Senha) --- */
+.form-group {
+    width: 322px;
+    height: 37px;
+    position: relative; /* Para ícone e input */
+    background: rgba(92, 59, 46, 0.50);
+    border-radius: 5px;
+    outline: 1px white solid;
+    outline-offset: -1px;
+    backdrop-filter: blur(2px);
+    margin-bottom: 25px; /* Espaçamento entre campos */
+}
+
+.form-group .icon-input {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 7px;
+    top: 6px;
+}
+
+.form-group input {
+    width: 270px; /* Largura - ícone - padding */
+    height: 100%;
+    position: absolute;
+    left: 35px; /* Espaço para o ícone */
+    top: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+.form-group input::placeholder {
+    color: white;
+    opacity: 0.8;
+}
+
+/* --- Título do Cadastro --- */
+.register-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* --- MUDANÇA AQUI: Estilo do texto de instrução --- */
+.forgot-instructions {
+    font-size: 14px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+/* --- Opções (Lembrar / Esqueceu) --- */
+.form-options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: -15px; /* Puxa para cima, perto da senha */
+}
+
+.lembrar-me {
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+.lembrar-me input {
+    margin-right: 5px;
+}
+
+.esqueceu-senha {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer; /* Adiciona cursor */
+}
+
+/* --- Botão Entrar / Cadastrar --- */
+.btn-submit {
+    width: 322px;
+    height: 37px;
+    background: rgba(140, 80, 34, 0.50);
+    border-radius: 5px;
+    outline: 1px white solid;
+    outline-offset: -1px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+/* --- Link Inscrever-se / Fazer Login --- */
+.nao-tem-conta {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+.nao-tem-conta a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Login Social --- */
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+.entrar-com {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/* --- Seleção (Cliente/Vendedor) --- */
+.user-type-selection {
+    font-size: 14px;
+    width: 100%;
+    margin: 15px 0;
+    text-align: left;
+}
+.user-type-selection p {
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+.user-type-selection label {
+    margin-right: 15px;
+}
+
+/* --- Estilo para Mensagens de Login --- */
+#login-message-area {
+    display: none; /* Oculto por padrão */
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+/* Estilo de SUCESSO */
+#login-message-area.success {
+    display: block;
+    background: rgba(92, 167, 115, 0.1); /* Verde semear */
+    border-color: #5CA773;
+    color: #a5d6a7;
+}
+
+/* Estilo de ERRO */
+#login-message-area.error {
+    display: block;
+    background: rgba(115, 44, 2, 0.2); /* Marrom/vermelho semear */
+    border-color: #ff8a8a;
+    color: #ffc2c2;
+}
+
+/* --- Rodapé --- */
+.rodape {
+    position: absolute;
+    left: 586px;
+    top: 597px;
+    color: white;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    z-index: 1;
+}

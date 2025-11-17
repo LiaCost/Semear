@@ -1,0 +1,357 @@
+body {
+    background-color: var(--cor-fundo-body);
+    color: white;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    overflow-wrap: break-word;
+    margin: 0;
+    min-height: 100vh;
+
+}
+/* pages/vendas/vendas.css */
+
+/* ============================================================
+      1. Importação das Fontes
+      ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;600;700;800&family=Sarala:wght@700&display=swap');
+
+/* ============================================================
+      2. Variáveis Globais e Estilos Básicos
+      ============================================================ */
+:root {
+    --font-principal: 'Montserrat', sans-serif;
+    --font-secundaria: 'Sarala', sans-serif;
+    --font-auxiliar: 'Inter', sans-serif;
+    --cor-fundo-header: #110703;
+    --cor-fundo-body: #1D0D07;
+    --cor-fundo-main: #110703; /* rgba(17, 7, 3, 0.98) */
+    --cor-card: rgba(255, 255, 255, 0.20);
+    --cor-btn-card: rgba(115, 44, 2, 0.40);
+    --cor-preco: #5CA773;
+}
+
+/* O 'body' é controlado pelo index.html, 
+   mas manteremos o resto das regras globais aqui. */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+      3. Cabeçalho (Header)
+      ============================================================ */
+.main-header {
+    background-color: var(--cor-fundo-header);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.logo-link img {
+    height: 44px;
+    width: auto;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+.main-nav a {
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 400;
+}
+.nav-item-ativo {
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 6px;
+}
+.nav-item-ativo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+.utility-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--font-principal);
+    font-size: 13px;
+}
+.utility-bar .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.utility-bar .nav-icon {
+    width: 24px;
+    height: 24px;
+}
+.utility-bar .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lang-selector .flag-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 20%;
+}
+.lang-selector .arrow-down {
+    width: 12px;
+    height: 12px;
+}
+.utility-bar .nav-item-destaque {
+    font-weight: 600;
+    font-size: 13px;
+}
+.btn-entrar {
+    background: rgba(140, 80, 34, 0.50);
+    border-radius: 5px;
+    outline: 1px white solid;
+    padding: 7px 21px;
+    font-size: 13px;
+    font-weight: 400;
+    backdrop-filter: blur(2px);
+    cursor: pointer; /* Adicionado para links */
+}
+.btn-entrar .link-navegacao {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* ============================================================
+      4. Seção Hero
+      ============================================================ */
+.hero-section {
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 120px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-content {
+    max-width: 980px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.hero-content .titulo-hero {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+}
+.hero-content .hero-descricao {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.90);
+    text-align: center;
+}
+.hero-content .hero-subtitulo {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.90);
+    margin-top: 100px;
+}
+.btn-cta {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 100px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    align-self: flex-start;
+}
+
+/* ============================================================
+      5. Conteúdo da Loja (Main)
+      ============================================================ */
+.store-content {
+    background-color: var(--cor-fundo-main);
+    padding: 60px 0;
+}
+.product-section {
+    padding: 40px 0;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.section-header .secao-titulo {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0;
+}
+.btn-filter {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 100px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.btn-filter .arrow-down-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: white;
+    margin: 60px 0;
+}
+
+/* ============================================================
+      6. Carrossel de Produtos
+      ============================================================ */
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.product-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* ============================================================
+      7. Card de Produto
+      ============================================================ */
+.product-card {
+    background-color: var(--cor-card);
+    border-radius: 16px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    padding: 12px;
+    width: 360px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+.product-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.product-card-info {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+.card-produto-nome {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    min-height: 58px;
+}
+.card-produto-preco {
+    font-size: 24px;
+    font-family: var(--font-auxiliar);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--cor-preco);
+}
+.btn-add-to-cart {
+    background-color: var(--cor-btn-card);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: auto;
+}
+
+/* ============================================================
+      8. Rodapé
+      ============================================================ */
+.main-footer {
+    background: var(--cor-fundo-header);
+    padding: 40px 20px;
+    text-align: center;
+    font-family: var(--font-principal);
+}
+.footer-logo {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 30px auto;
+}
+.footer-contact-info {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+    margin: 25px 0;
+}
+.social-icons img {
+    width: 15px;
+    height: 15px;
+}
+.footer-divider {
+    width: 100%;
+    max-width: 886px;
+    height: 1px;
+    background: white;
+    margin: 20px auto;
+    border: 0;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 400;
+}
+.footer-links .separator {
+    color: white;
+}
+.footer-copyright {
+    margin-top: 25px;
+    font-family: var(--font-auxiliar);
+    font-size: 12px;
+    font-weight: 400;
+}
