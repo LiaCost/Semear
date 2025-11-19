@@ -318,26 +318,121 @@ a{
 }
 
 
-/* ===== RESPONSIVIDADE ===== */
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade Aprimorada)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* 3. Cabeçalho (Header) */
+    .main-header {
+        padding: 0 40px;
+    }
+
+    .main-nav ul {
+        gap: 25px; /* Reduz o espaçamento entre links */
+    }
+
+    /* Intro */
+    .intro {
+        padding: 0 20px;
+    }
+    .intro h1::after {
+        width: 300px; /* Linha de título um pouco menor */
+    }
+
+    /* Rodapé */
+    .main-footer {
+        padding: 30px 15px;
+    }
+}
+
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
 @media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    gap: 1rem;
-    height: auto;
-    padding: 20px;
-  }
+    /* 3. Cabeçalho (Header) - Otimizado */
+    .main-header {
+        /* Permite que o conteúdo se ajuste verticalmente */
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 10px;
+        align-items: center;
+    }
 
-  .main-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    .main-nav {
+        order: 2; /* Garante que a navegação fique abaixo do logo */
+        width: 100%;
+        margin-top: 10px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 10px;
+    }
 
-  .utility-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .card {
-    width: 90%;
-  }
+    .utility-bar {
+        order: 3; /* Utilitários ficam no final */
+        width: 100%;
+        justify-content: space-around; /* Distribui bem */
+        gap: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta o texto dos ícones para ganhar espaço */
+        display: none; 
+    }
+    
+    .btn-entrar {
+        padding: 5px 15px; /* Botão Entrar menor */
+    }
+
+    /* Intro */
+    .intro {
+        margin: 2rem auto;
+        padding: 0 15px;
+    }
+    .intro h1 {
+        font-size: 1.6rem;
+    }
+    .intro h1::after {
+        width: 200px; /* Linha de título ainda menor */
+    }
+    .intro .descricao {
+        font-size: 0.9rem;
+    }
+
+    /* Cards */
+    .cards-container {
+        padding: 0 15px;
+    }
+
+    .card {
+        width: 100%; /* Ocupa a largura total da tela */
+        max-width: 350px; /* Limita o tamanho em telas maiores */
+        margin: 0 auto; /* Centraliza */
+    }
+    
+    /* Rodapé */
+    .main-footer {
+        padding: 20px 15px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* --- Mobile Muito Pequeno (Max 480px) --- */
+@media (max-width: 480px) {
+    .main-nav a {
+        font-size: 11px;
+        padding: 8px;
+    }
+    
+    .utility-bar .nav-item-destaque {
+        font-size: 11px;
+    }
 }

@@ -205,3 +205,149 @@ body { background-color: var(--cor-fundo-main); color: white; font-family: var(-
     font-size: 12px;
     font-weight: 400;
 }
+
+/* ============================================================
+    4. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* --- Header --- */
+    .main-header {
+        padding: 0 30px;
+        height: auto;
+        min-height: 81px;
+    }
+    .main-nav ul {
+        gap: 15px; /* Reduz o espaçamento entre links */
+    }
+
+    /* --- Seção Hero --- */
+    .hero-section {
+        height: 300px;
+        padding: 0 40px;
+    }
+    .titulo-hero {
+        font-size: 36px;
+    }
+    .hero-descricao {
+        font-size: 20px;
+    }
+
+    /* --- Catálogo --- */
+    .product-grid {
+        /* Permite que o grid use 2 colunas mais estreitas se houver espaço */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .section-header .secao-titulo {
+        font-size: 30px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* --- Header: Layout Empilhado --- */
+    .main-header {
+        flex-direction: column; /* Empilha logo, nav e utilitários */
+        height: auto;
+        padding: 15px 20px;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .main-nav {
+        order: 2; /* Navegação principal no meio */
+        width: 100%;
+        margin: 10px 0;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .utility-bar {
+        order: 3; /* Utilitários no final */
+        width: 100%;
+        justify-content: space-around;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta textos como "Carrinho", priorizando ícones */
+        display: none; 
+    }
+    .logo-link {
+        order: 1; /* Logo no topo */
+    }
+
+    /* --- Seção Hero: Altura e Tipografia Menor --- */
+    .hero-section {
+        height: 250px;
+        padding: 0 20px;
+    }
+    .titulo-hero {
+        font-size: 32px;
+    }
+    .hero-descricao {
+        font-size: 18px;
+    }
+
+    /* --- Catálogo --- */
+    .store-content {
+        padding: 30px 0;
+    }
+    .container {
+        padding: 0 15px; /* Reduz o padding lateral do container */
+    }
+
+    .section-header {
+        flex-direction: column; /* Empilha o título e possíveis filtros */
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    .section-header .secao-titulo {
+        font-size: 26px;
+    }
+
+    /* Grid de Catálogo: Uma coluna centralizada */
+    .product-grid {
+        grid-template-columns: 1fr; /* Coluna única */
+        gap: 20px;
+        justify-items: center; /* Centraliza os cards */
+    }
+
+    /* --- Card de Produto: Largura Fixa e Menor --- */
+    .product-card {
+        width: 100%; /* Ocupa a largura total do grid */
+        max-width: 350px; /* Limite de tamanho */
+        padding: 10px;
+    }
+    .product-card img {
+        height: 170px;
+    }
+    .card-produto-nome {
+        font-size: 18px;
+        min-height: auto; /* Permite ajuste de altura */
+    }
+    .card-produto-preco {
+        font-size: 18px;
+    }
+    .btn-add-to-cart {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    /* --- Footer --- */
+    .main-footer {
+        padding: 30px 15px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

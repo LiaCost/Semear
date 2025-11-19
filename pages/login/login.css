@@ -1,11 +1,13 @@
 /* pages/login/login.css */
-/* Recriação do layout original do Figma (com rotate e position: absolute) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400&display=swap');
+
+/* --- Configuração Global --- */
 body {
     background-color: #552E10; /* A cor de fundo principal da sua tela de login */
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
-/* --- Configuração Global --- */
+
 .login-container {
     width: 100%;
     min-height: 100vh; /* Garante altura total */
@@ -39,6 +41,7 @@ body {
 .logo-section img {
     width: 455px;
     height: 127px;
+    max-width: 100%; /* Garante que a imagem se ajusta ao container */
 }
 
 /* --- Seção do Formulário (Direita) --- */
@@ -52,20 +55,19 @@ body {
     /* Define a posição do formulário na tela */
     position: absolute;
     left: 914px;
-    top: 106px; /* Posição do ícone de usuário */
-    width: 322px; /* Largura dos seus campos */
+    top: 106px; 
+    width: 322px; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #register-form.form-wrapper {
-    top: 40px; /* Puxa o form de cadastro para CIMA */
+    top: 40px; 
 }
 
-/* --- MUDANÇA AQUI: Posiciona o form de "esqueceu senha" --- */
 #forgot-form.form-wrapper {
-    top: 106px; /* Mesma posição do login */
+    top: 106px; 
 }
 
 /* --- Ícone de Usuário (Topo do Form) --- */
@@ -73,20 +75,20 @@ body {
     width: 101.56px;
     height: 101.56px;
     border-radius: 50%;
-    margin-bottom: 30px; /* Espaço abaixo do ícone */
+    margin-bottom: 30px; 
 }
 
 /* --- Campos de Input (Email, Senha) --- */
 .form-group {
     width: 322px;
     height: 37px;
-    position: relative; /* Para ícone e input */
+    position: relative;
     background: rgba(92, 59, 46, 0.50);
     border-radius: 5px;
     outline: 1px white solid;
     outline-offset: -1px;
     backdrop-filter: blur(2px);
-    margin-bottom: 25px; /* Espaçamento entre campos */
+    margin-bottom: 25px; 
 }
 
 .form-group .icon-input {
@@ -98,10 +100,10 @@ body {
 }
 
 .form-group input {
-    width: 270px; /* Largura - ícone - padding */
+    width: 270px; 
     height: 100%;
     position: absolute;
-    left: 35px; /* Espaço para o ícone */
+    left: 35px; 
     top: 0;
     background: transparent;
     border: none;
@@ -122,7 +124,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* --- MUDANÇA AQUI: Estilo do texto de instrução --- */
+/* --- Estilo do texto de instrução --- */
 .forgot-instructions {
     font-size: 14px;
     text-align: center;
@@ -137,7 +139,7 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    top: -15px; /* Puxa para cima, perto da senha */
+    top: -15px; 
 }
 
 .lembrar-me {
@@ -155,7 +157,7 @@ body {
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
-    cursor: pointer; /* Adiciona cursor */
+    cursor: pointer; 
 }
 
 /* --- Botão Entrar / Cadastrar --- */
@@ -221,7 +223,7 @@ body {
 
 /* --- Estilo para Mensagens de Login --- */
 #login-message-area {
-    display: none; /* Oculto por padrão */
+    display: none; 
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -235,7 +237,7 @@ body {
 /* Estilo de SUCESSO */
 #login-message-area.success {
     display: block;
-    background: rgba(92, 167, 115, 0.1); /* Verde semear */
+    background: rgba(92, 167, 115, 0.1); 
     border-color: #5CA773;
     color: #a5d6a7;
 }
@@ -243,7 +245,7 @@ body {
 /* Estilo de ERRO */
 #login-message-area.error {
     display: block;
-    background: rgba(115, 44, 2, 0.2); /* Marrom/vermelho semear */
+    background: rgba(115, 44, 2, 0.2); 
     border-color: #ff8a8a;
     color: #ffc2c2;
 }
@@ -259,4 +261,127 @@ body {
     font-weight: 400;
     word-wrap: break-word;
     z-index: 1;
+}
+
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Ajuste para telas menores (ex: laptops pequenos e tablets na horizontal) --- */
+@media (max-width: 1280px) {
+    /* Mova o form para ser responsivo ao lado direito */
+    .form-wrapper {
+        left: auto; /* Remove o left fixo */
+        right: 50px; /* Posiciona a 50px da direita */
+        top: 80px; /* Ajusta a posição vertical */
+    }
+
+    #register-form.form-wrapper {
+        top: 20px;
+    }
+
+    /* Reduz o tamanho da logo */
+    .logo-section img {
+        width: 380px;
+        height: auto;
+    }
+    .logo-section {
+        left: 30px; /* Move a logo um pouco para a esquerda */
+        top: 200px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa do Layout --- */
+@media (max-width: 768px) {
+    
+    .login-container {
+        /* Remove o overflow: hidden para evitar problemas em dispositivos móveis */
+        overflow-y: auto; 
+        overflow-x: hidden;
+        min-height: auto;
+        padding: 40px 20px 80px 20px; /* Adiciona padding para o conteúdo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* 1. Forma de Fundo: Redimensiona e reposiciona para uma fatia estética */
+    .background-shape {
+        width: 180vw; /* Torna a forma maior que a tela para cobrir */
+        height: 150vh;
+        left: -80vw; /* Move a forma para a esquerda, fora da tela, mostrando só uma parte */
+        top: -10vh;
+        transform: rotate(5deg); /* Rotação mais suave */
+        opacity: 0.7; /* Opacidade reduzida */
+    }
+    
+    /* 2. Conteúdo Principal: Remove o posicionamento absoluto e centraliza */
+    .logo-section,
+    .form-wrapper {
+        position: static; /* Desabilita posicionamento absoluto */
+        top: auto;
+        left: auto;
+        margin: 0 auto; /* Centraliza */
+        width: 100%;
+        max-width: 350px; /* Limita a largura máxima do conteúdo */
+        z-index: 10; /* Garante que fique acima do background-shape */
+    }
+
+    /* 3. Logo */
+    .logo-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .logo-section img {
+        width: 80%;
+        max-width: 300px;
+        height: auto;
+    }
+    
+    /* 4. Formulário e Campos */
+    .form-wrapper {
+        padding: 10px 0;
+    }
+    
+    .form-group,
+    .btn-submit {
+        width: 100%; /* Ocupa a largura total (máx. 350px) */
+    }
+
+    /* Ajusta o campo de input para ocupar a largura restante */
+    .form-group input {
+        width: calc(100% - 35px); 
+    }
+
+    /* 5. Opções de Form: Ajuste de posicionamento */
+    .form-options {
+        position: static; /* Volta para o fluxo normal */
+        margin-bottom: 20px;
+        margin-top: -15px; /* Mantém o espaçamento para perto do campo */
+    }
+
+    /* 6. Rodapé: Volta para o fluxo normal */
+    .rodape {
+        position: static;
+        text-align: center;
+        margin-top: 40px;
+        font-size: 11px;
+    }
+}
+
+/* --- Smartwatch (Max 480px) --- */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 15px 60px 15px;
+    }
+    .user-icon {
+        width: 80px;
+        height: 80px;
+    }
+    .form-group,
+    .btn-submit {
+        height: 35px;
+        font-size: 15px;
+    }
 }

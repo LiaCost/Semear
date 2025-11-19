@@ -389,3 +389,180 @@ img {
     font-size: 12px;
     font-weight: 400;
 }
+
+/* ============================================================
+    9. MEDIA QUERIES (Responsividade Aprimorada)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* 3. Cabeçalho (Header) */
+    .main-header {
+        padding: 15px 30px;
+    }
+    .main-nav ul {
+        gap: 15px; /* Reduz o espaçamento entre links */
+    }
+
+    /* 4. Seção Hero */
+    .hero-section {
+        height: 600px; /* Altura menor */
+        padding-left: 60px; /* Reduz o padding lateral */
+    }
+    .hero-content {
+        max-width: 80%;
+    }
+    .hero-content .titulo-hero {
+        font-size: 32px;
+    }
+    .hero-content .hero-descricao {
+        font-size: 24px;
+    }
+    .hero-content .hero-subtitulo {
+        font-size: 20px;
+        margin-top: 60px;
+    }
+    .btn-cta, .btn-filter-select {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+
+    /* 5. Conteúdo da Loja */
+    .store-content {
+        padding: 40px 0;
+    }
+    .section-header .secao-titulo {
+        font-size: 30px;
+    }
+    
+    /* 7. Card de Produto (Ajuste de largura para carrossel) */
+    .product-card {
+        width: 320px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* 3. Cabeçalho (Header): Layout Empilhado */
+    .main-header {
+        flex-direction: column; /* Empilha logo, nav e utilitários */
+        height: auto;
+        padding: 15px 20px;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .main-nav {
+        order: 2; /* Navegação principal no meio */
+        width: 100%;
+        margin: 10px 0;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .utility-bar {
+        order: 3; /* Utilitários no final */
+        width: 100%;
+        justify-content: space-around;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta textos como "Carrinho", priorizando ícones */
+        display: none; 
+    }
+    .logo-link {
+        order: 1; /* Logo no topo */
+    }
+    
+    /* 4. Seção Hero: Centralizado e Menor */
+    .hero-section {
+        height: 400px;
+        padding-left: 0;
+        align-items: center; /* Centraliza o conteúdo horizontalmente */
+        text-align: center;
+    }
+    .hero-content {
+        gap: 15px;
+        padding: 0 20px;
+        max-width: 100%;
+        align-items: center;
+    }
+    .hero-content .titulo-hero {
+        font-size: 28px;
+    }
+    .hero-content .hero-descricao {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    .hero-content .hero-subtitulo {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+    .btn-cta {
+        font-size: 18px;
+        padding: 10px 20px;
+        align-self: center; /* Centraliza o botão */
+    }
+
+    /* 5. Conteúdo da Loja */
+    .store-content {
+        padding: 30px 0;
+    }
+    .container {
+        padding: 0 15px; /* Reduz o padding lateral do container */
+    }
+
+    .section-header {
+        flex-direction: column; /* Empilha título e filtro */
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    .section-header .secao-titulo {
+        font-size: 24px;
+    }
+    
+    .btn-filter, .btn-filter-select {
+        width: 100%; /* Filtro ocupa a largura total */
+        font-size: 18px;
+        padding: 10px 30px 10px 20px;
+    }
+
+    /* 6. Carrossel de Produtos */
+    .product-carousel {
+        padding: 10px 0;
+        gap: 15px;
+    }
+    
+    /* 7. Card de Produto */
+    .product-card {
+        width: 250px; /* Largura menor para caber mais cards */
+        gap: 20px;
+        padding: 10px;
+    }
+    .product-card img {
+        height: 150px;
+    }
+    .card-produto-nome {
+        font-size: 20px;
+        min-height: auto;
+    }
+    .card-produto-preco, .btn-add-to-cart {
+        font-size: 20px;
+        padding: 15px 20px;
+    }
+
+    /* 8. Rodapé */
+    .main-footer {
+        padding: 30px 15px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-links .separator {
+        display: none;
+    }
+}

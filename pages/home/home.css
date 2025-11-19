@@ -456,3 +456,184 @@ a {
 .carousel-dot.active {
     background-color: #9A9A9A;
 }
+
+/* ================================================= */
+/* 9. MEDIA QUERIES (Tornando a tela responsiva) */
+/* ================================================= */
+
+/* --- Tablets (Telas até 1024px) --- */
+@media (max-width: 1024px) {
+    /* 6. HEADER (Cabeçalho) */
+    .main-header {
+        /* Permite quebra de linha para os itens do cabeçalho */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .main-nav-list {
+        /* Espaçamento superior após o logo */
+        margin-top: 20px;
+        gap: 15px; /* Reduz o espaçamento entre os links */
+    }
+
+    .utility-bar {
+        /* Fica logo abaixo da navegação */
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    /* 4. CSS DE LAYOUT (Seções) */
+    .section {
+        /* Reduz o padding vertical das seções */
+        padding: 40px 20px;
+    }
+
+    .hero-section {
+        /* Altura mínima menor */
+        min-height: 300px;
+    }
+
+    /* 3. Classes de Tipografia (Base) */
+    .titulo-hero,
+    .titulo-secao {
+        /* Reduz o tamanho da fonte dos títulos principais */
+        font-size: 32px;
+    }
+
+    .subtitulo-hero {
+        /* Reduz o tamanho do subtítulo */
+        font-size: 20px;
+    }
+
+    /* 5. Estilo dos Cards (Tamanho um pouco menor) */
+    .card,
+    .seed-card,
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    /* 7. Rodapé */
+    .footer-links {
+        gap: 15px; /* Reduz o espaçamento entre os links */
+    }
+}
+
+/* --- Smartphones (Telas até 768px) --- */
+@media (max-width: 768px) {
+    /* 2. Estilos Globais */
+    body {
+        font-size: 15px;
+    }
+
+    /* 6. HEADER (Cabeçalho) - Reorganização e centralização */
+    .main-header {
+        padding: 15px;
+    }
+
+    .main-nav-list {
+        /* Oculta os links principais para dar destaque ao utilitário em telas muito pequenas */
+        /* display: none; */ 
+        /* Alternativa: Mantém, mas em coluna, se a prioridade for NÃO esconder nada */
+        flex-direction: column; 
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .utility-bar {
+        /* Mantém a barra de utilitários */
+        width: 100%;
+        justify-content: space-around; /* Distribui os itens */
+        margin-top: 15px;
+        padding: 10px 0;
+        /* Adiciona uma borda para separar o utilitário dos links principais, se o nav-list estiver oculto */
+        /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+    }
+    
+    .icon-link {
+        /* Remove o texto da navegação utilitária, priorizando apenas os ícones */
+        gap: 5px;
+    }
+    .icon-link span:not(.link-navegacao-destaque) { /* Mantém o texto "Entrar" e o de destaque*/
+        display: none;
+    }
+    .lang-selector .link-navegacao { /* Mostra a linguagem/bandeira */
+        display: inline;
+    }
+
+    .nav-icon {
+        margin-right: 0;
+    }
+
+    .btn-entrar {
+        padding: 5px 15px; /* Botão Entrar menor */
+    }
+
+
+    /* 3. Classes de Tipografia (Base) */
+    .titulo-hero,
+    .titulo-secao {
+        font-size: 28px;
+    }
+
+    .subtitulo-hero {
+        font-size: 18px;
+    }
+
+    /* 4. CSS DE LAYOUT */
+    .container {
+        padding: 0 15px;
+    }
+
+    .section {
+        padding: 30px 15px;
+    }
+
+    .hero-section {
+        min-height: 250px;
+    }
+
+    .grid-layout {
+        /* Força a coluna única se os cards ficarem muito pequenos em duas colunas */
+        grid-template-columns: 1fr;
+    }
+
+    /* 5. Estilo dos Cards (Garantindo largura total em coluna única) */
+    .card,
+    .seed-card,
+    .testimonial-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .seed-carousel,
+    .testimonial-carousel {
+        padding: 10px 0;
+    }
+
+    .btn-cta-section {
+        width: 100%; /* Botão de CTA de largura total */
+        max-width: 322px;
+        font-size: 20px;
+    }
+
+    .btn-cta-hubs {
+        font-size: 20px;
+        padding: 0 30px;
+    }
+
+    /* 7. Rodapé */
+    .main-footer {
+        padding: 30px 15px;
+    }
+
+    .footer-logo {
+        width: 150px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

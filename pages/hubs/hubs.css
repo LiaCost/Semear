@@ -264,24 +264,150 @@ footer.main-footer { /* MUDANÇA: Seletor mais específico */
     margin-bottom: 20px;
 }
 
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 768px) {
+/* ============================================================
+    9. MEDIA QUERIES (Responsividade Aprimorada)
+   ============================================================ */
+
+/* --- TELA DE TABLET (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* 3. Cabeçalho (Header) */
     .main-header {
-        flex-direction: column;
-        gap: 1rem;
+        /* Reduz o padding horizontal */
+        padding: 0 40px;
     }
 
+    /* 4. Navegação */
     .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 25px; /* Reduz o espaçamento entre os links */
+    }
+
+    /* 5. Utility Bar */
+    .utility-bar {
+        gap: 15px; /* Reduz o espaçamento na barra de utilidade */
     }
     
-    .utility-bar {
+    /* 7. Sessões */
+    .sessao {
+        margin: 2rem auto;
+    }
+
+    .sessao h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- TELA DE SMARTPHONE (Max 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 3. Cabeçalho (Header) */
+    .main-header {
+        /* Empilha os itens verticalmente */
+        flex-direction: column;
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        padding: 15px 20px; /* Mais padding vertical */
+        gap: 15px;
+    }
+
+    .logo-link {
+        margin-bottom: 5px; /* Espaço entre o logo e a navegação */
+    }
+
+    /* 4. Navegação Principal */
+    .main-nav {
+        /* Permite que os links quebrem em múltiplas linhas */
+        flex-grow: unset;
+        width: 100%;
+    }
+    .main-nav ul {
+        /* Distribui e quebra os links principais se necessário */
         flex-wrap: wrap;
         justify-content: center;
+        gap: 15px; 
+    }
+
+    /* 5. Utility Bar */
+    .utility-bar {
+        /* Distribui os utilitários pela largura total */
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    /* OTIMIZAÇÃO: Prioriza ícones para economizar espaço */
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta textos como "Carrinho" ou "Favoritos" */
+        display: none; 
+    }
+    .utility-bar .icon-link {
+        /* Garante que o texto de destaque ("Entrar") e a bandeira fiquem visíveis */
+        gap: 5px;
+    }
+    
+    .btn-entrar {
+        padding: 5px 15px; /* Botão Entrar menor */
+    }
+
+    /* 7. Sessões */
+    .sessao {
+        width: 95%;
+        margin: 2rem auto;
+    }
+
+    .sessao h2 {
+        font-size: 1.6rem;
+    }
+
+    /* 8. Cards */
+    .cards-container {
+        flex-direction: column; /* Força os cards a ficarem em coluna única */
+        align-items: center;
     }
 
     .card {
-        width: 90%;
+        width: 100%; /* Ocupa 100% da largura da sessão */
+        max-width: 350px; /* Limita a largura máxima para não ficar muito largo em telas maiores que 768px */
+        padding: 15px;
+    }
+    
+    /* 9. Rodapé */
+    footer.main-footer {
+        padding: 1.5rem 1rem;
+    }
+    
+    .footer-logo {
+        width: 150px;
     }
 }
+
+/* --- TELA MUITO PEQUENA (Max 480px) --- */
+@media (max-width: 480px) {
+    /* 2. Body */
+    body {
+        font-size: 14px;
+    }
+    
+    /* 3. Cabeçalho */
+    .main-header {
+        padding: 10px;
+    }
+
+    /* 4. Navegação Principal */
+    .main-nav ul {
+        gap: 10px; 
+    }
+    .main-nav a {
+        font-size: 12px;
+    }
+
+    /* 7. Sessões */
+    .sessao h2 {
+        font-size: 1.4rem;
+    }
+
+    /* 9. Rodapé */
+    .footer-contact-info,
+    .social-icons {
+        font-size: 12px;
+    }
+}
+

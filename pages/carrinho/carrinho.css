@@ -439,3 +439,183 @@ footer {
     font-size: 12px;
     font-family: 'Inter', sans-serif;
 }
+
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* --- Header --- */
+    .header-container {
+        padding: 0 40px;
+    }
+    nav {
+        gap: 25px; 
+    }
+
+    /* --- Conteúdo Principal --- */
+    .main-content {
+        padding: 40px 40px 60px; /* Reduz padding lateral */
+    }
+    .page-title, .section-title {
+        font-size: 28px;
+    }
+
+    /* --- Seção do Carrinho (Adaptação Colunas) --- */
+    .cart-section {
+        grid-template-columns: 1fr; /* Coluna única: Item + Resumo */
+        gap: 40px;
+    }
+    
+    /* --- Item do Carrinho (Adaptação Imagem/Detalhes) --- */
+    .cart-item {
+        gap: 30px;
+        flex-direction: column; /* Imagem acima dos detalhes */
+        align-items: center; /* Centraliza a imagem/detalhes */
+        text-align: center;
+    }
+    .product-image {
+        width: 100%;
+        max-width: 350px; /* Limita o tamanho da imagem */
+        height: auto;
+    }
+    .product-details {
+        align-items: center; /* Centraliza o texto dos detalhes */
+    }
+
+    /* Ajuste para elementos que não devem esticar em telas menores */
+    .product-price, .quantity-control {
+        align-self: center; 
+    }
+    .product-title, .product-status {
+        text-align: center;
+    }
+
+    /* --- Calculadora de Frete --- */
+    .shipping-calculator {
+        max-width: none;
+        padding: 15px 20px;
+        justify-content: center;
+        gap: 20px;
+    }
+    .shipping-input {
+        width: 120px;
+        font-size: 20px;
+    }
+
+    /* --- Recomendações --- */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        gap: 20px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* --- Header: Layout Empilhado --- */
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+    .header-container {
+        flex-direction: column; 
+        padding: 0 20px;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .logo { margin-bottom: 10px; }
+    nav { width: 100%; gap: 15px; flex-wrap: wrap; }
+    .header-right { width: 100%; justify-content: space-between; }
+    
+    /* --- Main Content --- */
+    .main-content {
+        padding: 30px 15px 50px;
+    }
+    .page-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* --- Item do Carrinho (Ajustes de Fonte) --- */
+    .product-title {
+        font-size: 28px;
+    }
+    .product-status {
+        font-size: 20px;
+    }
+    .quantity-btn, .quantity-value {
+        font-size: 24px;
+    }
+    .price {
+        font-size: 20px;
+    }
+
+    /* --- Calculadora de Frete --- */
+    .shipping-calculator {
+        flex-direction: column; /* Empilha os campos */
+        gap: 15px;
+        width: 100%;
+    }
+    .shipping-input {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+    }
+    .btn-calculate {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    /* --- Resumo do Pedido --- */
+    .summary-label, .summary-row .price {
+        font-size: 20px;
+    }
+    .coupon-info {
+        font-size: 16px;
+        margin: 20px 0;
+    }
+    .action-buttons {
+        flex-direction: column; /* Empilha os botões */
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 20px;
+        padding: 15px 20px;
+    }
+
+    /* --- Recomendações --- */
+    .recommendations-section {
+        padding: 30px 15px 60px;
+    }
+    .recommendations-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    .products-grid {
+        grid-template-columns: 1fr; /* Coluna única */
+        gap: 20px;
+    }
+    .product-name, .product-card-price {
+        font-size: 20px;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 30px 0 20px;
+    }
+    .footer-container {
+        padding: 0 20px;
+    }
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

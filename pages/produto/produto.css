@@ -6,11 +6,20 @@
     --cor-fundo-header: #110703;
     --cor-fundo-main: #110703;
     --cor-preco: #5CA773;
-    --cor-estrela: #FFD700; /* Dourado */
+    --cor-estrela: #FFD700;
+    /* Dourado */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-a { text-decoration: none; color: inherit; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 body {
     background-color: var(--cor-fundo-main);
@@ -27,19 +36,100 @@ body {
     padding: 20px 40px;
     height: 81px;
 }
-.logo-link img { height: 44px; width: auto; }
-.main-nav ul { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
-.main-nav a { font-family: var(--font-principal); font-size: 13px; font-weight: 400; cursor: pointer; padding: 10px; position: relative; }
-.nav-item-ativo { font-weight: 800; position: relative; padding-bottom: 6px; }
-.nav-item-ativo::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background-color: white; }
-.utility-bar { display: flex; align-items: center; gap: 20px; font-family: var(--font-principal); font-size: 13px; }
-.utility-bar .icon-link { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.utility-bar .nav-icon { width: 24px; height: 24px; }
-.utility-bar .lang-selector { display: flex; align-items: center; gap: 8px; }
-.lang-selector .flag-icon { width: 24px; height: 24px; border-radius: 20%; }
-.lang-selector .arrow-down { width: 12px; height: 12px; }
-.utility-bar .nav-item-destaque { font-weight: 600; font-size: 13px; cursor: pointer; }
-.btn-entrar { background: rgba(140, 80, 34, 0.50); border-radius: 5px; outline: 1px white solid; padding: 7px 21px; font-size: 13px; font-weight: 400; backdrop-filter: blur(2px); cursor: pointer; color: white; }
+
+.logo-link img {
+    height: 44px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+}
+
+.nav-item-ativo {
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav-item-ativo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+.utility-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--font-principal);
+    font-size: 13px;
+}
+
+.utility-bar .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.utility-bar .nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.utility-bar .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang-selector .flag-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 20%;
+}
+
+.lang-selector .arrow-down {
+    width: 12px;
+    height: 12px;
+}
+
+.utility-bar .nav-item-destaque {
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-entrar {
+    background: rgba(140, 80, 34, 0.50);
+    border-radius: 5px;
+    outline: 1px white solid;
+    padding: 7px 21px;
+    font-size: 13px;
+    font-weight: 400;
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+    color: white;
+}
+
 /* --- Fim do Header --- */
 
 /* --- Conteúdo Principal da Página --- */
@@ -47,12 +137,24 @@ body {
     background-color: var(--cor-fundo-main);
     padding: 60px 40px;
 }
+
 .container-produto {
     max-width: 1200px;
     margin: 0 auto;
 }
-.section-divider { border: none; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 60px 0; }
-.section-title { font-size: 28px; font-weight: 600; margin-bottom: 30px; }
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 60px 0;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
 
 /* --- Layout de Detalhe do Produto --- */
 .produto-detalhe-layout {
@@ -61,6 +163,7 @@ body {
     gap: 60px;
     align-items: flex-start;
 }
+
 .produto-imagem-container img {
     width: 100%;
     height: auto;
@@ -69,17 +172,20 @@ body {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 .produto-info-container h1 {
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 20px;
 }
+
 .produto-info-container p {
     font-size: 16px;
     color: #ccc;
     line-height: 1.6;
     margin-bottom: 30px;
 }
+
 .produto-preco {
     font-size: 32px;
     font-family: 'Inter', sans-serif;
@@ -87,16 +193,19 @@ body {
     color: var(--cor-preco);
     margin-bottom: 30px;
 }
+
 .produto-botoes {
     display: flex;
     gap: 20px;
 }
+
 .quantity-control-produto {
     display: flex;
     align-items: center;
     border: 1px solid white;
     border-radius: 16px;
 }
+
 .quantity-control-produto .quantity-btn {
     background: transparent;
     border: none;
@@ -105,13 +214,16 @@ body {
     cursor: pointer;
     padding: 10px 20px;
 }
+
 .quantity-control-produto .quantity-value {
     font-size: 24px;
     font-weight: 600;
     padding: 10px;
 }
+
 .btn-add-to-cart-produto {
-    background-color: rgba(115, 44, 2, 0.40); /* Cor do botão do card */
+    background-color: rgba(115, 44, 2, 0.40);
+    /* Cor do botão do card */
     border-radius: 16px;
     padding: 20px 24px;
     text-align: center;
@@ -122,6 +234,7 @@ body {
     cursor: pointer;
     flex-grow: 1;
 }
+
 .btn-add-to-cart-produto:hover {
     background-color: rgba(140, 80, 34, 0.8);
 }
@@ -139,6 +252,7 @@ body {
     overflow-y: auto;
     padding-right: 20px;
 }
+
 .avaliacao-item {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
@@ -146,25 +260,30 @@ body {
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .avaliacao-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
+
 .avaliacao-nome {
     font-size: 18px;
     font-weight: 600;
 }
+
 .avaliacao-estrelas {
     font-size: 20px;
     color: var(--cor-estrela);
 }
+
 .avaliacao-comentario {
     font-size: 16px;
     color: #ccc;
     line-height: 1.6;
 }
+
 #avaliacoes-lista:empty::after {
     content: "Nenhuma avaliação para este produto ainda. Seja o primeiro!";
     color: #888;
@@ -177,12 +296,14 @@ body {
     flex-direction: column;
     margin-bottom: 20px;
 }
+
 .form-group label {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 8px;
     color: rgba(255, 255, 255, 0.8);
 }
+
 .form-group input,
 .form-group textarea {
     background: rgba(92, 59, 46, 0.50);
@@ -194,23 +315,29 @@ body {
     font-family: 'Montserrat', sans-serif;
     outline: none;
 }
+
 .form-group textarea {
     resize: vertical;
     min-height: 100px;
 }
+
 .estrelas-input {
     display: flex;
     cursor: pointer;
 }
+
 .estrelas-input span {
     font-size: 30px;
-    color: #888; /* Cor da estrela vazia */
+    color: #888;
+    /* Cor da estrela vazia */
     transition: color 0.2s;
 }
+
 .estrelas-input span:hover,
 .estrelas-input span.selecionada {
     color: var(--cor-estrela);
 }
+
 .btn-submit-avaliacao {
     background: #58AA58;
     color: white;
@@ -223,17 +350,224 @@ body {
     cursor: pointer;
     width: 100%;
 }
+
 .btn-submit-avaliacao:hover {
     background: #4a904a;
 }
 
 /* --- Footer (Copiado de vendas.css) --- */
-.main-footer { background: var(--cor-fundo-header); padding: 40px 20px; text-align: center; font-family: var(--font-principal); }
-.footer-logo { width: 200px; height: auto; margin: 0 auto 30px auto; }
-.footer-contact-info { font-size: 13px; font-weight: 400; line-height: 1.5; margin-bottom: 25px; }
-.social-icons { display: flex; justify-content: center; gap: 27px; margin: 25px 0; }
-.social-icons img { width: 15px; height: 15px; }
-.footer-divider { width: 100%; max-width: 886px; height: 1px; background: white; margin: 20px auto; border: 0; }
-.footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px; font-weight: 400; }
-.footer-links .separator { color: white; }
-.footer-copyright { margin-top: 25px; font-family: var(--font-auxiliar); font-size: 12px; font-weight: 400; }
+.main-footer {
+    background: var(--cor-fundo-header);
+    padding: 40px 20px;
+    text-align: center;
+    font-family: var(--font-principal);
+}
+
+.footer-logo {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 30px auto;
+}
+
+.footer-contact-info {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+    margin: 25px 0;
+}
+
+.social-icons img {
+    width: 15px;
+    height: 15px;
+}
+
+.footer-divider {
+    width: 100%;
+    max-width: 886px;
+    height: 1px;
+    background: white;
+    margin: 20px auto;
+    border: 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.footer-links .separator {
+    color: white;
+}
+
+.footer-copyright {
+    margin-top: 25px;
+    font-family: var(--font-auxiliar);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* --- Header --- */
+    .main-header {
+        padding: 15px 30px;
+    }
+    
+    .main-nav ul {
+        gap: 15px; /* Reduz espaçamento da navegação */
+    }
+
+    /* --- Conteúdo Principal --- */
+    .main-content-produto {
+        padding: 40px 30px;
+    }
+    
+    .produto-detalhe-layout {
+        /* Muda a proporção para caber melhor na tela horizontal do tablet */
+        grid-template-columns: 1fr 1.2fr;
+        gap: 40px;
+    }
+
+    .produto-info-container h1 {
+        font-size: 30px;
+    }
+
+    .produto-preco {
+        font-size: 28px;
+    }
+
+    .avaliacoes-layout {
+        /* Muda a proporção para caber melhor na tela horizontal do tablet */
+        grid-template-columns: 1.2fr 1fr;
+        gap: 40px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* --- Header: Layout Empilhado --- */
+    .main-header {
+        flex-direction: column; /* Empilha logo e barra principal */
+        height: auto;
+        padding: 15px 20px;
+    }
+
+    .main-nav {
+        order: 2; /* Move a navegação principal para o meio */
+        width: 100%;
+        margin: 10px 0;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .utility-bar {
+        order: 3; /* Move utilitários para baixo */
+        width: 100%;
+        justify-content: space-around;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta textos como "Carrinho", priorizando ícones */
+        display: none; 
+    }
+
+    .logo-link {
+        order: 1; /* Mantém o logo no topo */
+    }
+
+    /* --- Conteúdo Principal --- */
+    .main-content-produto {
+        padding: 30px 20px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* 1. Layout de Detalhes do Produto (Coluna Única) */
+    .produto-detalhe-layout {
+        grid-template-columns: 1fr; /* Coluna única: Imagem sobre a info */
+        gap: 30px;
+    }
+    
+    .produto-info-container h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .produto-info-container p {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .produto-preco {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .produto-botoes {
+        flex-direction: column; /* Empilha o controle de quantidade e o botão de carrinho */
+        gap: 15px;
+    }
+
+    .quantity-control-produto {
+        width: 100%; /* Ocupa a largura total */
+        justify-content: space-between;
+    }
+
+    /* 2. Layout de Avaliações (Coluna Única) */
+    .avaliacoes-layout {
+        grid-template-columns: 1fr; /* Coluna única: Lista sobre o formulário */
+        gap: 40px;
+    }
+    
+    .avaliacoes-lista-container {
+        max-height: 400px; /* Limita a altura da lista */
+        padding-right: 10px;
+    }
+
+    .avaliacao-item {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Formulário de Avaliação */
+    .btn-submit-avaliacao {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    /* --- Footer --- */
+    .main-footer {
+        padding: 30px 15px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-links .separator {
+        display: none; /* Remove separadores */
+    }
+}

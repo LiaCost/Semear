@@ -326,3 +326,138 @@ footer {
     font-size: 12px;
     font-family: 'Inter', sans-serif;
 }
+
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* --- Header --- */
+    .header-container {
+        padding: 0 40px;
+    }
+    nav {
+        gap: 25px; /* Reduz espaçamento entre os links */
+    }
+
+    /* --- Conteúdo Principal --- */
+    .main-content {
+        padding: 40px 40px 60px; /* Reduz padding lateral */
+    }
+    .checkout-layout {
+        gap: 30px; /* Reduz o espaçamento entre as colunas */
+    }
+
+    /* --- Formulário --- */
+    .form-group-grid-2 {
+        /* Permite que o grid se adapte se houver espaço, mas ainda prioriza a adaptação */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    }
+
+    /* --- Resumo do Pedido --- */
+    .summary-row.total .price {
+        font-size: 24px;
+    }
+    .btn-primary {
+        font-size: 20px;
+        padding: 15px 20px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* --- Header: Layout Empilhado --- */
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+    .header-container {
+        flex-direction: column; 
+        padding: 0 20px;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .logo {
+        margin-bottom: 10px;
+    }
+    nav {
+        width: 100%;
+        gap: 15px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* --- Conteúdo Principal: Empilhado --- */
+    .main-content {
+        padding: 30px 20px 50px;
+    }
+    .page-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Layout do Checkout: De 2 colunas para 1 (o resumo vai para baixo) */
+    .checkout-layout {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+
+    /* Formulário: Campos lado a lado viram coluna única */
+    .form-group-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Opções de Pagamento: De lado a lado para empilhados */
+    .payment-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .payment-option {
+        width: 100%;
+    }
+    .pix-instructions {
+        font-size: 14px;
+    }
+
+    /* Resumo do Pedido (Direita): Ocupa 100% da largura */
+    .summary-item {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .summary-item img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .summary-row.total .price {
+        font-size: 26px;
+    }
+    .btn-primary {
+        width: 100%;
+        font-size: 20px;
+        padding: 18px 20px;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 30px 0 20px;
+    }
+    .footer-container {
+        padding: 0 20px;
+    }
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

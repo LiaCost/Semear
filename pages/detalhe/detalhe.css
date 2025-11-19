@@ -306,15 +306,54 @@ footer.main-footer {
     margin: 20px auto;
 }
 
-/* ===== RESPONSIVO (Do seu conteudo.css) ===== */
-@media (max-width: 900px) {
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade Aprimorada)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* ===== CABEÇALHO ===== */
     .main-header {
-        flex-direction: column;
-        gap: 1rem;
-        height: auto;
-        padding: 20px;
+        padding: 0 40px;
+    }
+    .main-nav ul {
+        gap: 25px; /* Reduz o espaçamento da navegação */
+    }
+    
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    .conteudo {
+        padding: 3rem 1.5rem;
     }
 
+    .conteudo-container {
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 90%;
+    }
+    
+    .conteudo-imagem img {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .conteudo-texto h1 {
+        font-size: 1.8rem;
+    }
+
+    /* ===== BENEFÍCIOS ===== */
+    .beneficios {
+        max-width: 90%;
+        padding: 2rem;
+    }
+    .beneficios h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* --- Transição para Mobile (Max 900px) --- */
+@media (max-width: 900px) {
+     /* ===== CONTEÚDO PRINCIPAL (Empilhamento Imagem > Texto) ===== */
+     /* O flex-direction: column garante que a imagem venha antes do texto */
     .conteudo-container {
         flex-direction: column;
         text-align: center;
@@ -324,13 +363,14 @@ footer.main-footer {
     .conteudo-imagem img {
         width: 100%;
         max-width: 350px;
-        height: auto;
+        height: auto; /* Mantém a proporção da imagem */
     }
 
+    /* ===== BENEFÍCIOS (Empilhamento em 1 coluna) ===== */
     .beneficios {
         padding: 1.5rem;
     }
-
+    
     .beneficios-container {
         flex-direction: column;
         gap: 1rem;
@@ -340,5 +380,101 @@ footer.main-footer {
     .maleficio-box {
         width: 100%;
         flex-basis: auto;
+        min-width: unset;
+    }
+
+    /* ===== CABEÇALHO (Empilhamento) ===== */
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+/* --- Smartphone (Max 768px): Ajustes Finos --- */
+@media (max-width: 768px) {
+    
+    /* ===== CABEÇALHO (Otimização para Mobile) ===== */
+    .main-header {
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    .main-nav {
+        order: 2;
+        width: 100%;
+        margin-top: 5px;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .utility-bar {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .utility-bar .icon-link span:not(.nav-item-destaque) {
+        /* Oculta o texto dos ícones para ganhar espaço */
+        display: none; 
+    }
+
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    .conteudo {
+        padding: 2rem 1rem;
+    }
+
+    .conteudo-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    .conteudo-texto h1 {
+        font-size: 1.6rem;
+    }
+
+    .conteudo-texto p {
+        font-size: 0.95rem;
+    }
+
+    /* ===== BENEFÍCIOS ===== */
+    .beneficios {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .beneficios h2 {
+        font-size: 1.4rem;
+        border-bottom: 1px solid #444;
+        margin-bottom: 1.5rem;
+    }
+    
+    .beneficio-box,
+    .maleficio-box {
+        padding: 1rem;
+    }
+    
+    .beneficio-box h3,
+    .maleficio-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .beneficio-box ul,
+    .maleficio-box ul {
+        line-height: 1.6;
+        font-size: 0.9rem;
+    }
+
+    /* ===== RODAPÉ ===== */
+    footer.main-footer {
+        padding: 1.5rem 1rem;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
     }
 }

@@ -275,3 +275,127 @@ footer {
     font-size: 12px;
     font-family: 'Inter', sans-serif;
 }
+
+/* ============================================================
+    10. MEDIA QUERIES (Responsividade)
+   ============================================================ */
+
+/* --- Tablet (Max 1024px) --- */
+@media (max-width: 1024px) {
+    /* --- Header --- */
+    .header-container {
+        padding: 0 40px;
+    }
+    nav {
+        gap: 25px; /* Reduz espaçamento entre os links */
+    }
+
+    /* --- Conteúdo Principal --- */
+    .main-content {
+        padding: 40px 40px 60px; /* Reduz padding lateral */
+    }
+    
+    .page-title {
+        font-size: 28px;
+    }
+    .page-subtitle {
+        font-size: 16px;
+    }
+
+    /* Layout do Formulário: De 2 colunas para 1 (empilha) */
+    .checkout-layout {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+
+    /* Campos lado a lado (grid-2): Mantém a grade, mas com colunas mais estreitas */
+    .form-group-grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 15px;
+    }
+
+    /* --- Footer --- */
+    .footer-container {
+        padding: 0 40px;
+    }
+}
+
+/* --- Mobile (Max 768px): Refatoração Completa --- */
+@media (max-width: 768px) {
+    
+    /* --- Header: Layout Empilhado --- */
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+    .header-container {
+        flex-direction: column; 
+        padding: 0 20px;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .logo { margin-bottom: 10px; }
+    nav { width: 100%; gap: 15px; flex-wrap: wrap; }
+    .header-right { width: 100%; justify-content: space-between; }
+
+    /* --- Conteúdo Principal --- */
+    .main-content {
+        padding: 30px 20px 50px;
+    }
+    .page-title {
+        font-size: 24px;
+    }
+    .page-subtitle {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    .section-title {
+        font-size: 20px;
+    }
+
+    /* Layout do Formulário: Coluna Única (Já definido na query 1024px, mas ajustamos padding) */
+    .checkout-layout {
+        gap: 30px;
+    }
+    
+    /* Campos lado a lado (grid-2): Coluna única */
+    .form-group-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Botões: Ocupam a largura total e têm padding menor */
+    .btn-primary {
+        font-size: 20px;
+        padding: 15px 20px;
+        margin-top: 15px;
+    }
+
+    /* Campos de Input e TextArea */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    /* Upload de Imagem */
+    .image-preview {
+        height: 150px;
+    }
+    .image-preview span {
+        font-size: 14px;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 30px 0 20px;
+    }
+    .footer-container {
+        padding: 0 20px;
+    }
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
