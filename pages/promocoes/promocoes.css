@@ -1,0 +1,98 @@
+/* pages/promocoes/promocoes.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;600;700;800&family=Sarala:wght@700&display=swap');
+
+:root {
+    --font-principal: 'Montserrat', sans-serif;
+    --font-auxiliar: 'Inter', sans-serif;
+    --cor-fundo-header: #110703;
+    --cor-fundo-main: #110703;
+    --cor-preco: #5CA773; /* Verde normal */
+    --cor-preco-antigo: #FF6961; /* Vermelho/Rosa suave para desconto */
+    --cor-card: rgba(255, 255, 255, 0.20);
+    --cor-btn-card: rgba(115, 44, 2, 0.40);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+body { background-color: var(--cor-fundo-main); color: white; font-family: var(--font-principal); min-height: 100vh; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-divider { border: none; height: 1px; background-color: white; margin: 60px 0; }
+
+/* --- Header & Footer (Padronizado) --- */
+.main-header { background-color: var(--cor-fundo-header); display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 81px; }
+/* [O restante do CSS do Header e Footer deve ser copiado do catalogo.css para consistência] */
+
+/* --- Seção Hero --- */
+.hero-section {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 0 20px;
+    background-image: url('public/images/imagem-principal.png'); 
+}
+.titulo-hero { font-size: 42px; font-weight: 700; }
+.hero-descricao { font-size: 24px; font-weight: 400; color: rgba(255, 255, 255, 0.90); }
+
+/* --- Conteúdo Principal e Grid --- */
+.store-content { background-color: var(--cor-fundo-main); padding: 60px 0; }
+.product-section { padding: 40px 0; }
+.section-header .secao-titulo { font-size: 36px; font-weight: 600; margin: 0; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+/* --- Card de Produto --- */
+.product-card {
+    background-color: var(--cor-card);
+    border-radius: 16px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    padding: 12px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.product-card img { width: 100%; height: 190px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+.product-card-info { padding: 0 5px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1; }
+.card-produto-nome { font-size: 20px; font-weight: 500; line-height: 1.3; min-height: 52px; }
+.btn-add-to-cart {
+    background-color: var(--cor-btn-card);
+    border-radius: 16px;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 15px;
+    display: block;
+    cursor: pointer; 
+    color: white; 
+}
+
+/* --- NOVO: Estilos de Preço em Promoção --- */
+.price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+    flex-grow: 1; /* Para empurrar o botão */
+}
+.old-price {
+    font-size: 16px;
+    font-family: var(--font-principal);
+    font-weight: 400;
+    color: var(--cor-preco-antigo); /* Vermelho/Rosa suave */
+    text-decoration: line-through; /* Risca o preço antigo */
+    margin-bottom: 3px;
+}
+.new-price {
+    font-size: 24px; /* Maior e mais visível */
+    font-family: var(--font-auxiliar);
+    font-weight: 700;
+    color: var(--cor-preco); /* Verde destaque */
+}

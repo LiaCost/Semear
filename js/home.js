@@ -43,6 +43,14 @@ function initHomePage(data) {
             loadPage('pages/solos/solos.html');
         });
     }
+
+    const faqLink = document.getElementById("nav-faq-link");
+    if (faqLink) {
+        faqLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/faq/faq.html');
+        });
+    }
     // --- FIM LISTENER --
 
     // --- Lógica de Controle de Papel (Mostrar/Esconder "Vender") ---
@@ -67,20 +75,4 @@ function initHomePage(data) {
         });
     }
     
-    // --- Lógica do Seletor de Idioma (se você a manteve) ---
-    const btnPT = document.getElementById("lang-pt");
-    const btnEN = document.getElementById("lang-en");
-
-    if (btnPT) {
-        btnPT.addEventListener("click", (e) => {
-            e.preventDefault();
-            // setLanguage('pt'); // Função do i18n.js (atualmente desabilitada)
-        });
-    }
-    if (btnEN) {
-        btnEN.addEventListener("click", (e) => {
-            e.preventDefault();
-            // setLanguage('en'); // Função do i18n.js (atualmente desabilitada)
-        });
-    }
 }

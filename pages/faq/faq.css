@@ -1,0 +1,436 @@
+/* MUDANÇA: Fonts são carregadas no index.html e usadas no body */
+/* Fontes utilizadas: Montserrat e Inter */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #1D0D07;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+      3. Cabeçalho (Header) - CSS Principal
+    ============================================================ */
+.main-header {
+    background-color:#110703;
+    display: flex;
+    justify-content: space-between; /* Mantém itens nas extremidades */
+    align-items: center;
+    padding: 0 71px; /* MUDANÇA: Padding horizontal ajustado */
+    height: 81px;   /* MUDANÇA: Altura fixa como no header padrão */
+}
+
+.logo-link img {
+    height: 44px; /* MUDANÇA: Altura da logo padronizada */
+    width: 200px; /* MUDANÇA: Largura da logo padronizada */
+}
+
+.main-nav {
+    display: flex; /* Garante que a nav ocupe o espaço necessário */
+    align-items: center;
+    justify-content: center; /* Centraliza os itens de navegação dentro da nav */
+    flex-grow: 1; /* Permite que a nav ocupe o espaço restante */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-principal);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px; /* MUDANÇA: Gap ajustado para 40px */
+    padding: 0;
+}
+    
+.nav-item-ativo {
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 6px;
+}
+.nav-item-ativo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+/* ------------------------------------------------------------
+      Utility Bar - Configurações (Header-Right)
+    ------------------------------------------------------------ */
+.utility-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--font-principal); 
+    font-size: 13px;
+    color: white;
+}
+    
+.utility-bar .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+}
+    
+.utility-bar .nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.utility-bar .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lang-selector .flag-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 20%;
+}
+.lang-selector .arrow-down {
+    width: 12px;
+    height: 12px;
+}
+
+.utility-bar .nav-item-destaque {
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+    /* Linha que estava no seu CSS antigo, mas não é necessária para o link de FAQ da Imagem 1: */
+    /* border-bottom: 1px solid white; */ 
+}
+
+/* ------------------------------------------------------------
+      Botão Entrar (login-btn)
+    ------------------------------------------------------------ */
+.btn-entrar {
+    /* O CSS original usava 'rgba(140, 80, 34, 0.50)' */
+    background: rgba(140, 80, 34, 0.50); 
+    border-radius: 5px;
+    /* O CSS original usava 'outline: 1px white solid' */
+    outline: 1px white solid; 
+    padding: 7px 21px;
+    font-size: 13px;
+    color:white;
+    font-weight: 400;
+    text-decoration: none;
+    backdrop-filter: blur(2px);
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 575px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* MUDANÇA: Path da imagem hero */
+    background: url('public/images/wall-faq.png') center/cover;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 975px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* FAQ Section */
+.faq-section {
+    max-width: 863px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.faq-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.faq-icon {
+    width: 40px;
+    height: 40px;
+    padding: 5px; /* MUDANÇA: Adicionado padding para ícones reais */
+}
+
+.faq-header h2 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.faq-item {
+    border-bottom: 1px solid white;
+    padding: 20px 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.faq-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.faq-answer {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+.contact-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.contact-divider {
+    width: 141px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 40px;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    background: rgba(92, 59, 46, 0.1); /* MUDANÇA: Fundo mais sutil */
+    border: 1px solid white;
+    border-radius: 5px;
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+}
+
+.contact-info {
+    padding: 45px 35px;
+}
+
+.contact-divider-vertical {
+    background: white;
+}
+
+.contact-form {
+    padding: 45px 40px;
+}
+
+.info-section {
+    margin-bottom: 40px;
+}
+
+.info-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.info-icon img { /* MUDANÇA: Para estilizar o IMG */
+    width: 30px;
+    height: 30px;
+    /* background: white; Removido para ícone real */
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(92, 59, 46, 0.5);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 9px 16px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    backdrop-filter: blur(2px);
+}
+
+textarea.form-input {
+    height: 212px;
+    resize: none;
+}
+
+.form-input::placeholder {
+    color: white;
+    opacity: 0.8;
+}
+
+.submit-btn {
+    background: rgba(140, 80, 34, 0.5);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 9px 37px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Footer */
+footer {
+    background: #110703;
+    padding: 37px 0 20px;
+}
+
+/* Novo estilo para o container do logo */
+.footer-logo {
+    display: flex;
+    /* Adiciona Flexbox */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    margin-bottom: 30px;
+    /* Mantém a margem abaixo do logo */
+}
+
+.footer-logo img {
+    width: 200px;
+    height: 60px;
+    /* Remove o margin: 0 auto 30px, pois a centralização será feita pelo .footer-logo (pai) com flexbox */
+}
+
+.footer-content {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.footer-divider {
+    width: 886px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links span {
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+    margin-bottom: 30px;
+}
+
+.social-icon img { /* MUDANÇA: Para estilizar o IMG */
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0 20px;
+        flex-wrap: wrap;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-divider-vertical {
+        display: none;
+    }
+
+    .faq-question h3 {
+        font-size: 18px;
+    }
+}

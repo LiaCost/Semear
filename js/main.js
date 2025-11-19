@@ -108,6 +108,9 @@ async function loadPage(url, data = null) {
         else if (url.includes("minha-conta")) initMinhaContaPage(data);
         else if (url.includes("solos")) initSolosPage(data);
         else if (url.includes("catalogo")) initCatalogoPage(data);
+        else if (url.includes("faq")) initFAQPage(data);
+        else if (url.includes("promocoes")) initPromocoesPage(data);
+    
     
 
 
