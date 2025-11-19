@@ -9,7 +9,7 @@
             <!-- MUDANÇA: IDs para navegação -->
             <li><a href="#" id="nav-inicio-hubs-2" class="nav-item">Início</a></li>
             <li><a href="#" class="nav-item-ativo"><b>Hubs</b></a></li>
-            <li><a href="#" class="nav-item">Solos</a></li>
+            <li><a href="#" id="nav-solo-link" class="link-navegacao" data-i18n="nav_solo">Solos</a></li>
             <li><a href="#" id="nav-loja-hubs" class="nav-item">Loja</a></li>
         </ul>
     </nav>
@@ -34,47 +34,48 @@
 </header>
 
 <!-- ===== MAIS ACESSADOS ===== -->
-<section class="sessao">
-    <h2>Mais Acessados</h2>
+<section class="sessao" id="mais-acessados">
+    <h2>Mais acessados</h2>
     <br><br>
     <div class="cards-container">
         <div class="card">
-            <img src="public/images/download.png" alt="Semente de Melancia">
-            <h4>Semente de Melancia</h4>
-            <p>Aqui, agricultores e interessados no cultivo de melancia encontram orientações sobre o plantio, manejo e comercialização.<br><br>
+            <img src="public/images/cafe.png" alt="Semente de Café">
+            <h4>Semente de café</h4>
+            <p>As sementes de café são o ponto de partida para lavouras produtivas, oferecendo informações essenciais sobre técnicas de plantio, práticas de manejo e estratégias de comercialização que garantem grãos de alta qualidade.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
-            <a href="#" class="btn">Acesse</a>
+            <a href="#" class="btn btn-detalhe" data-id="m-cafe">Acesse</a>
         </div>
 
         <div class="card">
-            <img src="public/images/tama2.png" alt="Semente de Tamarindo">
-            <h4>Semente de Tamarindo</h4>
-            <p>Nutritiva, rica em proteínas, gorduras saudáveis e minerais como magnésio e ferro.<br><br>
+            <img src="public/images/acai.jpg" alt="Semente de Açaí">
+            <h4>Semente de açaí</h4>
+            <p>O açaí, fruto típico da Amazônia, tem suas sementes como ponto de partida para lavouras produtivas, onde técnicas de plantio, manejo adequado e boas práticas de comercialização garantem frutos de alta qualidade e valor no mercado.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
-            <a href="#" class="btn">Acesse</a>
+            <a href="#" class="btn btn-detalhe" data-id="m-acai">Acesse</a>
         </div>
 
         <div class="card">
-            <img src="public/images/cacao.png" alt="Semente de Cacau">
-            <h4>Semente de Cacau</h4>
-            <p>Rica em nutrientes e ideal para cultivo tropical.<br><br>
+            <img src="public/images/ameixa.jpg" alt="Semente de Ameixa">
+            <h4>Semente de ameixa</h4>
+            <p>A ameixa é reconhecida por suas propriedades nutritivas, sendo rica em fibras, vitaminas e antioxidantes que contribuem para a saúde digestiva e fortalecem o sistema imunológico.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
-            <a href="#" class="btn">Acesse</a>
+            <a href="#" class="btn btn-detalhe" data-id="m-ameixa">Acesse</a>
         </div>
 
         <div class="card">
-            <img src="public/images/maracuja.png" alt="Semente de Maracujá">
-            <h4>Semente de Maracujá</h4>
-            <p>Excelente para sucos e doces, com sabor marcante e aroma tropical.<br><br>
+            <img src="public\images\pessego.jpg" alt="Semente de Pessêgo">
+            <h4>Semente de pessêgo</h4>
+            <p>
+            O pêssego é uma fruta rica em nutrientes e sabor, e suas sementes dão origem a lavouras que exigem cuidados específicos de plantio, manejo e colheita para garantir frutos de alta qualidade e valor comercial.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
-            <a href="#" class="btn">Acesse</a>
+            <a href="#" class="btn btn-detalhe" data-id="m-pessego">Acesse</a>
         </div>
     </div>
 </section>
 
 <!-- ===== SELETOR DE CATEGORIAS ===== -->
 <section class="sessao filtro-sessao">
-    <h2>Escolha a Categoria</h2>
+    <h2>Escolha a categoria</h2>
     <div class="filtro">
         <select id="categoriaSelect">
             <option value="flores">Flores</option>
@@ -93,21 +94,21 @@
     <div class="cards-container" id="flores-container">
         <div class="card">
             <img src="public/images/girassol.png" alt="Semente de Girassol">
-            <h4>Semente de Girassol</h4>
+            <h4>Semente de girassol</h4>
             <p>Informações sobre plantio, manejo, colheita e comercialização.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
             <a href="#" class="btn btn-detalhe" data-id="girassol">Acesse</a>
         </div>
         <div class="card">
             <img src="public/images/margarida.png" alt="Semente de Margarida">
-            <h4>Semente de Margarida</h4>
+            <h4>Semente de margarida</h4>
             <p>Essencial para propagação e continuidade das margaridas.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
             <a href="#" class="btn btn-detalhe" data-id="margarida">Acesse</a>
         </div>
         <div class="card">
         <img src="public/images/DALL·E 2024-10-25 19.03.47 - A close-up of a cluster of pink ipê flowers (Tabebuia rosea) with delicate petals and intricate details, showcasing the vibrant color and texture of e 1.png" alt="">
-        <h4>Semente de Ipê</h4>
+        <h4>Semente de ipê</h4>
         <p>Flor ornamental de grande beleza e formato elegante.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn btn-detalhe" data-id="ipe">Acesse</a>
@@ -115,7 +116,7 @@
 
       <div class="card">
         <img src="public/images/08 DE MAIO - LINHAÇA - SEMENTE - FLOR (1).png" alt="">
-        <h4>Semente de Linhaça</h4>
+        <h4>Semente de linhaça</h4>
         <p>Rica em ômega-3, essencial para cultivo e alimentação saudável.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn btn-detalhe" data-id="linhaca">Acesse</a>
@@ -124,7 +125,7 @@
       <!-- Novas flores -->
       <div class="card">
         <img src="public/images/pexels-irene-asthetik-2147866784-34701049.jpg" alt="">
-        <h4>Semente de Rosa</h4>
+        <h4>Semente de rosa</h4>
         <p>Uma das flores mais admiradas, símbolo de amor e beleza, cultivada em todo o mundo.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn btn-detalhe" data-id="rosa">Acesse</a>
@@ -132,7 +133,7 @@
 
       <div class="card">
         <img src="public/images/pexels-kelly-rabie-787427-1878095 (1).jpg" alt="">
-        <h4>Semente de Lavanda</h4>
+        <h4>Semente de lavanda</h4>
         <p>Conhecida por seu aroma relaxante e beleza singular, perfeita para jardins e perfumes.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="" class="btn btn-detalhe" data-id="lavanda">Acesse</a>
@@ -140,7 +141,7 @@
 
       <div class="card">
         <img src="public/images/cravo.jpg" alt="">
-        <h4>Semente de Cravo</h4>
+        <h4>Semente de cravo</h4>
         <p>Flor delicada e aromática, amplamente usada na ornamentação e medicina natural.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="" class="btn btn-detalhe" data-id="cravo">Acesse</a>
@@ -148,7 +149,7 @@
 
       <div class="card">
         <img src="public/images/hort.jpg" alt="">
-        <h4>Semente de Hortênsia</h4>
+        <h4>Semente de hortênsia</h4>
         <p>Conhecida por suas flores grandes e coloridas, ideal para decoração de jardins.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="" class="btn btn-detalhe" data-id="hortesia">Acesse</a> 
@@ -161,7 +162,7 @@
     <div class="cards-container" id="frutas-container" style="display:none;">
         <div class="card">
             <img src="public/images/download.png" alt="Semente de Melancia">
-            <h4>Semente de Melancia</h4>
+            <h4>Semente de melancia</h4>
             <p>Orientações sobre plantio, manejo e comercialização.<br><br>
             Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
             <a href="#" class="btn btn-detalhe" data-id="melancia">Acesse</a>
@@ -177,7 +178,7 @@
         <!-- ... (outros cards de frutas) ... -->
          <div class="card">
         <img src="public/images/cacao.png" alt="">
-        <h4>Semente de Cacau</h4>
+        <h4>Semente de cacau</h4>
         <p>Ideal para cultivo tropical e rica em nutrientes.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -185,7 +186,7 @@
 
       <div class="card">
         <img src="public/images/maracuja.png" alt="">
-        <h4>Semente de Maracujá</h4>
+        <h4>Semente de maracujá</h4>
         <p>Perfeita para sucos e doces tropicais.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -194,7 +195,7 @@
       <!-- Novas frutas -->
       <div class="card">
         <img src="public/images/mamao.jpg" alt="">
-        <h4>Semente de Mamão</h4>
+        <h4>Semente de mamão</h4>
         <p>Rica em enzimas digestivas e cultivada em climas tropicais.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -202,7 +203,7 @@
 
       <div class="card">
         <img src="public/images/goiaba.jpg" alt="">
-        <h4>Semente de Goiaba</h4>
+        <h4>Semente de goiaba</h4>
         <p>Fruta doce e aromática, muito usada em sucos e doces caseiros.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -210,7 +211,7 @@
 
       <div class="card">
         <img src="public/images/acerola.jpg" alt="">
-        <h4>Semente de Acerola</h4>
+        <h4>Semente de acerola</h4>
         <p>Riquíssima em vitamina C, ideal para fortalecer o sistema imunológico.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -218,7 +219,7 @@
 
       <div class="card">
         <img src="public/images/a-v-jMvjZegtsl8-unsplash.jpg" alt="">
-        <h4>Semente de Uva</h4>
+        <h4>Semente de uva</h4>
         <p>Utilizada na produção de vinhos, sucos e cosméticos naturais.<br><br>
         Acessando o botão abaixo você terá mais informações como benefícios e malefícios.</p>
         <a href="#" class="btn">Acesse</a>
@@ -249,6 +250,6 @@
             <span>|</span>
             <a href="#" style="color:white; text-decoration:none;">Termos de Uso</a>
         </div>
-        <p style="color: #aaa; font-size: 0.9rem; margin-top: 20px;">© 2024 Semear - Todos os direitos reservados</p>
+        <p style="color: #fff; font-size: 0.9rem; margin-top: 20px;">© 2024 Semear - Todos os direitos reservados</p>
     </div>
 </footer>

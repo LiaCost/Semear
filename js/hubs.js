@@ -8,6 +8,7 @@ function initHubsPage() {
     const lojaLink = document.getElementById("nav-loja-hubs");
     const loginLink = document.getElementById("nav-login-hubs");
     const cartLink = document.getElementById("nav-carrinho-hubs");
+    const soloLink = document.getElementById("nav-solo-link");
 
     if (homeLink) homeLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/home/home.html'); });
     if (homeLink2) homeLink2.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/home/home.html'); });
@@ -15,6 +16,7 @@ function initHubsPage() {
     if (lojaLink) lojaLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/vendas/vendas.html'); });
     if (loginLink) loginLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/login/login.html'); });
     if (cartLink) cartLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/carrinho/carrinho.html'); });
+    if (soloLink) soloLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/solos/solos.html'); });
 
     // --- Lógica do Filtro de Categoria ---
     // (Movida do seu <script> original)

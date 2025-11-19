@@ -241,7 +241,7 @@ footer.main-footer { /* MUDANÇA: Seletor mais específico */
     text-align: center;
     padding: 2rem 1rem;
     border-top: 1px solid #333;
-    color: #aaa; /* MUDANÇA: Cor de texto padrão */
+    color: #fff; /* MUDANÇA: Cor de texto padrão */
 }
 
 .footer-logo {
@@ -251,7 +251,7 @@ footer.main-footer { /* MUDANÇA: Seletor mais específico */
 }
 
 .footer-contact-info { /* Adicionado */
-    color: #aaa;
+    color: #fff;
     font-size: 13px;
     line-height: 1.6;
     margin-bottom: 20px;

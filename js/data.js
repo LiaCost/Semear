@@ -3,8 +3,95 @@
 // Este objeto servirá como nosso "banco de dados" para os hubs.
 // A "chave" (ex: "melancia") é o ID que usaremos.
 const HUB_DATA = {
+    //sessao mais acessados
+    "m-cafe": {
+        titulo: "Semente de café",
+        imagem: "public/images/cafe.png",
+        descricao_curta: "Aqui, agricultores e interessados no cultivo de café encontram orientações sobre o plantio, manejo e comercialização.",
+        // MUDANÇA: Adicionada a descrição longa
+        descricao_longa: [
+            "A semente de café é responsável por dar origem a uma das bebidas mais consumidas e apreciadas no mundo. Seu cultivo exige atenção especial ao tipo de solo, que deve ser fértil, bem drenado e com boa altitude, além de condições climáticas adequadas, como temperaturas amenas e chuvas regulares. Além de ser essencial para a produção dos grãos, as sementes de café representam o início de um processo agrícola que envolve seleção cuidadosa, manejo adequado e técnicas de plantio que garantem plantas vigorosas e produtivas. O uso de sementes de qualidade influencia diretamente na produtividade, na resistência a pragas e na qualidade final da bebida.",
+            "As lavouras de café requerem manejo criterioso da irrigação e da adubação, pois o excesso ou a falta de água pode comprometer o desenvolvimento das plantas. Com práticas agrícolas corretas e sementes selecionadas, é possível obter grãos mais uniformes, de sabor marcante e com maior valor comercial, atendendo tanto ao mercado interno quanto à exportação."
+        ],
+        // MUDANÇA: Atualizado com base no seu HTML
+        beneficios: [
+            "Fonte natural de antioxidantes, como polifenóis e cafeína.",
+            "Excelente para produção comercial em regiões de clima tropical e subtropical.",
+            "Estimula o sistema nervoso central, aumentando a disposição e a concentração.",
+            "Grãos de café torrados contribuem para a melhora do desempenho físico e mental."
+        ],
+        maleficios: [
+            "Consumo excessivo pode causar insônia, ansiedade e palpitações devido à cafeína.",
+            "Excesso de umidade no solo pode favorecer pragas e doenças nas lavouras de café.",
+            "Algumas variedades híbridas podem ter menor resistência ou produtividade em replantio."
+        ]
+    },
+    "m-acai": {
+        titulo: "Semente de açaí",
+        imagem: "public/images/acai.jpg",
+        descricao_curta: "A semente de açaí é responsável por dar origem a uma das frutas mais valorizadas da Amazônia, conhecida pelo seu alto valor nutricional e energético. O cultivo do açaí é adaptado às regiões tropicais e úmidas, especialmente em áreas de várzea, onde o solo é fértil e rico em matéria orgânica.",
+        // MUDANÇA: Adicionados campos vazios como placeholder
+        descricao_longa: [
+            "Além de ser essencial para a produção dos frutos, as sementes de açaí têm potencial de aproveitamento em pesquisas e usos alternativos, como na produção de biojoias, artesanato e até como insumo para geração de energia. A escolha de sementes de qualidade garante plantas mais resistentes e produtivas, fundamentais para atender à crescente demanda nacional e internacional.",
+            "As plantações de açaí requerem manejo adequado da irrigação e do sombreamento, já que o excesso de sol direto pode comprometer o desenvolvimento das mudas. Com técnicas corretas de cultivo e seleção de sementes, é possível obter frutos mais abundantes, de polpa consistente e sabor marcante, ideais para consumo e comercialização."
+        ],
+        beneficios: [
+            "Fonte natural de antioxidantes, fibras e gorduras saudáveis.",
+            "Excelente para produção comercial em regiões tropicais úmidas, especialmente na Amazônia.",
+            "Contribui para a saúde cardiovascular e para o aumento da energia",
+            "As sementes podem ser reaproveitadas em artesanato, biojoias e pesquisas de sustentabilidade."
+        ],
+        maleficios: [
+            "Consumo excessivo da polpa pode levar ao alto aporte calórico.",
+            "Excesso de umidade no solo pode favorecer fungos e prejudicar o desenvolvimento das raízes.",
+            "Algumas sementes não germinam facilmente sem tratamento prévio, dificultando o replantio."
+        ]
+    },
+    "m-ameixa": {
+        titulo: "Semente de ameixa",
+        imagem: "public/images/ameixa.jpg",
+        descricao_curta: "A semente de ameixa dá origem a uma das frutas mais apreciadas por seu sabor doce e levemente ácido. O cultivo da ameixa adapta-se bem a climas temperados, exigindo solos férteis, bem drenados e com boa exposição solar.",
+        // MUDANÇA: Adicionados campos vazios como placeholder
+        descricao_longa: [
+            "Além de ser essencial para a produção dos frutos, as sementes de ameixa podem ser utilizadas em pesquisas e aproveitamentos alternativos, como extração de óleos e compostagem. A seleção de sementes de qualidade garante plantas mais resistentes, produtivas e frutos de melhor calibre para consumo e comercialização.",
+            "As plantações de ameixa requerem manejo adequado da irrigação e podas regulares, já que o excesso de água ou a falta de controle no crescimento pode comprometer a produtividade. Com técnicas corretas de cultivo, é possível obter frutos suculentos, de polpa firme e sabor marcante, ideais para consumo in natura ou processamento industrial."
+        ],
+        beneficios: [
+            "Fonte natural de vitaminas A, C e fibras.",
+            "Excelente para produção comercial em regiões de clima temperado.",
+            "Contribui para a saúde digestiva e auxilia no funcionamento intestinal.",
+            "Frutos ricos em antioxidantes que fortalecem o sistema imunológico."
+        ],
+        maleficios: [
+            "Consumo excessivo pode causar efeito laxativo e desconforto intestinal.",
+            "Excesso de umidade no solo pode favorecer fungos e apodrecer as raízes.",
+            "Algumas variedades híbridas podem ter menor fertilidade das sementes para replantio."
+        ]
+    },
+    "m-pessego": {
+        titulo: "Semente de pessêgo",
+        imagem: "public/images/pessego.jpg",
+        descricao_curta: "A semente de pêssego dá origem a uma das frutas mais apreciadas em climas temperados, conhecida por sua polpa suculenta e sabor adocicado. O cultivo do pêssego exige solos férteis, bem drenados e boa exposição solar, além de temperaturas amenas para garantir frutos de qualidade.",
+        // MUDANÇA: Adicionados campos vazios como placeholder
+        descricao_longa: [
+            "Além de ser essencial para a produção dos frutos, as sementes de pêssego podem ser utilizadas em pesquisas e aproveitamentos alternativos, como extração de óleos e compostagem. A seleção de sementes de qualidade garante plantas mais resistentes, produtivas e frutos de melhor calibre para consumo e comercialização.",
+            "As plantações de pêssego requerem manejo adequado da irrigação e podas regulares, já que o excesso de água ou a falta de controle no crescimento pode comprometer a produtividade. Com técnicas corretas de cultivo, é possível obter frutos doces, de polpa firme e casca delicada, ideais para consumo in natura ou processamento industrial."
+        ],
+        beneficios: [
+            "Fonte natural de vitaminas A, C e fibras.",
+            "Excelente para produção comercial em regiões de clima temperado.",
+            "Fonte de magnésio, essencial para a saúde óssea e muscular.Contribui para a saúde digestiva e auxilia no funcionamento intestinal.",
+            "Frutos ricos em antioxidantes que fortalecem o sistema imunológico."
+        ],
+        maleficios: [
+            "Consumo excessivo pode causar efeito laxativo e desconforto intestinal.",
+            "Excesso de umidade no solo pode favorecer fungos e apodrecer as raízes.",
+            "Algumas variedades híbridas podem ter menor fertilidade das sementes para replantio."
+        ]
+    },
+    //sessao frutas
     "melancia": {
-        titulo: "Semente de Melancia",
+        titulo: "Semente de melancia",
         imagem: "public/images/download.png",
         descricao_curta: "Aqui, agricultores e interessados no cultivo de melancia encontram orientações sobre o plantio, manejo e comercialização.",
         // MUDANÇA: Adicionada a descrição longa
@@ -26,7 +113,7 @@ const HUB_DATA = {
         ]
     },
     "tamarindo": {
-        titulo: "Semente de Tamarindo",
+        titulo: "Semente de tamarindo",
         imagem: "public/images/tama2.png",
         descricao_curta: "Nutritiva, rica em proteínas, gorduras saudáveis e minerais como magnésio e ferro.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -45,7 +132,7 @@ const HUB_DATA = {
         ]
     },
     "cacau": {
-        titulo: "Semente de Cacau",
+        titulo: "Semente de cacau",
         imagem: "public/images/cacao.png",
         descricao_curta: "Rica em nutrientes e ideal para cultivo tropical.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -63,9 +150,10 @@ const HUB_DATA = {
             "Pode causar enxaqueca em pessoas sensíveis."
         ]
     },
-    // Adicione as outras sementes (maracuja, girassol, etc.) aqui...
+
+    //sessao flores
     "girassol": {
-        titulo: "Semente de Girassol",
+        titulo: "Semente de girassol",
         imagem: "public/images/girassol.png",
         descricao_curta: "As sementes de girassol são amplamente conhecidas pelo seu valor nutricional e pelo papel ecológico dessa flor radiante. Além de     servirem como alimento saudável, também são essenciais para a produção de óleo vegetal e contribuem para a polinização e a biodiversidade.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -86,7 +174,7 @@ const HUB_DATA = {
         ]
     },
     "margarida": {
-        titulo: "Semente de Margarida",
+        titulo: "Semente de margarida",
         imagem: "public/images/margarida.png",
         descricao_curta: "As sementes de margarida dão origem a flores delicadas e muito apreciadas em jardins e paisagens ornamentais. São símbolo de pureza e simplicidade, ideais para quem busca um toque de cor e vida em espaços verdes.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -107,7 +195,7 @@ const HUB_DATA = {
         ]
     },
     "ipe": {
-        titulo: "Semente de Ipê",
+        titulo: "Semente de ipê",
         imagem: "public/images/DALL·E 2024-10-25 19.03.47 - A close-up of a cluster of pink ipê flowers (Tabebuia rosea) with delicate petals and intricate details, showcasing the vibrant color and texture of e 1.png",
         descricao_curta: " O Ipê é uma das árvores mais emblemáticas do Brasil, conhecido por suas flores exuberantes nas cores roxa, amarela, rosa ou branca. Suas sementes são leves e aladas, permitindo que o vento as espalhe com facilidade.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -127,7 +215,7 @@ const HUB_DATA = {
         ]
     },
     "linhaca": {
-        titulo: "Semente de Linhaça",
+        titulo: "Semente de linhaça",
         imagem: "public/images/08 DE MAIO - LINHAÇA - SEMENTE - FLOR (1).png",
         descricao_curta: "As sementes de linhaça são conhecidas por seu alto valor nutricional, ricas em ômega-3, fibras e antioxidantes. Além disso, são amplamente utilizadas tanto na alimentação quanto na produção de óleos naturais e cosméticos.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -148,7 +236,7 @@ const HUB_DATA = {
         ]
     },
      "rosa": {
-        titulo: "Semente de Rosa",
+        titulo: "Semente de rosa",
         imagem: "public/images/pexels-irene-asthetik-2147866784-34701049.jpg",
         descricao_curta: "A semente de rosa é símbolo de beleza e romantismo. Seu cultivo exige paciência e cuidado, pois germina lentamente e necessita de um ambiente equilibrado.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -188,7 +276,7 @@ const HUB_DATA = {
         ]
     },
      "cravo": {
-        titulo: "Semente de Cravo",
+        titulo: "Semente de cravo",
         imagem: "public/images/cravo.jpg",
         descricao_curta: " O cravo é uma flor aromática e vibrante, muito utilizada em arranjos florais e em produtos medicinais. Suas sementes necessitam de solos úmidos, ricos em nutrientes e boa luminosidade.",
         // MUDANÇA: Adicionados campos vazios como placeholder
@@ -208,7 +296,7 @@ const HUB_DATA = {
         ]
     },
      "hortensia": {
-        titulo: "Semente de Hortênsia",
+        titulo: "Semente de hortênsia",
         imagem: "public/images/hort.jpg",
         descricao_curta: "  A hortênsia encanta com suas flores volumosas e coloridas. Suas sementes necessitam de umidade constante e sombra parcial para germinação ideal.",
         // MUDANÇA: Adicionados campos vazios como placeholder

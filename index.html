@@ -13,9 +13,43 @@
             padding: 0;
             height: 100vh;
         }
+
+        #preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* Usa a cor de fundo escura do seu app */
+            background: #110703; 
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Começa invisível */
+            pointer-events: none; /* Não clicável */
+            transition: opacity 0.3s ease;
+        }
+        #preloader.preloader-visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            /* Usa o verde do seu site */
+            border-top-color: #5CA773; 
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <div id="preloader" class="preloader-hidden">
+        <div class="spinner"></div>
+    </div>   
     <main id="app"></main>
 
     
@@ -26,10 +60,11 @@
     <script src="js/carrinho.js"></script>
     <script src="js/checkout.js"></script>
     <script src="js/hubs.js"></script>
+    <script src="js/solos.js"></script>
     <script src="js/data.js"></script>
     <script src="js/detalhe.js"></script>
     <script src="js/cadastro-planta.js"></script> 
-
+    <script src="js/catalogo.js"></script>
     <script src="js/data-loja.js"></script>
     <script src="js/produto.js"></script>
 

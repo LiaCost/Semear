@@ -1,37 +1,41 @@
 // js/vendas.js
 
-function initVendasPage() {
-    // Esta função será chamada pelo main.js quando a página de vendas for carregada
+function initVendasPage(data) {
     
-    // Pega o botão "Entrar" do header
+    // --- Lógica de Navegação do Header ---
     const loginButton = document.getElementById("login-link-vendas");
+    const homeLink = document.getElementById("nav-inicio-link"); // ID no HTML da Home
+    const lojaLink = document.getElementById("nav-loja-catalogo"); // ID no HTML da Loja
+    const cartLink = document.getElementById("cart-link-vendas");
+    const logoLink = document.getElementById("home-link-vendas"); // ID no logo
+    
+    // --- MUDANÇA AQUI: Adicionado o link para Catálogo ---
+    const catalogoLink = document.getElementById("nav-catalogo-link");
+    // ----------------------------------------------------
+
+
     if (loginButton) {
         loginButton.addEventListener("click", (e) => {
             e.preventDefault();
-            loadPage('pages/login/login.html'); // Carrega a página de login
+            loadPage('pages/login/login.html');
         });
     }
-
-    // Pega o link "Início" do header
-    const homeLink = document.getElementById("nav-inicio-link");
     if (homeLink) {
         homeLink.addEventListener("click", (e) => {
             e.preventDefault();
-            loadPage('pages/home/home.html'); // Carrega a página inicial
+            loadPage('pages/home/home.html');
         });
     }
+    // O link da loja (Loja) não faz nada se já estivermos na página, 
+    // mas se fosse um link na Home ou em outro lugar...
     
-    // Pega o link do LOGO para voltar à home
-    const logoLink = document.getElementById("home-link-vendas");
     if (logoLink) {
         logoLink.addEventListener("click", (e) => {
             e.preventDefault();
-            MapsTo('#home'); // Carrega a página inicial
+            loadPage('pages/home/home.html');
         });
     }
 
-    // Pega o link "Loja" do header
-    const cartLink = document.getElementById("cart-link-vendas");
     if (cartLink) {
         cartLink.addEventListener("click", (e) => {
             e.preventDefault();
@@ -39,6 +43,17 @@ function initVendasPage() {
         });
     }
 
+    // --- NOVO LISTENER ---
+    if (catalogoLink) {
+        catalogoLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/catalogo/catalogo.html');
+        });
+    }
+    // ----------------------
+
+
+    // --- Lógica de Clique nos Cards para Detalhes do Produto ---
     const cardsDeProduto = document.querySelectorAll('.card-clicavel');
     cardsDeProduto.forEach(card => {
         card.addEventListener('click', (e) => {
@@ -54,5 +69,36 @@ function initVendasPage() {
             loadPage('pages/produto/produto.html', { id: produtoId });
         });
     });
+
+    // --- Lógica de Filtragem ---
+    const filtroSelect = document.getElementById('categoria-filtro');
+    
+    // IDs das áreas de conteúdo que queremos controlar
+    const favoritosSection = document.getElementById('favoritos-section');
+    const sementesContainer = document.getElementById('sementes-container');
+    const hortalicasCarousel = document.getElementById('hortalicas-carousel');
+    const frutasCarousel = document.getElementById('frutas-carousel'); 
+
+    if (filtroSelect) {
+        filtroSelect.addEventListener('change', () => {
+            const categoria = filtroSelect.value;
+            
+            // Lógica de filtragem: Esconder/Mostrar o carrossel apropriado
+            if (categoria === 'todos') {
+                favoritosSection.style.display = 'block';
+                hortalicasCarousel.style.display = 'flex'; 
+                frutasCarousel.style.display = 'none';
+            } else if (categoria === 'hortalicas') {
+                favoritosSection.style.display = 'none'; 
+                hortalicasCarousel.style.display = 'flex';
+                frutasCarousel.style.display = 'none';
+            } else if (categoria === 'frutas') {
+                favoritosSection.style.display = 'none';
+                hortalicasCarousel.style.display = 'none';
+                frutasCarousel.style.display = 'flex';
+            }
+        });
+    }
+
     // TODO: Adicionar lógica para o carrossel de produtos e filtros
 }

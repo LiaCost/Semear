@@ -1,0 +1,298 @@
+<!-- Header (padronizado) -->
+<header class="main-header">
+    <a href="#" id="logo-link-solos" class="logo-link">
+        <img src="public/images/logo-semear.png" alt="Logo Semear" style="height: 44px; width: 200px;">
+    </a>
+
+    <nav class="main-nav">
+        <ul>
+            <!-- MUDANÇA: IDs para navegação -->
+            <li><a href="#" id="nav-inicio-solos" class="nav-item">Início</a></li>
+            <li><a href="#" id="nav-hubs-solos" class="nav-item"><b>Hubs</b></a></li>
+            <li><a href="#" id="nav-solo-link" class="link-navegacao" data-i18n="nav_solo">Solos</a></li>
+            <li><a href="#" id="nav-loja-solos" class="nav-item">Loja</a></li>
+        </ul>
+    </nav>
+
+    <div class="utility-bar">
+        <a href="#" id="nav-carrinho-solos" class="icon-link" title="Carrinho">
+            <img src="public/images/icon-park-outline-shopping.svg" alt="Carrinho" class="nav-icon">
+        </a>
+        <a href="#" class="icon-link" title="Acessibilidade">
+            <img src="public/images/carbon-accessibility-alt.svg" alt="Acessibilidade" class="nav-icon">
+            <span>ACESSIBILIDADE</span>
+        </a>
+        <a href="#" class="nav-item-destaque">FAQ</a>
+        <div class="lang-selector icon-link">
+            <img src="public/images/emojione-v-1-flag-for-brazil.svg" alt="Bandeira do Brasil" class="flag-icon">
+            <span>PT-BR</span>
+            <img src="public/images/weui-arrow-outlined.svg" alt="Selecionar idioma" class="arrow-down">
+        </div>
+        <a href="#" id="nav-login-solos" class="btn-entrar">Entrar</a>
+    </div>
+</header>
+
+<main>
+    <!-- ===== INTRO ===== -->
+    <section class="intro">
+      <h1>Solos</h1>
+      <p class="descricao">
+        Bem-vindo,<br />
+        Aqui, você encontrará dicas valiosas para otimizar sua plantação e
+        garantir colheitas saudáveis.
+      </p>
+      <h3 class="descricao">Tipos de solo existente para plantio:</h3>
+    </section>
+
+    <!-- ===== CARDS (UNIFICADO) ===== -->
+    <div class="cards-container">
+        
+      <!-- CARD 1: Arenoso -->
+      <div class="card">
+        <img src="public\images\solo-arenoso.jpg" alt="Solo Arenoso" />
+        <h4>Arenoso</h4>
+
+        <p class="resumo">
+          Tem consitência granulosa como aréia e é permeavél a água.
+          <br /><br />
+          Coqueiro, cactos, suculentas, mandioca, amendoim e aroeira.
+        </p>
+
+        <div class="texto-expandido">
+          <b>
+            O solo arenoso é formado por grãos de areia maiores e soltos. Ele
+            não retém muita água, por isso costuma ser mais seco e pobre em
+            nutrientes. Mesmo assim, é fácil de cultivar e permite boa
+            circulação de ar nas raízes. É comum em regiões litorâneas e pode
+            ser usado para plantar espécies que precisam de pouca água, como
+            cactos e coqueiros.
+          </b>
+        </div>
+        
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 2: Argiloso -->
+      <div class="card">
+        <img src="public\images\solo-argiloso.jpg" alt="Solo Argiloso" />
+        <h4>Argiloso</h4>
+
+        <p class="resumo">
+          Consitência fina e é impermeável a água. <br /><br />Arroz, feijão,
+          milho, mamona e bananeira.
+        </p>
+
+        <div class="texto-expandido">
+          <b>
+            O solo argiloso é composto por partículas bem pequenas e compactas,
+            o que faz com que ele retenha muita água. Por ser úmido e pegajoso,
+            pode ficar endurecido quando seca. Geralmente é um solo rico em
+            nutrientes, sendo muito utilizado na agricultura para o cultivo de
+            diversas plantas.
+          </b>
+        </div>
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 3: Calcário -->
+      <div class="card">
+        <img src="public\images\solo-calcario.jpg" alt="Solo Calcário" />
+        <h4>Calcário</h4>
+
+        <p class="resumo">
+          Composto por matéria orgânica e inorgânica. <br /><br />
+          Oliveira, videira (uva), lavanda, amendoeira e cevada.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >O solo calcário é rico em calcário (carbonato de cálcio), o que o
+            torna um solo geralmente alcalino, ou seja, com pouca acidez. Ele
+            costuma ser claro, seco e pouco fértil, podendo dificultar o
+            desenvolvimento de algumas plantas. Porém, com correções adequadas e
+            adição de matéria orgânica, pode ser usado na agricultura,
+            especialmente para culturas que se adaptam melhor a solos menos
+            ácidos.</b
+          >
+        </div>
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 4: Humoso -->
+      <div class="card">
+        <img src="public\images\solo-humoso.jpg" alt="Solo Humoso" />
+        <h4>Humoso ou orgânico</h4>
+
+        <p class="resumo">
+          Alto teor de matéria orgânica sendo extremamente férteis.
+          <br /><br />
+          Alface e outras hortaliças, Tomate, Cenoura, Flores, ornamentais (como
+          rosas e margaridas) e Árvores frutíferas em geral.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >O solo humoso é rico em húmus, formado pela decomposição de restos
+            de plantas e animais. Por isso, é um solo escuro, fértil e capaz de
+            reter água, sendo ideal para o desenvolvimento de muitas espécies de
+            plantas. É muito utilizado na agricultura e na jardinagem.</b
+          >
+        </div>
+
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 5: Massapê -->
+      <div class="card">
+        <img src="public\images\solo-massape.jpg" alt="Solo Massapê" />
+        <h4> Massapê</h4>
+
+        <p class="resumo">
+        Formação a partir da decomposição do gnaisses, comum em zona de mata.
+        <br /><br />
+        Cana de Açucar, espada de são jorge, comigo-ninguem-pode, pimenta caiena, brilhantina e tinhão-rão. 
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >A plantação em solo massapé é vantajosa devido à sua fertilidade e alta capacidade de reter água, sendo ideal para cultivos como cana-de-açúcar, frutas tropicais e café. O solo massapé é escuro, macio e rico em argila, comum na região litorânea do Nordeste do Brasil.</b
+          >
+        </div>
+
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 6: Aluviais -->
+      <div class="card">
+        <img src="public\images\solo-aluvial.jpg" alt="Solo Aluviais" />
+        <h4> Aluviais</h4>
+
+        <p class="resumo">
+          Formados de materiais transportados pelos rios e ventos.
+          <br /><br />
+          Arroz, cana-de-açúcar, frutas tropicais, hortaliças.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >Os solos aluviais são ideais para o cultivo de diversas culturas, pois são ricos em nutrientes e possuem boa capacidade de retenção de água. Aqui estão algumas das culturas que podem ser cultivadas em solos aluviais:
+          </b>
+        </div>
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 7: Salmourão -->
+      <div class="card">
+        <img src="public\images\solo-salmourão.jpg" alt="Solo Salmourão" />
+        <h4>Salmourão</h4>
+
+        <p class="resumo">
+          Um solo pouco fértil encontrado, principalmente, no sul do Brasil.
+          <br /><br />
+          Pouco fértil não recmendado para plantações.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >O solo salmourão, embora não seja fértil, pode ser utilizado para culturas que toleram solos pobres e bem drenados. No entanto, não é recomendado para agricultura intensiva. Para culturas que exigem solos mais férteis, como café ou cana-de-açúcar, é mais adequado utilizar solos como a terra roxa ou massapé.</b
+          >
+        </div>
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 8: Terra Roxa -->
+      <div class="card">
+        <img src="public\images\solo-terra-roxa.jpg" alt="Terra Roxa" />
+        <h4> Terra roxa</h4>
+
+        <p class="resumo">
+          Um tipo de solo, que apesar do nome, possui uma coloração avermelhada.
+          <br /><br />
+          Soja, milho, café e cana-de-açucar.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >A terra roxa, também conhecida como terra vermelha, é um solo fértil e valorizado, ideal para culturas como soja, milho, café e cana-de-açúcar. Aqui estão algumas das melhores opções de plantio para a terra roxa:</b
+          >
+        </div>
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+
+      <!-- CARD 9: Espodossolos -->
+      <div class="card">
+        <img src="public\images\solo-espodossolos.jpg" alt="Espodossolos" />
+        <h4> Espodossolos</h4>
+
+        <p class="resumo">
+          Espodossolo é uma ordem caracterizada por solos distróficos com um horizonte claro com altíssima porcentagem de areia. 
+          <br /><br />
+          Precisa da análise de um espacialista ou profissionais agrícolas.
+        </p>
+
+        <div class="texto-expandido">
+          <b
+            >No campo, pode ser identificada pela cor do horizonte espódico, que varia desde cinzenta, de tonalidade escura ou preta, até avermelhada ou amarelada, e pela nítida diferenciação de horizontes. Podem apresentar um horizonte cimentado como fragipã, duripã ou “ortstein” subjacente ao horizonte espódico. </b
+          >
+        </div>
+
+        <button class="btn toggle-text">Saiba Mais</button>
+      </div>
+
+      <!-- CARD 10: Neossolos -->
+      <div class="card">
+        <img src="public\images\solo-neossolos.jpg" alt="Neossolos" />
+        <h4>Neossolos</h4>
+
+        <p class="resumo">
+          Neossolos são solos pouco evoluídos constituídos por material mineral ou por material orgânico.
+          <br /><br />
+          Ideal para plantações podendo ser utilizado para diversas plantas, arvóres e muito mais.
+        </p>
+
+        <div class="texto-expandido">
+          <b>
+            O neossolo é uma classe de solos amplamente distribuída no Brasil e no mundo, caracterizados por sua formação geológica recente e baixo desenvolvimento pedogenético. Esses solos possuem características particulares que os diferenciam de outras classes, influenciando diretamente sua utilização agrícola e a necessidade de práticas específicas de manejo.
+          </b>
+        </div>
+
+        <button class="btn toggle-text">Saiba mais</button>
+      </div>
+    </div>
+    
+    <br /><br /><br>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="main-footer">
+      <div class="container">
+
+        <a href="index.html">
+          <img src="public/images/logo-semear.png" alt="Logo Semear" class="footer-logo" />
+        </a>
+        
+        <div class="footer-contact-info">
+          Conecte-se Conosco<br /><br />
+          Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br />
+          Endereço: Rua das Sementes, 123 - Brasília - DF
+        </div>
+        <div class="social-icons">
+          <a href="#" ><img src="public/images/ic-baseline-facebook.svg" alt="Facebook" /></a>
+          <a href="#" ><img src="public/images/ri-instagram-fill.svg" alt="Instagram" /></a>
+          <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin" /></a>
+          <a href="#" ><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube" /></a>
+        </div>
+        <br />
+        <hr class="footer-divider" />
+        <br />
+        <div class="footer-links">
+          <br />
+          <a href="#">Suporte e FAQ</a>
+          <span>|</span>
+          <a href="#">Política de Privacidade</a>
+          <span>|</span>
+          <a href="#">Termos de Uso</a>
+        </div>
+        <p>© 2024 Semear - Todos os direitos reservados</p>
+      </div>
+    </footer>
+</main>

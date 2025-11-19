@@ -6,7 +6,7 @@
         <ul>
             <li><a href="#" id="nav-inicio-link" class="nav-item">Início</a></li>
             <li><a href="#" class="nav-item">Promoções</a></li>
-            <li><a href="#" class="nav-item">Catálogo de Sementes</a></li>
+            <li><a href="#" id="nav-catalogo-link" class="nav-item">Catálogo de Sementes</a></li>
             <li><a href="#" class="nav-item-ativo">Loja</a></li>
         </ul>
     </nav>
@@ -48,7 +48,7 @@
                 
                 <div class="product-carousel">
                 <div class="product-card card-clicavel" data-id="arroz">
-                    <img src="public/images/arroz.png" alt="Semente de arroz">
+                    <img src="public/images/arroz.jpg" alt="Semente de arroz">
                     <div class="product-card-info">
                         <h3 class="card-produto-nome">Semente de arroz: 10 sementes</h3>
                         <p class="card-produto-preco">R$ 6,50</p>
@@ -57,7 +57,7 @@
                 </div>
                 
                 <div class="product-card card-clicavel" data-id="lavanda">
-                    <img src="public/images/lavanda.png" alt="Semente de lavanda">
+                    <img src="public/images/lavanda.jpg" alt="Semente de lavanda">
                     <div class="product-card-info">
                         <h3 class="card-produto-nome">Semente de lavanda: 15 sementes</h3>
                         <p class="card-produto-preco">R$ 12,50</p>
@@ -66,7 +66,7 @@
                 </div>
                 
                 <div class="product-card card-clicavel" data-id="pitaya">
-                    <img src="public/images/pitaya.png" alt="Semente de pitaya">
+                    <img src="public/images/pitaya-2.jpg" alt="Semente de pitaya">
                     <div class="product-card-info">
                         <h3 class="card-produto-nome">Semente de pitaya: 10 sementes</h3>
                         <p class="card-produto-preco">R$ 12,50</p>
@@ -81,12 +81,20 @@
             <section class="product-section">
                 <div class="section-header">
                     <h2 class="secao-titulo">Sementes</h2>
-                    <a href="#" class="btn-filter">
-                        Hortaliças
-                        <img src="public/images/weui-arrow-outlined.svg" alt="Filtrar" class="arrow-down-icon">
-                    </a>
+                    <select id="categoria-filtro" class="btn-filter-select">
+                        <option value="todos">Todos os Produtos</option>
+                        <option value="hortalicas">Hortaliças</option>
+                        <option value="frutas">Frutas</option>
+                        <option value="flores">Flores</option>
+                    </select>
                 </div>
                 
+                <div class="product-carousel" id="hortalicas-carousel">
+                </div>
+                
+                <div class="product-carousel" id="frutas-carousel" style="display: none;">
+                </div>
+
                 <div class="product-carousel">
                     <div class="product-card">
                         <img src="public/images/cenoura.png" alt="Semente de cenoura">

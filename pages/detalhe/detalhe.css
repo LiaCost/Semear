@@ -241,11 +241,11 @@ body {
 .maleficio-box h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #46c97f;
+    color: #fff;
 }
 
 .maleficio-box h3 {
-    color: #ff7070;
+    color: #fff;
 }
 
 .beneficio-box ul,
@@ -262,7 +262,7 @@ footer.main-footer {
     text-align: center;
     padding: 2rem 1rem;
     border-top: 1px solid #333;
-    color: #aaa;
+    color: #fff;
 }
 
 .footer-logo {
@@ -272,7 +272,7 @@ footer.main-footer {
 }
 
 .footer-contact-info {
-    color: #aaa;
+    color: #fff;
     font-size: 13px;
     line-height: 1.6;
     margin-bottom: 20px;

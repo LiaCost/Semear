@@ -53,4 +53,5 @@ function initDetalhePage(data) {
     document.getElementById("nav-carrinho-detalhe").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/carrinho/carrinho.html'); });
     document.getElementById("nav-login-detalhe").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/login/login.html'); });
     document.getElementById("voltar-hubs").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/hubs/hubs.html'); });
+    document.getElementById("nav-solo-link").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/solos/solos.html'); });
 }

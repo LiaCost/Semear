@@ -225,6 +225,40 @@ img {
     display: inline-block;
     vertical-align: middle;
 }
+
+/* Em pages/vendas/vendas.css */
+
+/* MUDANÇA 1: Adicione estas regras para estilizar o novo SELECT */
+.btn-filter-select {
+    /* Estilos base do btn-filter (cor e borda) */
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 100px;
+    outline: 1px rgba(255, 255, 255, 0.30) solid;
+    backdrop-filter: blur(2px);
+    
+    /* Configuração de aparência */
+    appearance: none; /* Remove a seta padrão do navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    /* Configuração de fonte e padding */
+    padding: 15px 40px 15px 30px; /* Padding ajustado para a seta */
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    
+    /* Adicionar seta customizada (opcional, requer background-image) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+.btn-filter-select option {
+    background: var(--cor-fundo-main); /* Cor de fundo das opções */
+    color: white;
+}
+
 .section-divider {
     border: none;
     height: 1px;

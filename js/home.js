@@ -27,21 +27,60 @@ function initHomePage(data) {
         });
     }
 
-    // --- MUDANÇA AQUI: LÓGICA DE CONTROLE DE PAPEL ---
-    const venderLink = document.getElementById("nav-vender-link");
-    const userRole = localStorage.getItem('userRole'); // Pega o papel salvo
+    // --- Listener para o botão "Veja todos os hubs" ---
+    const vejaHubsLink = document.getElementById("home-veja-hubs-link");
+    if (vejaHubsLink) {
+        vejaHubsLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/hubs/hubs.html'); // Carrega a página de hubs
+        });
+    }
 
-    if (venderLink) {
-        // Se o papel for 'admin' OU 'vendedor', mostra o link
+    const soloLink = document.getElementById("nav-solo-link");
+    if (soloLink) {
+        soloLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/solos/solos.html');
+        });
+    }
+    // --- FIM LISTENER --
+
+    // --- Lógica de Controle de Papel (Mostrar/Esconder "Vender") ---
+    const venderLi = document.getElementById("nav-vender-li"); 
+    const venderLink = document.getElementById("nav-vender-link");
+    const userRole = localStorage.getItem('userRole'); 
+
+    if (venderLi && venderLink) {
         if (userRole === 'admin' || userRole === 'vendedor') {
-            venderLink.style.display = 'block'; // Garante que está visível
-            venderLink.addEventListener("click", (e) => {
-                e.preventDefault();
-                loadPage('pages/cadastro-planta/cadastro-planta.html');
-            });
+            venderLi.style.display = 'list-item'; 
         } else {
-            // Se for 'cliente' ou nulo (deslogado), esconde o link
-            venderLink.style.display = 'none'; 
+            venderLi.style.display = 'none';
         }
+
+        venderLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            const currentRole = localStorage.getItem('userRole');
+            if (currentRole === 'admin' || currentRole === 'vendedor') {
+                loadPage('pages/cadastro-planta/cadastro-planta.html');
+            }
+        });
+    }
+    
+    // --- Lógica do Seletor de Idioma (se você a manteve) ---
+    const btnPT = document.getElementById("lang-pt");
+    const btnEN = document.getElementById("lang-en");
+
+    if (btnPT) {
+        btnPT.addEventListener("click", (e) => {
+            e.preventDefault();
+            // setLanguage('pt'); // Função do i18n.js (atualmente desabilitada)
+        });
+    }
+    if (btnEN) {
+        btnEN.addEventListener("click", (e) => {
+            e.preventDefault();
+            // setLanguage('en'); // Função do i18n.js (atualmente desabilitada)
+        });
     }
 }
