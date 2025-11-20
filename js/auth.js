@@ -63,7 +63,7 @@ function initAuthForms() {
     "show-login-from-forgot"
   );
 
-  // Se não estiverem presentes, encerra (evita erros no console)
+  // Se não estiverem presentes, encerra
   if (!loginForm && !registerForm && !forgotForm) {
     console.warn("Nenhum formulário de autenticação encontrado.");
     return;
@@ -88,7 +88,7 @@ function initAuthForms() {
     if (forgotForm) forgotForm.style.display = "flex";
   }
 
-  // --- Event Listeners de Troca de Formulário (só se os elementos existirem) ---
+  // --- Event Listeners de Troca de Formulário ---
   if (showRegisterLink)
     showRegisterLink.addEventListener("click", (e) => {
       e.preventDefault();
@@ -134,7 +134,6 @@ function initAuthForms() {
         const data = await response.json().catch(() => ({}));
 
         if (response.ok && data.role) {
-          // SUCESSO: Salva os dados de autenticação e redireciona
           localStorage.setItem("userRole", data.role);
           localStorage.setItem("userId", data.userId);
 
@@ -150,13 +149,11 @@ function initAuthForms() {
                   loadPage("pages/home/home.html");
                 }
               } else {
-                // fallback: recarrega a página
                 window.location.reload();
               }
             }
           );
         } else {
-          // FALHA (401 - Credenciais Inválidas)
           showStatusModal(
             "Falha na Autenticação",
             data.message || "Email ou senha inválidos. Tente novamente.",
@@ -175,7 +172,7 @@ function initAuthForms() {
   }
 
   // ==============================================================
-  // 2. LÓGICA DE CADASTRO (Conectado à API) - inclui senha (texto puro)
+  // 2. LÓGICA DE CADASTRO (Conectado à API)
   // ==============================================================
   if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
@@ -188,7 +185,6 @@ function initAuthForms() {
         btn.innerText = "Enviando...";
       }
 
-      // Lê os campos (atenção aos ids no seu HTML)
       const nome = document.getElementById("reg-name")?.value.trim() || "";
       const email = document.getElementById("reg-email")?.value.trim() || "";
       const senha = document.getElementById("reg-pass")?.value || "";
@@ -210,7 +206,6 @@ function initAuthForms() {
       }
 
       try {
-        // NOTA: senha enviada em texto puro conforme solicitado
         const response = await fetch(`${API_BASE_URL}/usuarios/cadastro`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -225,18 +220,6 @@ function initAuthForms() {
             `Obrigado! ${nome}, seu cadastro como ${userType.toUpperCase()} foi realizado com sucesso.`,
             true,
             () => showLogin()
-          );
-        } else if (response.status === 409) {
-          showStatusModal(
-            "Cadastro Existente",
-            data.message || "Este email já foi cadastrado.",
-            false
-          );
-        } else if (response.status === 400) {
-          showStatusModal(
-            "Dados Inválidos",
-            data.message || "Verifique os campos do formulário.",
-            false
           );
         } else {
           showStatusModal(
@@ -269,14 +252,11 @@ function initAuthForms() {
       e.preventDefault();
       const email = document.getElementById("forgot-email")?.value || "";
 
-      // Simulação de Envio BEM-SUCEDIDO
-      // Em um sistema real, você chamaria a rota POST /api/v1/recuperar-senha
-
       showStatusModal(
         "Link Enviado!",
         `Se ${email} estiver cadastrado, você receberá um link de recuperação em breve.`,
         true,
-        () => showLogin() // Volta para a tela de Login após fechar o modal
+        () => showLogin()
       );
     });
   }

@@ -75,15 +75,15 @@ function initHomePage(data) {
         });
     }
     
-}
+    // --- CARROSSEL DE SEMENTES (MOVIDO PARA DENTRO DA FUNÇÃO) ---
+    // Seleciona o elemento que irá rolar (o container dos cards)
+    const carousel = document.querySelector('.seed-carousel');
+    // Seleciona os botões
+    const arrowLeft = document.querySelector('.arrow-left');
+    const arrowRight = document.querySelector('.arrow-right');
 
-document.addEventListener('DOMContentLoaded', () => {
-        // 1. Seleciona o elemento que irá rolar (o container dos cards)
-        const carousel = document.querySelector('.seed-carousel');
-        // 2. Seleciona os botões
-        const arrowLeft = document.querySelector('.arrow-left');
-        const arrowRight = document.querySelector('.arrow-right');
-
+    // ⚠️ PROTEÇÃO: Só configura o carrossel se os elementos existirem
+    if (carousel && arrowLeft && arrowRight) {
         // Largura de rolagem: Largura do card (280px) + Gap (30px) = 310px
         const scrollAmount = 310; 
 
@@ -104,4 +104,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
         });
+    }
+}
+
+// ⚠️ REMOVA ESTE BLOCO COMPLETAMENTE OU COMENTE ELE
+// Este código estava sendo executado sempre, mesmo em outras páginas!
+/*
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.seed-carousel');
+    const arrowLeft = document.querySelector('.arrow-left');
+    const arrowRight = document.querySelector('.arrow-right');
+    
+    const scrollAmount = 310; 
+
+    arrowRight.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth' 
+        });
     });
+
+    arrowLeft.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: -scrollAmount, 
+            behavior: 'smooth'
+        });
+    });
+});
+*/

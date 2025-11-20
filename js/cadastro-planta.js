@@ -8,12 +8,14 @@ function initCadastroPlantaPage(data) { // <--- Adicionado 'data' para consistê
     const hubsLink = document.getElementById("nav-hubs-cadastro");
     const lojaLink = document.getElementById("nav-loja-cadastro");
     const loginLink = document.getElementById("login-link-cadastro");
+    const soloLink = document.getElementById("nav-solo-link");
 
     if (logoLink) logoLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/home/home.html'); });
     if (homeLink) homeLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/home/home.html'); });
     if (hubsLink) hubsLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/hubs/hubs.html'); });
     if (lojaLink) lojaLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/vendas/vendas.html'); });
     if (loginLink) loginLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/login/login.html'); });
+    if (soloLink) soloLink.addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/solos/solos.html'); });
     
 
     // --- Lógica do Formulário ---

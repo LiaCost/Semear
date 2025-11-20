@@ -8,24 +8,24 @@
             <a href="#" id="nav-hubs-conta">Hubs</a>
             <li><a href="#" id="nav-solo-link" class="link-navegacao" data-i18n="nav_solo">Solos</a></li>
             <a href="#" id="nav-loja-conta">Loja</a>
-            <a href="#" id="nav-cadastro-planta-conta">Cadastrar Planta</a>
+            <a href="#" id="nav-cadastro-planta-conta">Cadastrar planta</a>
         </nav>
         <div class="header-right">
-            <a href="#" class="nav-item-destaque active">Minha Conta</a>
+            <a href="#" class="nav-item-destaque active">Minha conta</a>
             <button class="btn-login" id="nav-sair-conta">Sair</button>
         </div>
     </div>
 </header>
 
 <main class="main-content">
-    <h1 class="page-title">Minha Conta</h1>
+    <h1 class="page-title">Minha conta</h1>
     <p class="page-subtitle">Gerencie suas informações pessoais, pedidos e configurações.</p>
 
     <div class="account-layout">
         
         <div class="account-tabs">
-            <a href="#" class="account-tab-link active" data-tab="perfil">Meu Perfil</a>
-            <a href="#" class="account-tab-link" data-tab="pedidos">Meus Pedidos</a>
+            <a href="#" class="account-tab-link active" data-tab="perfil">Meu perfil</a>
+            <a href="#" class="account-tab-link" data-tab="pedidos">Meus pedidos</a>
             <a href="#" class="account-tab-link" data-tab="config">Configurações</a>
         </div>
 
@@ -33,10 +33,10 @@
             
             <section id="tab-perfil" class="account-content active">
                 <form id="perfil-form" class="form-section">
-                    <h2 class="section-title">Informações Pessoais</h2>
+                    <h2 class="section-title">Informações pessoais</h2>
                     <div class="form-group-grid-2">
                         <div class="form-group">
-                            <label for="perfil-nome">Nome Completo</label>
+                            <label for="perfil-nome">Nome completo</label>
                             <input type="text" id="perfil-nome" name="nome" value="Admin" required>
                         </div>
                         <div class="form-group">
@@ -45,27 +45,27 @@
                         </div>
                     </div>
                     
-                    <h2 class="section-title" style="margin-top: 20px;">Alterar Senha</h2>
+                    <h2 class="section-title" style="margin-top: 20px;">Alterar senha</h2>
                     <div class="form-group">
-                        <label for="perfil-senha-atual">Senha Atual</label>
+                        <label for="perfil-senha-atual">Senha atual</label>
                         <input type="password" id="perfil-senha-atual" placeholder="••••••••">
                     </div>
                     <div class="form-group-grid-2">
                         <div class="form-group">
-                            <label for="perfil-senha-nova">Nova Senha</label>
+                            <label for="perfil-senha-nova">Nova senha</label>
                             <input type="password" id="perfil-senha-nova" placeholder="••••••••">
                         </div>
                         <div class="form-group">
-                            <label for="perfil-senha-confirma">Confirmar Nova Senha</label>
+                            <label for="perfil-senha-confirma">Confirmar nova senha</label>
                             <input type="password" id="perfil-senha-confirma" placeholder="••••••••">
                         </div>
                     </div>
-                    <button type="submit" class="btn-primary" style="max-width: 300px;">Salvar Alterações</button>
+                    <button type="submit" class="btn-primary" style="max-width: 300px;">Salvar alterações</button>
                 </form>
             </section>
 
             <section id="tab-pedidos" class="account-content">
-                <h2 class="section-title">Histórico de Pedidos</h2>
+                <h2 class="section-title">Histórico de pedidos</h2>
                 <div class="order-history-item">
                     <div class="order-info">
                         <span class="order-id">Pedido #12345</span>
@@ -89,7 +89,7 @@
                 </section>
 
             <section id="tab-config" class="account-content">
-                <h2 class="section-title">Configurações da Conta</h2>
+                <h2 class="section-title">Configurações da conta</h2>
                 <p>Em breve...</p>
             </section>
 
@@ -97,7 +97,30 @@
     </div>
 </main>
 
-<footer>
-    <div class="footer-container">
+<!-- ===== RODAPÉ ===== -->
+<footer class="main-footer">
+    <div class="container">
+        <a href="index.html"><img src="public\images\logo-semear.png" alt="Logo Semear" class="footer-logo"/></a>
+        
+        <div class="footer-contact-info">
+            Conecte-se Conosco<br><br>
+            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br>
+            Endereço: Rua das Sementes, 123 - Brasília - DF
         </div>
+        <div class="social-icons">
+            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook" style="width:15px; height:15px;"></a>
+            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram" style="width:15px; height:15px;"></a>
+            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin" style="width:15px; height:15px;"></a>
+            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube" style="width:15px; height:15px;"></a>
+        </div>
+        <hr class="footer-divider" style="border:none; border-top:1px solid #FFF; max-width: 886px; margin: 20px auto;">
+        <div class="footer-links" style="display:flex; justify-content:center; gap:20px; color:white; font-size: 13px;">
+            <a href="#" style="color:white; text-decoration:none;">Suporte e FAQ</a>
+            <span>|</span>
+            <a href="#" style="color:white; text-decoration:none;">Política de Privacidade</a>
+            <span>|</span>
+            <a href="#" style="color:white; text-decoration:none;">Termos de Uso</a>
+        </div>
+        <p style="color: #fff; font-size: 0.9rem; margin-top: 20px;">© 2024 Semear - Todos os direitos reservados</p>
+    </div>
 </footer>
