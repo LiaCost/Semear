@@ -1,16 +1,26 @@
 // server.js - API Semear pronta para Node.js
-// Dependências: express, body-parser, mysql2, cors
+// Dependências: express, body-parser, mysql2, cors, mongodb
 // Iniciar: node server.js
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2/promise");
 const cors = require("cors");
+const mongo = require("./mongo"); // arquivo mongo.js
+
+// ======================================================
+// CONEXÃO COM MONGODB
+// ======================================================
+(async () => {
+  await mongo.connect();
+})();
 
 const app = express();
 const port = 3000;
 
-// --- POOL DE CONEXÃO MYSQL ---
+// ======================================================
+// POOL DE CONEXÃO MYSQL
+// ======================================================
 const dbConfig = {
   host: "localhost",
   user: "semear_admin",
@@ -30,52 +40,194 @@ try {
   process.exit(1);
 }
 
-// --- MIDDLEWARE ---
+// ======================================================
+// MIDDLEWARE
+// ======================================================
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// --- ROTA DE TESTE ---
+// ======================================================
+// ROTA DE TESTE
+// ======================================================
 app.get("/", (req, res) => {
   res.send("API Semear está ativa!");
 });
 
 // ======================================================
-// LOGIN
+// CADASTRO DE USUÁRIO (POST /api/v1/usuarios/cadastro)
+// -> Armazena senha em texto puro no campo senha_hash (conforme solicitado)
 // ======================================================
-app.post("/api/v1/login", async (req, res) => {
-  const { email, senha } = req.body;
+app.post("/api/v1/usuarios/cadastro", async (req, res) => {
+  const { email, userType, nome, senha } = req.body;
+
+  if (!email || !userType || !nome || !senha) {
+    return res
+      .status(400)
+      .json({
+        message: "Campos obrigatórios faltando: nome, email, userType, senha.",
+      });
+  }
+
+  let connection;
   try {
-    const [rows] = await pool.query(
-      `SELECT u.id_usuario, u.senha_hash, g.nome_grupo
-       FROM usuarios u
-       JOIN grupos_usuarios g ON u.id_grupo = g.id_grupo
-       WHERE u.email = ?`,
+    connection = await pool.getConnection();
+    console.log("[CADASTRO] Tentando cadastrar:", { email, userType, nome });
+
+    // Verifica duplicidade por email
+    const [exist] = await connection.query(
+      "SELECT id_usuario FROM usuarios WHERE email = ?",
       [email]
     );
-
-    if (rows.length === 0)
-      return res.status(401).json({ message: "Email não encontrado." });
-
-    const usuario = rows[0];
-
-    if (usuario.senha_hash === senha) {
-      return res.status(200).json({
-        message: "Login realizado com sucesso.",
-        userId: usuario.id_usuario,
-        role: usuario.nome_grupo.toLowerCase(),
-      });
-    } else {
-      return res.status(401).json({ message: "Senha incorreta." });
+    if (exist.length > 0) {
+      console.log("[CADASTRO] Email já cadastrado:", email);
+      return res
+        .status(409)
+        .json({
+          message: "Email já cadastrado.",
+          idUsuario: exist[0].id_usuario,
+        });
     }
+
+    // Mapeia userType para id_grupo
+    const [grupos] = await connection.query(
+      "SELECT id_grupo, nome_grupo FROM grupos_usuarios WHERE LOWER(nome_grupo) = ? LIMIT 1",
+      [userType.toLowerCase()]
+    );
+    const idGrupo = grupos.length > 0 ? grupos[0].id_grupo : null;
+    console.log("[CADASTRO] idGrupo encontrado:", idGrupo);
+
+    // Tenta usar função de sequência (se existir)
+    let novoIdUsuario = null;
+    try {
+      const [idRes] = await connection.query(
+        "SELECT fn_get_next_id('usuario_seq') AS novoId"
+      );
+      if (idRes && idRes[0] && idRes[0].novoId) novoIdUsuario = idRes[0].novoId;
+      console.log("[CADASTRO] novoIdUsuario via seq:", novoIdUsuario);
+    } catch (seqErr) {
+      console.log(
+        "[CADASTRO] fn_get_next_id('usuario_seq') não disponível, usando AUTO_INCREMENT."
+      );
+      novoIdUsuario = null;
+    }
+
+    // **INSERÇÃO: grava senha em texto puro no campo senha_hash**
+    let insertResult;
+    if (novoIdUsuario) {
+      [insertResult] = await connection.query(
+        "INSERT INTO usuarios (id_usuario, nome, email, senha_hash, id_grupo, data_cadastro) VALUES (?, ?, ?, ?, ?, NOW())",
+        [novoIdUsuario, nome, email, senha, idGrupo]
+      );
+    } else {
+      [insertResult] = await connection.query(
+        "INSERT INTO usuarios (nome, email, senha_hash, id_grupo, data_cadastro) VALUES (?, ?, ?, ?, NOW())",
+        [nome, email, senha, idGrupo]
+      );
+    }
+
+    console.log("[CADASTRO] Result INSERT:", insertResult);
+    const insertedId = novoIdUsuario || insertResult.insertId;
+    console.log("[CADASTRO] ID final utilizado:", insertedId);
+
+    const [rowsAfter] = await connection.query(
+      "SELECT id_usuario, nome, email, id_grupo, data_cadastro FROM usuarios WHERE id_usuario = ? OR email = ? LIMIT 1",
+      [insertedId, email]
+    );
+
+    console.log("[CADASTRO] Linha recuperada após INSERT:", rowsAfter);
+
+    if (rowsAfter.length === 0) {
+      return res.status(500).json({
+        message:
+          "Cadastro aparentemente efetuado, mas não foi possível recuperar o registro. Verifique o banco.",
+        debug: { insertResult },
+      });
+    }
+
+    return res.status(201).json({
+      message: "Cadastro realizado com sucesso.",
+      usuario: rowsAfter[0],
+    });
   } catch (error) {
-    console.error("ERRO no login:", error.message);
-    res.status(500).json({ message: "Erro interno de autenticação." });
+    console.error(
+      "ERRO no cadastro de usuário:",
+      error.sqlMessage || error.message
+    );
+    return res.status(500).json({
+      message: "Erro interno ao processar cadastro.",
+      error: error.sqlMessage || error.message,
+    });
+  } finally {
+    if (connection) connection.release();
   }
 });
 
 // ======================================================
-// CADASTRO DE PLANTA + OFERTA + IMAGENS (AJUSTADO DUPLICIDADE)
+// LOGIN (COMPARAÇÃO EM TEXTO PURO)
+// ======================================================
+app.post("/api/v1/login", async (req, res) => {
+  const { email, senha } = req.body;
+
+  if (!email || !senha) {
+    return res
+      .status(400)
+      .json({ message: "Campos obrigatórios: email e senha." });
+  }
+
+  let connection;
+  try {
+    connection = await pool.getConnection();
+
+    console.log("[LOGIN] req.body:", { email, senha });
+
+    const [rows] = await connection.query(
+      "SELECT u.id_usuario, u.senha_hash, g.nome_grupo " +
+        "FROM usuarios u " +
+        "LEFT JOIN grupos_usuarios g ON u.id_grupo = g.id_grupo " +
+        "WHERE u.email = ?",
+      [email]
+    );
+
+    if (rows.length === 0) {
+      console.log("[LOGIN] Usuário não encontrado:", email);
+      return res.status(401).json({ message: "Email não encontrado." });
+    }
+
+    const usuario = rows[0];
+    const senhaHash = usuario.senha_hash || "";
+
+    console.log(
+      "[LOGIN] senhaHash do DB (início):",
+      senhaHash.toString().slice(0, 50)
+    );
+
+    // COMPARAÇÃO EM TEXTO PURO (sem bcrypt)
+    if (senha !== senhaHash) {
+      console.log("[LOGIN] Senha inválida.");
+      return res.status(401).json({ message: "Senha incorreta." });
+    }
+
+    // Autenticação ok — retorna id e role (normaliza role)
+    return res.status(200).json({
+      message: "Login realizado com sucesso.",
+      userId: usuario.id_usuario,
+      role: usuario.nome_grupo ? usuario.nome_grupo.toLowerCase() : null,
+    });
+  } catch (error) {
+    console.error("ERRO no login:", error.sqlMessage || error.message);
+    return res
+      .status(500)
+      .json({
+        message: "Erro interno de autenticação.",
+        error: error.sqlMessage || error.message,
+      });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+// ======================================================
+// CADASTRO DE PLANTA + OFERTA + IMAGENS
 // ======================================================
 app.post("/api/v1/plantas", async (req, res) => {
   const {
@@ -101,7 +253,7 @@ app.post("/api/v1/plantas", async (req, res) => {
   try {
     connection = await pool.getConnection();
 
-    // --- Verificar duplicidade ---
+    // Verificar duplicidade
     const [check] = await connection.query(
       "SELECT id_planta FROM plantas WHERE nome_cientifico = ?",
       [nomeCientifico]
@@ -201,7 +353,7 @@ app.get("/api/v1/catalogo", async (req, res) => {
 });
 
 // ======================================================
-// CADASTRAR AVALIAÇÃO (CORRIGIDO DUPLICIDADE)
+// CADASTRAR AVALIAÇÃO
 // ======================================================
 app.post("/api/v1/avaliacoes", async (req, res) => {
   const { idUsuario, idOferta, idPedido, nota, comentario } = req.body;
@@ -213,7 +365,7 @@ app.post("/api/v1/avaliacoes", async (req, res) => {
   try {
     connection = await pool.getConnection();
 
-    // --- Verificar duplicidade ---
+    // Verificar duplicidade
     const [avaliacaoExistente] = await connection.query(
       `SELECT id_avaliacao 
        FROM avaliacoes 
@@ -228,7 +380,6 @@ app.post("/api/v1/avaliacoes", async (req, res) => {
       });
     }
 
-    // --- Inserir avaliação ---
     const [idAvaliacaoResult] = await connection.query(
       "SELECT fn_get_next_id('avaliacao_seq') AS novoId"
     );
@@ -311,7 +462,6 @@ app.post("/api/v1/pedidos", async (req, res) => {
       i.idOferta,
       i.quantidade,
     ]);
-
     await connection.query(
       "INSERT INTO itens_pedido (id_pedido, id_oferta, quantidade) VALUES ?",
       [itensInsert]
@@ -363,6 +513,34 @@ app.get("/api/v1/conteudo", (req, res) => {
 });
 
 // ======================================================
+// LISTAR PLANTAS DO MONGO
+// ======================================================
+app.get("/api/v1/mongo/plantas", async (req, res) => {
+  try {
+    const dbMongo = mongo.getDb();
+    const plantas = await dbMongo.collection("plantas").find().toArray();
+    res.status(200).json(plantas);
+  } catch (err) {
+    console.error("Erro ao buscar plantas no MongoDB:", err.message);
+    res.status(500).json({ message: "Erro interno no MongoDB." });
+  }
+});
+
+// ======================================================
+// LISTAR OFERTAS DO MONGO
+// ======================================================
+app.get("/api/v1/mongo/ofertas", async (req, res) => {
+  try {
+    const dbMongo = mongo.getDb();
+    const ofertas = await dbMongo.collection("ofertas").find().toArray();
+    res.status(200).json(ofertas);
+  } catch (err) {
+    console.error("Erro ao buscar ofertas no MongoDB:", err.message);
+    res.status(500).json({ message: "Erro interno no MongoDB." });
+  }
+});
+
+// ======================================================
 // INICIAR SERVIDOR
 // ======================================================
 app.listen(port, () => {
@@ -374,4 +552,6 @@ app.listen(port, () => {
   console.log(`- POST /api/v1/avaliacoes`);
   console.log(`- POST /api/v1/pedidos`);
   console.log(`- GET  /api/v1/conteudo?tipo=SOLO`);
+  console.log(`- GET  /api/v1/mongo/plantas`);
+  console.log(`- GET  /api/v1/mongo/ofertas`);
 });

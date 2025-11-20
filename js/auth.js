@@ -1,160 +1,286 @@
 /**
+ * URL Base da API (Backend Node.js)
+ */
+const API_BASE_URL = "http://localhost:3000/api/v1";
+
+/**
+ * Função auxiliar para mostrar o Modal de Status.
+ */
+function showStatusModal(title, message, isSuccess, callback) {
+  const modalOverlay = document.getElementById("status-modal");
+  if (!modalOverlay) {
+    console.warn("Modal de status não encontrado no DOM.");
+    if (callback) callback();
+    return;
+  }
+
+  const modalContent = modalOverlay.querySelector(".modal-content");
+  const modalTitle = document.getElementById("modal-title");
+  const modalMessage = document.getElementById("modal-message");
+  const modalCloseBtn = modalOverlay.querySelector(".modal-close-btn");
+
+  if (!modalContent || !modalTitle || !modalMessage || !modalCloseBtn) {
+    console.warn("Estrutura do modal incompleta.");
+    if (callback) callback();
+    return;
+  }
+
+  modalTitle.innerText = title;
+  modalMessage.innerText = message;
+
+  // Aplica classes de cor e status
+  modalContent.className = "modal-content";
+  modalContent.classList.add(isSuccess ? "success" : "error");
+  modalCloseBtn.style.backgroundColor = isSuccess ? "#5CA773" : "#FF8A8A";
+
+  // Exibe o modal
+  modalOverlay.style.display = "flex";
+
+  // Garante que o botão feche o modal
+  const closeHandler = () => {
+    modalOverlay.style.display = "none";
+    modalCloseBtn.removeEventListener("click", closeHandler);
+    if (callback) callback();
+  };
+
+  // Remove listeners anteriores para evitar múltiplos handlers
+  modalCloseBtn.removeEventListener("click", closeHandler);
+  modalCloseBtn.addEventListener("click", closeHandler);
+}
+
+/**
  * Inicializa os eventos dos formulários de login, cadastro e "esqueceu senha".
- * Esta função é chamada pelo main.js DEPOIS que login.html é carregado.
  */
 function initAuthForms() {
-    // --- Seleciona os 3 Formulários ---
-    const loginForm = document.getElementById("login-form");
-    const registerForm = document.getElementById("register-form");
-    const forgotForm = document.getElementById("forgot-form"); // NOVO
+  // --- Seleciona Elementos ---
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const forgotForm = document.getElementById("forgot-form");
+  const showRegisterLink = document.getElementById("show-register");
+  const showLoginLink = document.getElementById("show-login");
+  const showForgotLink = document.getElementById("show-forgot");
+  const showLoginFromForgotLink = document.getElementById(
+    "show-login-from-forgot"
+  );
 
-    // --- Seleciona os 4 Links de Navegação ---
-    const showRegisterLink = document.getElementById("show-register");
-    const showLoginLink = document.getElementById("show-login");
-    const showForgotLink = document.getElementById("show-forgot"); // NOVO
-    const showLoginFromForgotLink = document.getElementById("show-login-from-forgot"); // NOVO
+  // Se não estiverem presentes, encerra (evita erros no console)
+  if (!loginForm && !registerForm && !forgotForm) {
+    console.warn("Nenhum formulário de autenticação encontrado.");
+    return;
+  }
 
-    // --- Funções de Exibição ---
-    function showLogin() {
-        loginForm.style.display = "flex"; // Usar 'flex' por causa do .form-wrapper
-        registerForm.style.display = "none";
-        forgotForm.style.display = "none";
-    }
+  // --- Funções de Exibição ---
+  function showLogin() {
+    if (loginForm) loginForm.style.display = "flex";
+    if (registerForm) registerForm.style.display = "none";
+    if (forgotForm) forgotForm.style.display = "none";
+  }
 
-    function showRegister() {
-        loginForm.style.display = "none";
-        registerForm.style.display = "flex";
-        forgotForm.style.display = "none";
-    }
+  function showRegister() {
+    if (loginForm) loginForm.style.display = "none";
+    if (registerForm) registerForm.style.display = "flex";
+    if (forgotForm) forgotForm.style.display = "none";
+  }
 
-    function showForgot() {
-        loginForm.style.display = "none";
-        registerForm.style.display = "none";
-        forgotForm.style.display = "flex";
-    }
+  function showForgot() {
+    if (loginForm) loginForm.style.display = "none";
+    if (registerForm) registerForm.style.display = "none";
+    if (forgotForm) forgotForm.style.display = "flex";
+  }
 
-    // --- Event Listeners dos Links ---
-    
-    // "Inscrever-se" (no form de login)
+  // --- Event Listeners de Troca de Formulário (só se os elementos existirem) ---
+  if (showRegisterLink)
     showRegisterLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        showRegister();
+      e.preventDefault();
+      showRegister();
     });
-
-    // "Fazer Login" (no form de cadastro)
+  if (showLoginLink)
     showLoginLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        showLogin();
+      e.preventDefault();
+      showLogin();
     });
-
-    // "Esqueceu a senha?" (no form de login)
+  if (showForgotLink)
     showForgotLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        showForgot();
+      e.preventDefault();
+      showForgot();
     });
-
-    // "Fazer Login" (no form de esqueceu senha)
+  if (showLoginFromForgotLink)
     showLoginFromForgotLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        showLogin();
+      e.preventDefault();
+      showLogin();
     });
 
-    // --- Lógica de Submit dos Formulários ---
+  // ==============================================================
+  // 1. LÓGICA DE LOGIN (Conectado à API)
+  // ==============================================================
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    /**
-     * Função auxiliar para mostrar mensagens de erro/sucesso no login
-     * @param {string} message - A mensagem a ser exibida.
-     * @param {string} type - 'success' ou 'error'.
-     */
-    function showLoginMessage(message, type) {
-        const messageArea = document.getElementById("login-message-area");
-        if (messageArea) {
-            messageArea.innerText = message;
-            messageArea.className = type; // Define a classe como 'success' ou 'error'
-        }
-    }
+      const email = document.getElementById("login-email")?.value || "";
+      const senha = document.getElementById("login-pass")?.value || "";
 
-   // --- Lógica de Submit ---
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        
-        const email = document.getElementById("login-email").value;
-        const pass = document.getElementById("login-pass").value;
+      // Limpa a área de mensagem
+      const messageArea = document.getElementById("login-message-area");
+      if (messageArea) messageArea.style.display = "none";
 
-        // Limpa mensagens antigas
-        const messageArea = document.getElementById("login-message-area");
-        if (messageArea) {
-            messageArea.style.display = "none";
-            messageArea.innerText = "";
-        }
+      try {
+        const response = await fetch(`${API_BASE_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
 
-        console.log("Tentativa de Login:", { email, pass });
-        
-        // ===========================================
-        // --- MUDANÇA AQUI: LÓGICA DE LOGIN COM PAPEIS ---
-        // ===========================================
-        
-        // 1. Login de Admin
-        if (email.toLowerCase() === "admin@semear.com" && pass === "admin") {
-            // Salva o papel no localStorage
-            localStorage.setItem('userRole', 'admin'); 
-            
-            showLoginMessage("Login de Administrador bem-sucedido! Redirecionando...", "success");
-            setTimeout(() => {
-                loadPage('pages/admin/admin.html');
-            }, 1500);
-        
-        // 2. Login de Vendedor (NOVO)
-        } else if (email.toLowerCase() === "vendedor@semear.com" && pass === "vendedor") {
-            // Salva o papel no localStorage
-            localStorage.setItem('userRole', 'vendedor');
+        const data = await response.json().catch(() => ({}));
 
-            showLoginMessage("Login de Vendedor bem-sucedido! Bem-vindo.", "success");
-            setTimeout(() => {
-                loadPage('pages/home/home.html');
-            }, 1500);
+        if (response.ok && data.role) {
+          // SUCESSO: Salva os dados de autenticação e redireciona
+          localStorage.setItem("userRole", data.role);
+          localStorage.setItem("userId", data.userId);
 
-        // 3. Login de Cliente (user@semear.com)
-        } else if (email.toLowerCase() === "user@semear.com" && pass === "user") {
-            // Salva o papel no localStorage
-            localStorage.setItem('userRole', 'cliente');
-
-            showLoginMessage("Login bem-sucedido! Bem-vindo de volta.", "success");
-            setTimeout(() => {
-                loadPage('pages/home/home.html');
-            }, 1500);
-
-        // 4. Login Falho
+          showStatusModal(
+            "Login Efetuado",
+            `Bem-vindo(a)! Seu papel é: ${data.role.toUpperCase()}.`,
+            true,
+            () => {
+              if (typeof loadPage === "function") {
+                if (data.role === "administrador") {
+                  loadPage("pages/admin/admin.html");
+                } else {
+                  loadPage("pages/home/home.html");
+                }
+              } else {
+                // fallback: recarrega a página
+                window.location.reload();
+              }
+            }
+          );
         } else {
-            localStorage.removeItem('userRole'); // Garante que não há papel salvo
-            showLoginMessage("Email ou senha inválidos. Tente novamente.", "error");
+          // FALHA (401 - Credenciais Inválidas)
+          showStatusModal(
+            "Falha na Autenticação",
+            data.message || "Email ou senha inválidos. Tente novamente.",
+            false
+          );
         }
-        // ===========================================
-        // --- FIM DA MUDANÇA ---
-        // ===========================================
+      } catch (error) {
+        console.error("Erro na conexão com a API:", error);
+        showStatusModal(
+          "Erro de Conexão",
+          "Não foi possível conectar ao servidor. Verifique se a API está rodando.",
+          false
+        );
+      }
     });
+  }
 
-    registerForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const nome = document.getElementById("reg-name").value;
-        const email = document.getElementById("reg-email").value;
-        const pass = document.getElementById("reg-pass").value;
-        const userType = document.querySelector('input[name="userType"]:checked').value;
+  // ==============================================================
+  // 2. LÓGICA DE CADASTRO (Conectado à API) - inclui senha (texto puro)
+  // ==============================================================
+  if (registerForm) {
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-        console.log("Tentativa de Cadastro:", { nome, email, pass, userType });
+      const btn = registerForm.querySelector("button[type='submit']");
+      const originalBtnText = btn ? btn.innerText : null;
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
+      }
 
-        // TODO: Enviar dados para o backend (API)
+      // Lê os campos (atenção aos ids no seu HTML)
+      const nome = document.getElementById("reg-name")?.value.trim() || "";
+      const email = document.getElementById("reg-email")?.value.trim() || "";
+      const senha = document.getElementById("reg-pass")?.value || "";
+      const userTypeEl = document.querySelector(
+        'input[name="userType"]:checked'
+      );
+      const userType = userTypeEl ? userTypeEl.value : null;
+
+      if (!nome || !email || !userType || !senha) {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = originalBtnText;
+        }
+        return showStatusModal(
+          "Erro",
+          "Preencha nome, email, tipo de usuário e senha.",
+          false
+        );
+      }
+
+      try {
+        // NOTA: senha enviada em texto puro conforme solicitado
+        const response = await fetch(`${API_BASE_URL}/usuarios/cadastro`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome, email, userType, senha }),
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (response.status === 201) {
+          showStatusModal(
+            "Cadastro Concluído",
+            `Obrigado! ${nome}, seu cadastro como ${userType.toUpperCase()} foi realizado com sucesso.`,
+            true,
+            () => showLogin()
+          );
+        } else if (response.status === 409) {
+          showStatusModal(
+            "Cadastro Existente",
+            data.message || "Este email já foi cadastrado.",
+            false
+          );
+        } else if (response.status === 400) {
+          showStatusModal(
+            "Dados Inválidos",
+            data.message || "Verifique os campos do formulário.",
+            false
+          );
+        } else {
+          showStatusModal(
+            "Erro",
+            data.message || "Erro ao processar cadastro.",
+            false
+          );
+        }
+      } catch (err) {
+        console.error("Erro ao chamar API de cadastro:", err);
+        showStatusModal(
+          "Erro de Conexão",
+          "Não foi possível conectar ao servidor. Verifique se a API está rodando.",
+          false
+        );
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = originalBtnText;
+        }
+      }
     });
+  }
 
-    // NOVO: Submit do "Esqueceu Senha"
+  // ==============================================================
+  // 3. LÓGICA DE RECUPERAÇÃO DE SENHA (Simulação)
+  // ==============================================================
+  if (forgotForm) {
     forgotForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("forgot-email").value;
-        
-        console.log("Pedido de Recuperação de Senha:", { email });
+      e.preventDefault();
+      const email = document.getElementById("forgot-email")?.value || "";
 
-        // TODO: Enviar email para o backend (API)
-        alert("Um link de recuperação foi enviado para o seu email (se ele estiver cadastrado).");
-        showLogin(); // Volta para o login
+      // Simulação de Envio BEM-SUCEDIDO
+      // Em um sistema real, você chamaria a rota POST /api/v1/recuperar-senha
+
+      showStatusModal(
+        "Link Enviado!",
+        `Se ${email} estiver cadastrado, você receberá um link de recuperação em breve.`,
+        true,
+        () => showLogin() // Volta para a tela de Login após fechar o modal
+      );
     });
+  }
 }
+
+// Inicializa quando DOM estiver pronto
+document.addEventListener("DOMContentLoaded", initAuthForms);

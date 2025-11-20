@@ -1,0 +1,57 @@
+{
+  "plantas": [
+    {
+      "_id": 1,
+      "nome_cientifico": "Solanum lycopersicum var. cerasiforme",
+      "nome_popular": "Tomate Cereja",
+      "tipo_solo": "Solo rico",
+      "clima_ideal": "Temperado",
+      "cuidados_basicos": "Regar diariamente"
+    },
+    {
+      "_id": 2,
+      "nome_cientifico": "Lactuca sativa",
+      "nome_popular": "Alface",
+      "tipo_solo": "Solo fértil",
+      "clima_ideal": "Temperado",
+      "cuidados_basicos": "Regar 2x por semana"
+    },
+    {
+      "_id": 3,
+      "nome_cientifico": "Ocimum basilicum",
+      "nome_popular": "Manjericão",
+      "tipo_solo": "Solo bem drenado",
+      "clima_ideal": "Quente",
+      "cuidados_basicos": "Exposição solar 4h/dia"
+    }
+  ],
+  "ofertas": [
+    {
+      "_id": 1,
+      "id_vendedor": 1,
+      "id_planta": 1,
+      "preco": 12.5,
+      "estoque": 150,
+      "unidade_venda": "Pacote com 20 sementes",
+      "data_cadastro": "2025-11-20T21:21:13.153Z"
+    },
+    {
+      "_id": 2,
+      "id_vendedor": 1,
+      "id_planta": 2,
+      "preco": 5.5,
+      "estoque": 50,
+      "unidade_venda": "Maço",
+      "data_cadastro": "2025-11-20T21:21:13.153Z"
+    },
+    {
+      "_id": 3,
+      "id_vendedor": 1,
+      "id_planta": 3,
+      "preco": 3.0,
+      "estoque": 20,
+      "unidade_venda": "Pote",
+      "data_cadastro": "2025-11-20T21:21:13.153Z"
+    }
+  ]
+}

@@ -1,18 +1,25 @@
-// mongo.js
-const { MongoClient } = require("mongodb");
+// mongoConnection.js
+const { MongoClient } = require('mongodb');
 
-const url = "mongodb://localhost:27017";
-const dbName = "semear_catalog";
+const uri = 'mongodb://localhost:27017';
+const client = new MongoClient(uri);
 
 let db;
 
 async function connect() {
-  if (db) return db;
-  const client = new MongoClient(url);
-  await client.connect();
-  console.log("Conectado ao MongoDB!");
-  db = client.db(dbName);
+  try {
+    await client.connect();
+    db = client.db('semear');
+    console.log('MongoDB conectado com sucesso!');
+  } catch (err) {
+    console.error(' Erro ao conectar MongoDB:', err.message);
+    process.exit(1);
+  }
+}
+
+function getDb() {
+  if (!db) throw new Error('MongoDB ainda não conectado!');
   return db;
 }
 
-module.exports = { connect };
+module.exports = { connect, getDb };
