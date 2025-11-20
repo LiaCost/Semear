@@ -8,6 +8,7 @@ function initCatalogoPage(data) {
     document.getElementById("nav-loja-catalogo").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/vendas/vendas.html'); });
     document.getElementById("nav-carrinho-catalogo").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/carrinho/carrinho.html'); });
     document.getElementById("nav-login-catalogo").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/login/login.html'); });
+    document.getElementById("nav-promocoes-link").addEventListener("click", (e) => { e.preventDefault(); loadPage('pages/promocoes/promocoes.html'); });
 
 
     // --- 2. Lógica dos Botões "Ver Detalhes" (Redirecionamento para Produto) ---

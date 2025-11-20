@@ -76,3 +76,32 @@ function initHomePage(data) {
     }
     
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+        // 1. Seleciona o elemento que irá rolar (o container dos cards)
+        const carousel = document.querySelector('.seed-carousel');
+        // 2. Seleciona os botões
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+
+        // Largura de rolagem: Largura do card (280px) + Gap (30px) = 310px
+        const scrollAmount = 310; 
+
+        // Adiciona funcionalidade à seta da direita (Próximo)
+        arrowRight.addEventListener('click', () => {
+            // Rola o carrossel para a direita
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth' 
+            });
+        });
+
+        // Adiciona funcionalidade à seta da esquerda (Anterior)
+        arrowLeft.addEventListener('click', () => {
+            // Rola o carrossel para a esquerda
+            carousel.scrollBy({
+                left: -scrollAmount, 
+                behavior: 'smooth'
+            });
+        });
+    });

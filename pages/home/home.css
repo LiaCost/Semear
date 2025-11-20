@@ -198,12 +198,14 @@ a {
 
 /* 5b. SEÇÃO HUBS (SEMENTES) */
 .seed-carousel {
+    /* Mantido como estava, mas agora está dentro do wrapper */
     display: flex;
     overflow-x: auto;
     gap: 30px;
     padding: 20px 5px;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    flex-grow: 1; /* Permite que o carrossel preencha o espaço disponível */
 }
 .seed-carousel::-webkit-scrollbar {
     display: none;
@@ -255,7 +257,33 @@ a {
     font-weight: 400;
     color: #E0D5CF;
 }
+/* 5b. SEÇÃO HUBS (SEMENTES) MAIS FUNÇÕES */
+.explore-hubs-carousel-wrapper {
+    /* Torna o wrapper um container de posicionamento para as setas */
+    position: relative;
+    margin: 0 -20px; /* Expande o wrapper para que as setas possam ficar um pouco fora do container (se necessário) */
+    display: flex;
+    align-items: center; /* Alinha as setas verticalmente com o carrossel */
+}
 
+.seed-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Estilo Base da Seta (Conforme suas especificações) */
+
+
+/* Ajustes de hover (Opcional, mas recomendado) */
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.20);
+}
+
+/* Esconder as setas em telas pequenas (opcional para evitar sobreposição) */
+@media (max-width: 768px) {
+    .carousel-arrow {
+        display: none; /* Esconde as setas, mantendo o carrossel rolável (com o dedo) */
+    }
+}
 /* 6. HEADER (Cabeçalho) */
 .main-header {
     display: flex;
