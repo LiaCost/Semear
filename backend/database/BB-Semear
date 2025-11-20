@@ -1,0 +1,375 @@
+-- =================================================================================
+-- PROJETO SEMEAR - BACKEND SQL (REESTRUTURADO)
+-- Atende aos requisitos de SGBD: Padronização, Controle de IDs, Triggers, Views e Procedures.
+-- Versão: 2025-11-20
+-- =================================================================================
+
+DROP DATABASE IF EXISTS semear;
+CREATE DATABASE semear;
+USE semear;
+
+-- Define a precisão para operações (necessário para Procedures e Functions)
+SET SQL_MODE = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+
+-- -----------------------------------------------------
+-- 1. TABELAS DE SEQUÊNCIA E FUNÇÕES DE ID
+-- -----------------------------------------------------
+
+-- Tabela auxiliar para gerenciar sequências de IDs (Customizado - Requisito)
+CREATE TABLE sequencia (
+    nome VARCHAR(100) PRIMARY KEY COMMENT 'Nome da tabela para qual a sequencia se aplica.',
+    valor BIGINT NOT NULL COMMENT 'Próximo valor da sequencia.'
+);
+
+-- Inicializa as sequências para as tabelas críticas (não usam AUTO_INCREMENT)
+INSERT INTO sequencia (nome, valor) VALUES 
+('usuario_seq', 0), ('grupo_seq', 0), ('oferta_seq', 0),
+('pedido_seq', 0), ('planta_seq', 0), ('avaliacao_seq', 0)
+ON DUPLICATE KEY UPDATE valor = valor;
+
+-- FUNÇÃO (Requisito 1/2): fn_get_next_id
+-- Uso: Gera um ID sequencial INT para tabelas críticas. 
+-- Justificativa: Atende o requisito de geração própria de ID sem AUTO_INCREMENT.
+DELIMITER //
+CREATE FUNCTION fn_get_next_id(p_seq_name VARCHAR(100))
+RETURNS INT
+SQL SECURITY DEFINER
+MODIFIES SQL DATA
+BEGIN
+    DECLARE next_val INT;
+    UPDATE sequencia 
+    SET valor = LAST_INSERT_ID(valor + 1) 
+    WHERE nome = p_seq_name;
+    SET next_val = LAST_INSERT_ID();
+    RETURN next_val;
+END;
+//
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- 2. TABELAS DE SEGURANÇA E USUÁRIOS (REORGANIZADAS)
+-- -----------------------------------------------------
+
+-- Tabela obrigatória: grupos_usuarios
+CREATE TABLE grupos_usuarios (
+    id_grupo INT PRIMARY KEY COMMENT 'ID do grupo de acesso.',
+    nome_grupo VARCHAR(50) NOT NULL UNIQUE COMMENT 'Ex: administrador, vendedor, cliente.',
+    descricao VARCHAR(255)
+);
+
+-- Tabela obrigatória: usuarios
+CREATE TABLE usuarios (
+    id_usuario INT PRIMARY KEY COMMENT 'ID gerado por função customizada (fn_get_next_id).',
+    id_grupo INT NOT NULL COMMENT 'FK para grupos_usuarios.',
+    nome VARCHAR(150) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash CHAR(60) NOT NULL COMMENT 'Armazena o hash da senha.',
+    telefone VARCHAR(20),
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_grupo) REFERENCES grupos_usuarios(id_grupo)
+);
+
+SELECT * FROM grupos_usuarios;
+
+-- Tabela vendedores (adaptada da especialização)
+CREATE TABLE vendedores (
+    id_usuario INT PRIMARY KEY COMMENT 'PK e FK para usuarios.',
+    cnpj CHAR(14) UNIQUE NOT NULL,
+    nome_loja VARCHAR(100) NOT NULL,
+    reputacao DECIMAL(2, 1) DEFAULT 5.0 COMMENT 'Nota média do vendedor.',
+    
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+-- Tabela enderecos (USO: AUTO_INCREMENT justificado)
+-- Justificativa: Endereços não são dados críticos de segurança e servem apenas para logística;
+-- AUTO_INCREMENT simplifica a inserção no Front-end/Transação.
+CREATE TABLE enderecos (
+    id_endereco INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID sequencial.',
+    id_usuario INT NOT NULL,
+    tipo_endereco ENUM('RESIDENCIAL', 'COMERCIAL') NOT NULL,
+    cep CHAR(8) NOT NULL,
+    rua VARCHAR(150) NOT NULL,
+    numero VARCHAR(20),
+    cidade VARCHAR(100) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+
+-- -----------------------------------------------------
+-- 3. TABELAS DE CATÁLOGO E FLUXO
+-- -----------------------------------------------------
+
+-- Tabela planta (Ficha técnica/Hubs)
+CREATE TABLE plantas (
+    id_planta INT PRIMARY KEY COMMENT 'ID gerado por função customizada.',
+    nome_cientifico VARCHAR(150) NOT NULL UNIQUE,
+    nome_popular VARCHAR(255) NOT NULL,
+    tipo_solo VARCHAR(100),
+    clima_ideal VARCHAR(100),
+    cuidados_basicos TEXT
+);
+
+-- Imagens (Justificativa: ID interno, AUTO_INCREMENT aceita)
+CREATE TABLE ImagemPlanta (
+    id_imagem INT AUTO_INCREMENT PRIMARY KEY,
+    id_planta INT NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    legenda VARCHAR(255),
+    ordem INT,
+    FOREIGN KEY (id_planta) REFERENCES plantas(id_planta) ON DELETE CASCADE
+);
+
+-- Tabela ofertas (Marketplace)
+CREATE TABLE ofertas (
+    id_oferta INT PRIMARY KEY COMMENT 'ID gerado por função customizada.',
+    id_vendedor INT NOT NULL,
+    id_planta INT NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    estoque INT NOT NULL DEFAULT 0,
+    unidade_venda VARCHAR(50) NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_vendedor) REFERENCES vendedores(id_usuario),
+    FOREIGN KEY (id_planta) REFERENCES plantas(id_planta)
+);
+
+-- Tabela pedidos
+CREATE TABLE pedidos (
+    id_pedido INT PRIMARY KEY COMMENT 'ID gerado por função customizada.',
+    id_cliente INT NOT NULL,
+    id_endereco INT NOT NULL,
+    data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('PENDENTE', 'ENVIADO', 'ENTREGUE', 'CANCELADO') NOT NULL,
+    valor_total DECIMAL(10, 2) NOT NULL,
+    
+    FOREIGN KEY (id_cliente) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_endereco) REFERENCES enderecos(id_endereco)
+);
+
+-- Tabela itens_pedido (USO: AUTO_INCREMENT justificado)
+-- Justificativa: IDs internos para rastreamento de itens.
+CREATE TABLE itens_pedido (
+    id_item INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_oferta INT NOT NULL,
+    quantidade INT NOT NULL,
+    preco_unitario_momento DECIMAL(10, 2) NOT NULL COMMENT 'Preço fixo no momento da compra.',
+    
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido) ON DELETE CASCADE,
+    FOREIGN KEY (id_oferta) REFERENCES ofertas(id_oferta) ON DELETE RESTRICT
+);
+
+-- Tabela avaliacoes
+CREATE TABLE avaliacoes (
+    id_avaliacao INT PRIMARY KEY COMMENT 'ID gerado por função customizada.',
+    id_usuario INT NOT NULL,
+    id_oferta INT NOT NULL,
+    id_pedido INT NOT NULL,
+    nota TINYINT NOT NULL CHECK (nota BETWEEN 1 AND 5),
+    comentario TEXT,
+    data_avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_oferta) REFERENCES ofertas(id_oferta),
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    UNIQUE KEY uk_avaliacao_unica (id_pedido, id_oferta, id_usuario) COMMENT 'Garante 1 avaliação por item em cada pedido.'
+);
+
+-- -----------------------------------------------------
+-- 4. PROCEDURES E FUNCTIONS (REQUISITOS AVANÇADOS)
+-- -----------------------------------------------------
+
+-- FUNCTION (REQUISITO 1/2): fn_calcula_nota_media
+-- Uso: Retorna a nota média de uma oferta. Reutilizável em Views e Procedures.
+DELIMITER //
+CREATE FUNCTION fn_calcula_nota_media(p_id_oferta INT) RETURNS DECIMAL(2, 1)
+READS SQL DATA
+BEGIN
+    DECLARE media DECIMAL(2, 1);
+    SELECT COALESCE(AVG(nota), 0) INTO media
+    FROM avaliacoes
+    WHERE id_oferta = p_id_oferta;
+    RETURN media;
+END;
+//
+DELIMITER ;
+
+
+-- PROCEDURE (REQUISITO 2/2): sp_atualiza_reputacao_vendedor
+-- Uso: Recalcula a avaliaçao geral do vendedor baseada em todas as suas ofertas.
+DELIMITER //
+CREATE PROCEDURE sp_atualiza_reputacao_vendedor(p_id_vendedor INT)
+BEGIN
+    DECLARE nova_reputacao DECIMAL(2, 1);
+
+    SELECT AVG(fn_calcula_nota_media(o.id_oferta)) INTO nova_reputacao
+    FROM ofertas o
+    WHERE o.id_vendedor = p_id_vendedor;
+    
+    UPDATE vendedores
+    SET reputacao = COALESCE(nova_reputacao, 5.0) -- Se for nulo (sem avaliações), mantém 5.0
+    WHERE id_usuario = p_id_vendedor;
+END;
+//
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- 5. TRIGGERS (MÍNIMO 2)
+-- -----------------------------------------------------
+
+-- TRIGGER #1: trg_oferta_ajusta_estoque_positivo (BEFORE UPDATE)
+-- Justificativa: Integridade de Dados. Garante que o estoque nunca seja definido para um valor negativo.
+DELIMITER //
+CREATE TRIGGER trg_oferta_ajusta_estoque_positivo
+BEFORE UPDATE ON ofertas
+FOR EACH ROW
+BEGIN
+    IF NEW.estoque < 0 THEN
+        SET NEW.estoque = 0;
+        -- Em produção: SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Estoque não pode ser negativo.';
+    END IF;
+END //
+DELIMITER ;
+
+-- TRIGGER #2: trg_avaliacao_atualiza_reputacao (AFTER INSERT em avaliacoes)
+-- Justificativa: Auditoria e Lógica de Negócio. Aciona a procedure de atualização de reputação 
+-- do vendedor imediatamente após o registro de uma nova avaliação.
+DELIMITER //
+CREATE TRIGGER trg_avaliacao_atualiza_reputacao
+AFTER INSERT ON avaliacoes
+FOR EACH ROW
+BEGIN
+    DECLARE v_id_vendedor INT;
+    
+    -- Encontra o vendedor da oferta avaliada
+    SELECT id_vendedor INTO v_id_vendedor FROM ofertas WHERE id_oferta = NEW.id_oferta;
+    
+    -- Chama a procedure para recalcular a reputação
+    CALL sp_atualiza_reputacao_vendedor(v_id_vendedor);
+END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- 6. VIEWS (MÍNIMO 2)
+-- -----------------------------------------------------
+
+-- VIEW #1: vw_catalogo_loja
+-- Justificativa: Abstração para o Frontend. Retorna todas as informações necessárias 
+-- para a loja (oferta, planta, vendedor, reputação) em uma única consulta, 
+-- simplificando o código do Java/Front-end.
+DROP VIEW IF EXISTS vw_catalogo_loja;
+CREATE VIEW vw_catalogo_loja AS
+SELECT
+    o.id_oferta,
+    p.nome_popular,
+    p.nome_cientifico,
+    o.preco,
+    o.estoque,
+    v.nome_loja AS nome_vendedor,
+    v.reputacao AS reputacao_vendedor,
+    fn_calcula_nota_media(o.id_oferta) AS nota_media
+FROM ofertas o
+JOIN plantas p ON o.id_planta = p.id_planta
+JOIN vendedores v ON o.id_vendedor = v.id_usuario
+WHERE o.estoque > 0;
+
+-- VIEW #2: vw_relatorio_vendas_detalhado
+-- Justificativa: Relatório Administrativo. Fornece uma visão completa de cada item vendido, 
+-- essencial para o Dashboard Admin.
+DROP VIEW IF EXISTS vw_relatorio_vendas_detalhado;
+CREATE VIEW vw_relatorio_vendas_detalhado AS
+SELECT
+    ped.id_pedido,
+    ped.data_pedido,
+    ped.status AS status_pedido,
+    u_cli.nome AS nome_cliente,
+    v.nome_loja AS nome_vendedor,
+    p.nome_popular AS produto,
+    ip.quantidade,
+    ip.preco_unitario_momento AS preco_momento,
+    (ip.quantidade * ip.preco_unitario_momento) AS total_item
+FROM pedidos ped
+JOIN itens_pedido ip ON ped.id_pedido = ip.id_pedido
+JOIN ofertas o ON ip.id_oferta = o.id_oferta
+JOIN vendedores v ON o.id_vendedor = v.id_usuario
+JOIN usuarios u_cli ON ped.id_cliente = u_cli.id_usuario
+JOIN plantas p ON o.id_planta = p.id_planta;
+
+
+-- -----------------------------------------------------
+-- 7. DADOS INICIAIS (DML)
+-- -----------------------------------------------------
+
+-- Inserir Grupos (ADMINISTRADOR, VENDEDOR, CLIENTE)
+INSERT INTO grupos_usuarios (id_grupo, nome_grupo, descricao) VALUES
+(fn_get_next_id('grupo_seq'), 'ADMINISTRADOR', 'Acesso total ao sistema.'),
+(fn_get_next_id('grupo_seq'), 'VENDEDOR', 'Gerenciamento de ofertas e estoque.'),
+(fn_get_next_id('grupo_seq'), 'CLIENTE', 'Acesso à loja e área de perfil.');
+
+SET @ADMIN_GRUPO_ID = 1;
+SET @VENDEDOR_GRUPO_ID = 2;
+SET @CLIENTE_GRUPO_ID = 3;
+ select * from grupos_usuarios;
+
+-- Inserir Usuários (IDs 1, 2, 3 - Correspondem à simulação do Front-end)
+INSERT INTO usuarios (id_usuario, id_grupo, nome, email, senha_hash) VALUES
+(fn_get_next_id('usuario_seq'), @ADMIN_GRUPO_ID, 'Administrador Semear', 'admin@semear.com', 'admin'),
+(fn_get_next_id('usuario_seq'), @VENDEDOR_GRUPO_ID, 'Vendedor Exemplo', 'vendedor@semear.com', 'vendedor'),
+(fn_get_next_id('usuario_seq'), @CLIENTE_GRUPO_ID, 'Cliente Teste', 'user@semear.com', 'user');
+
+-- Inserir Detalhes de Vendedor
+INSERT INTO vendedores (id_usuario, cnpj, nome_loja) VALUES
+(2, '12345678000100', 'Jardim Florido');
+
+select * from usuarios;
+-- -----------------------------------------------------
+-- 8. CONTROLE DE ACESSO (REQUISITO OBRIGATÓRIO)
+-- -----------------------------------------------------
+
+-- O script deve ser executado pelo root. Aqui definimos os usuários para o acesso da aplicação (Back-end Java).
+
+-- 1. Usuário de Leitura (Cliente / Navegação)
+DROP USER IF EXISTS 'semear_leitura'@'localhost';
+
+CREATE USER 'semear_leitura'@'localhost' IDENTIFIED BY 'ler_semear_123';
+GRANT SELECT ON semear.plantas TO 'semear_leitura'@'localhost';
+GRANT SELECT ON semear.ofertas TO 'semear_leitura'@'localhost';
+GRANT SELECT ON semear.vendedores TO 'semear_leitura'@'localhost';
+GRANT SELECT ON semear.avaliacoes TO 'semear_leitura'@'localhost';
+GRANT SELECT ON semear.vw_catalogo_loja TO 'semear_leitura'@'localhost';
+GRANT EXECUTE ON FUNCTION semear.fn_calcula_nota_media TO 'semear_leitura'@'localhost';
+-- COMMENT 'Usuário para leitura pública (catálogo, hubs, lojas).';
+
+-- 2. Usuário de Escrita (Vendedor / Clientes logados)
+DROP USER IF EXISTS 'semear_escrita'@'localhost';
+
+CREATE USER 'semear_escrita'@'localhost' IDENTIFIED BY 'escrever_semear_123';
+-- Permissões de Leitura
+GRANT SELECT ON semear.* TO 'semear_escrita'@'localhost';
+
+-- Permissões de Criação/Atualização (Pedidos, Avaliações, Endereços, Cadastro de Ofertas)
+GRANT INSERT, UPDATE, DELETE ON semear.pedidos TO 'semear_escrita'@'localhost';
+GRANT INSERT, UPDATE ON semear.enderecos TO 'semear_escrita'@'localhost';
+GRANT INSERT ON semear.avaliacoes TO 'semear_escrita'@'localhost';
+
+GRANT EXECUTE ON FUNCTION semear.fn_get_next_id TO 'semear_escrita'@'localhost';
+GRANT EXECUTE ON FUNCTION semear.fn_calcula_nota_media TO 'semear_escrita'@'localhost';
+GRANT EXECUTE ON PROCEDURE semear.sp_atualiza_reputacao_vendedor TO 'semear_escrita'@'localhost';
+-- COMMENT 'Usuário para transações de clientes (pedidos) e vendedores (cadastro/update).';
+
+-- 3. Usuário ADMIN (Gerenciamento e Relatórios)
+DROP USER IF EXISTS 'semear_admin'@'localhost';
+CREATE USER 'semear_admin'@'localhost' IDENTIFIED BY 'admin_semear_123';
+GRANT ALL PRIVILEGES ON semear.* TO 'semear_admin'@'localhost';
+GRANT EXECUTE ON *.* TO 'semear_admin'@'localhost';
+-- COMMENT 'Acesso total para relatórios e manutenção de tabelas administrativas.';
+
+FLUSH PRIVILEGES;
+
+select * from plantas;
