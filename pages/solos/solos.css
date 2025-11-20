@@ -1,456 +1,875 @@
 /* 1. Importação das Fontes
+
       ======= */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;600;700;800&family=Sarala:wght@700&display=swap');
 
+
+
 /* MUDANÇA: Adicionadas variáveis de fonte para consistência */
+
 :root {
+
     --font-principal: 'Montserrat', sans-serif;
+
     --font-secundaria: 'Sarala', sans-serif;
+
     --font-auxiliar: 'Inter', sans-serif;
+
     --cor-fundo-header: #110703;
+
 }
+
+
 
 /* ===== RESET ===== */
+
 * {
+
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
+
   /* MUDANÇA: Substituído Poppins pela fonte do projeto */
+
   font-family: var(--font-principal);
+
 }
 
+
+
 body {
+
     /* MUDANÇA: Corrigido o caminho para a pasta public/images */
+
     background: linear-gradient(rgba(15,15,15,0.5), rgba(15,15,15,1.0)),
+
               url("../../public/images/unsplash_y7mLAsTztQs.png") no-repeat center top fixed;
+
   background-size: cover;
+
   color: #fff;
+
   overflow-x: hidden;
+
 }
+
 a{
+
   text-decoration: none;
+
   color:white ;
+
 }
+
+
+
 
 
 /* ============================================================
+
       3. Cabeçalho (Header) - PADRONIZADO
+
       ============================================================ */
+
 .main-header {
+
     background-color: var(--cor-fundo-header);
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     padding: 0 71px; /* MUDANÇA: Padding horizontal ajustado */
+
     height: 81px;   /* MUDANÇA: Altura fixa como no header padrão */
+
 }
+
+
 
 .logo-link img {
+
     height: 44px; /* MUDANÇA: Altura da logo padronizada */
+
     width: 200px; /* MUDANÇA: Largura da logo padronizada */
+
 }
+
+
 
 .main-nav {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    flex-grow: 1; 
+
+    flex-grow: 1;
+
 }
+
+
 
 .main-nav ul {
+
     display: flex;
+
     list-style: none;
+
     gap: 40px; /* MUDANÇA: Gap ajustado para 40px */
+
     padding: 0;
+
 }
+
+
 
 .main-nav a {
+
     color: white;
+
     text-decoration: none;
-    font-family: var(--font-principal); 
+
+    font-family: var(--font-principal);
+
     font-size: 13px;
+
     font-weight: 400;
+
     cursor: pointer;
+
 }
+
 .nav-item-ativo {
+
     font-weight: 800;
+
     position: relative;
+
     padding-bottom: 6px;
+
 }
+
 .nav-item-ativo::after {
+
     content: '';
+
     position: absolute;
+
     bottom: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 1px;
+
     background-color: white;
+
 }
+
+
 
 .utility-bar {
+
     display: flex;
+
     align-items: center;
+
     gap: 20px;
-    font-family: var(--font-principal); 
+
+    font-family: var(--font-principal);
+
     font-size: 13px;
+
     color: white;
+
 }
-    
+
+   
+
 .utility-bar .icon-link {
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
     color: white;
+
 }
-    
+
+   
+
 .utility-bar .nav-icon {
+
     width: 24px;
+
     height: 24px;
+
 }
+
+
 
 .utility-bar .lang-selector {
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
 }
+
 .lang-selector .flag-icon {
+
     width: 24px;
+
     height: 24px;
+
     border-radius: 20%;
+
 }
+
 .lang-selector .arrow-down {
+
     width: 12px;
+
     height: 12px;
+
 }
+
+
 
 .utility-bar .nav-item-destaque {
+
     font-weight: 600;
+
     font-size: 13px;
+
     color: white;
+
 }
 
+
+
 .btn-entrar {
+
     background: rgba(140, 80, 34, 0.50);
+
     border-radius: 5px;
+
     outline: 1px white solid;
+
     padding: 7px 21px;
+
     font-size: 13px;
+
     color:white;
+
     font-weight: 400;
+
     text-decoration: none;
+
     backdrop-filter: blur(2px);
+
     margin-left: 0; /* Removido o margin-left desnecessário */
+
     cursor: pointer;
+
 }
+
+
+
 
 
 /* ===== INTRO ===== */
+
 .intro {
+
   text-align: center;
+
   margin: 3rem auto;
+
   max-width: 800px;
+
 }
+
+
 
 .intro h1 {
+
   position: relative;
+
   font-size: 2rem;
+
   font-weight: 700;
+
   display: inline-block;
+
   padding-bottom: 0.5rem;
+
 }
 
+
+
 .intro h1::after {
+
   content: "";
+
   position: absolute;
+
   bottom: 0;
+
   left: 50%;
+
   transform: translateX(-50%);
-  width: 400px; 
+
+  width: 400px;
+
   border-bottom: 2px solid #444;
+
 }
+
+
+
 
 
 .intro .descricao {
+
   margin-top: 1rem;
+
   color: #ccc;
+
   font-size: 1rem;
+
   line-height: 1.6;
+
 }
+
+
 
 /* ===== SEÇÕES / TOGGLE ===== */
 
+
+
 .cards-container {
+
   display: flex;
+
   flex-wrap: wrap;
+
   justify-content: center;
+
   gap: 1.5rem;
-  
+
+ 
+
 }
+
+
 
 .card {
+
   text-align: center;
+
   background: #5a4e4e4d;
+
   width: 250px;
+
   color: #ffffff;
+
   border-radius: 12px;
+
   padding: 1rem;
+
   box-shadow: 0 0 10px rgba(209, 196, 196, 0.6);
+
   transition: transform 0.3s, box-shadow 0.3s;
-  display: flex; /* MUDANÇA: Ativa o flexbox para alinhamento */
-  flex-direction: column; /* MUDANÇA: Empilha os itens */
+
+    display: flex; /* MUDANÇA: Ativa o flexbox para alinhamento */
+
+    flex-direction: column; /* MUDANÇA: Empilha os itens */
+
 }
+
+
 
 .card:hover {
+
   transform: translateY(-5px);
+
   box-shadow: 0 0 15px rgba(124, 233, 121, 0.4);
+
 }
+
+
 
 .card img {
+
   width: 100%;
+
   height: 150px;
+
   object-fit: cover;
+
   border-radius: 10px;
+
   border: 3px solid rgb(26, 23, 23);
+
 }
+
+
 
 .card h4 {
+
   margin: 0.8rem 0;
+
   color: #fff;
+
 }
+
+
 
 .card p {
+
   font-size: 0.9rem;
+
   color: #bbb;
+
   margin-bottom: 1rem;
+
 }
+
+
 
 .resumo {
+
     flex-grow: 1; /* Permite que o resumo ocupe o espaço */
+
     margin-bottom: 1rem;
+
 }
 
-/* 🔥 CORREÇÃO CRÍTICA: Texto expandido DEVE estar oculto por padrão */
+
+
 .texto-expandido {
+
     max-height: 0;
+
     overflow: hidden;
-    opacity: 0;
+
     font-size: 0.85rem;
+
     color: #e6e6e6;
+
     line-height: 1.5;
+
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
-}
 
-/* 🔥 CORREÇÃO CRÍTICA: Só expande quando o card específico tem a classe expanded */
-.card.expanded .texto-expandido {
-    max-height: 500px; /* Aumentado para garantir que todo o texto apareça */
-    opacity: 1;
     margin-top: 0.8rem;
+
+    transition: max-height 0.4s ease;
+
+}
+
+
+
+.card.expanded .texto-expandido {
+
+    max-height: 300px; /* altura máxima expandida */
+
     margin-bottom: 1rem;
+
 }
 
-/* 🔥 CORREÇÃO CRÍTICA: Esconde o resumo quando expandido */
-.card.expanded .resumo {
-    display: none !important;
-}
 
-/* 🔥 CORREÇÃO CRÍTICA: Mostra o resumo quando NÃO está expandido */
-.card:not(.expanded) .resumo {
-    display: block !important;
-}
 
 .btn {
+
   display: inline-block;
+
   background: rgba(115, 44, 2, 0.40);
+
   color: #fff;
+
   text-decoration: none;
+
   padding: 0.5rem 1.5rem;
+
   border-radius: 8px;
+
   font-weight: 500;
+
   transition: 0.3s;
+
   width: 100%; /* MUDANÇA: Faz o botão ocupar 100% */
+
   margin-top: auto; /* MUDANÇA: Empurra para o final */
-  cursor: pointer;
-  border: none;
+
 }
 
+
+
 .btn:hover {
+
   background: #46c97f;
+
 }
+
+
 
 /* ===== RODAPÉ (Solos) ===== */
 
+
+
 .main-footer {
+
     background: #110703;        /* mesmo fundo da home */
+
     padding: 40px 20px;         /* espaçamento igual */
+
     text-align: center;
+
 }
+
+
 
 .footer-logo {
+
     width: 200px;
+
     height: auto;               /* altura automática */
+
     margin-bottom: 30px;        /* espaço abaixo do logo */
+
 }
+
+
 
 .footer-contact-info {
+
     margin-bottom: 25px;
+
 }
+
+
 
 .social-icons {
+
     display: flex;
+
     justify-content: center;
+
     gap: 27px;
+
     margin: 25px 0;
+
 }
+
+
 
 .social-icons img {
+
     width: 15px;
+
     height: 15px;
+
 }
+
+
 
 .footer-divider {
+
     width: 100%;
+
     max-width: 886px;
+
     height: 1px;
+
     background: white;
+
     margin: 20px auto;
+
 }
+
+
 
 .footer-links {
+
     display: flex;
+
     justify-content: center;
+
     gap: 20px;
+
     flex-wrap: wrap;
+
 }
+
+
 
 .footer-links span {
+
     display: block;
+
 }
 
+
+
 .footer-copyright {
+
     margin-top: 25px;
+
     color: #aaa;                /* mantém o tom suave */
+
     font-size: 0.9rem;
+
 }
+
+
+
 
 
 /* ============================================================
+
     10. MEDIA QUERIES (Responsividade Aprimorada)
+
    ============================================================ */
 
+
+
 /* --- Tablet (Max 1024px) --- */
+
 @media (max-width: 1024px) {
+
     /* 3. Cabeçalho (Header) */
+
     .main-header {
+
         padding: 0 40px;
+
     }
+
+
 
     .main-nav ul {
+
         gap: 25px; /* Reduz o espaçamento entre links */
+
     }
+
+
 
     /* Intro */
+
     .intro {
+
         padding: 0 20px;
-    }
-    .intro h1::after {
-        width: 300px; /* Linha de título um pouco menor */
+
     }
 
-    /* Rodapé */
-    .main-footer {
-        padding: 30px 15px;
+    .intro h1::after {
+
+        width: 300px; /* Linha de título um pouco menor */
+
     }
+
+
+
+    /* Rodapé */
+
+    .main-footer {
+
+        padding: 30px 15px;
+
+    }
+
 }
+
+
+
 
 
 /* --- Mobile (Max 768px): Refatoração Completa --- */
+
 @media (max-width: 768px) {
+
     /* 3. Cabeçalho (Header) - Otimizado */
+
     .main-header {
+
         /* Permite que o conteúdo se ajuste verticalmente */
+
         flex-direction: column;
+
         height: auto;
+
         padding: 15px 20px;
+
         gap: 10px;
+
         align-items: center;
+
     }
+
+
 
     .main-nav {
+
         order: 2; /* Garante que a navegação fique abaixo do logo */
+
         width: 100%;
+
         margin-top: 10px;
+
     }
+
     .main-nav ul {
-        flex-wrap: wrap; 
+
+        flex-wrap: wrap;
+
         justify-content: center;
+
         gap: 10px;
+
     }
+
+
 
     .utility-bar {
+
         order: 3; /* Utilitários ficam no final */
+
         width: 100%;
+
         justify-content: space-around; /* Distribui bem */
+
         gap: 10px;
+
         padding-top: 10px;
+
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+
     }
+
+
 
     .utility-bar .icon-link span:not(.nav-item-destaque) {
+
         /* Oculta o texto dos ícones para ganhar espaço */
-        display: none; 
+
+        display: none;
+
     }
-    
+
+   
+
     .btn-entrar {
+
         padding: 5px 15px; /* Botão Entrar menor */
+
     }
+
+
 
     /* Intro */
+
     .intro {
+
         margin: 2rem auto;
+
         padding: 0 15px;
+
     }
+
     .intro h1 {
+
         font-size: 1.6rem;
+
     }
+
     .intro h1::after {
+
         width: 200px; /* Linha de título ainda menor */
+
     }
+
     .intro .descricao {
+
         font-size: 0.9rem;
+
     }
+
+
 
     /* Cards */
+
     .cards-container {
+
         padding: 0 15px;
+
     }
+
+
 
     .card {
+
         width: 100%; /* Ocupa a largura total da tela */
+
         max-width: 350px; /* Limita o tamanho em telas maiores */
+
         margin: 0 auto; /* Centraliza */
+
     }
-    
+
+   
+
     /* Rodapé */
+
     .main-footer {
+
         padding: 20px 15px;
+
     }
+
     .footer-links {
+
         flex-direction: column;
+
         gap: 10px;
+
     }
+
 }
 
+
+
 /* --- Mobile Muito Pequeno (Max 480px) --- */
+
 @media (max-width: 480px) {
+
     .main-nav a {
+
         font-size: 11px;
+
         padding: 8px;
+
     }
-    
+
+   
+
     .utility-bar .nav-item-destaque {
+
         font-size: 11px;
+
     }
+
 }

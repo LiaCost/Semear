@@ -49,6 +49,62 @@ function showStatusModal(title, message, isSuccess, callback) {
 }
 
 /**
+ * Função para atualizar o link de autenticação no cabeçalho
+ * para 'Entrar' (deslogado) ou 'Sair' (logado).
+ *
+ * É CRUCIAL que o link de autenticação no seu HTML tenha o ID 'auth-link'.
+ */
+function updateHeaderAuthLink() {
+  const authLink = document.getElementById("auth-link");
+  if (!authLink) {
+    console.warn("Elemento de link de autenticação (ID: auth-link) não encontrado.");
+    return;
+  }
+
+  // Verifica se o papel e o ID do usuário estão no localStorage
+  const isLoggedIn = localStorage.getItem("userRole") && localStorage.getItem("userId");
+
+  if (isLoggedIn) {
+    // Usuário LOGADO: Mudar para 'Sair'
+    authLink.innerText = "Sair";
+    authLink.href = "#"; // Evita navegação padrão
+
+    // Remove event listener antigo para evitar duplicação de handlers
+    // Clonar o nó é a forma mais simples de remover todos os event listeners
+    const newAuthLink = authLink.cloneNode(true);
+    authLink.parentNode.replaceChild(newAuthLink, authLink);
+
+    newAuthLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Lógica de LOGOUT
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userId");
+
+      showStatusModal("Logout Efetuado", "Você foi desconectado(a).", true, () => {
+        // Redireciona para a página de autenticação ou recarrega a página
+        if (typeof loadPage === "function") {
+          loadPage("pages/auth/auth.html"); // Assumindo que auth.html é a página de login
+        } else {
+          window.location.reload();
+        }
+      });
+    });
+
+  } else {
+    // Usuário DESLOGADO: Mudar para 'Entrar'
+    authLink.innerText = "Entrar";
+    
+    // Configura o link para a página de autenticação (ajuste o href conforme seu projeto)
+    authLink.href = "pages/auth/auth.html"; 
+    
+    // Remove qualquer event listener de logout que possa ter sido adicionado
+    const newAuthLink = authLink.cloneNode(true);
+    authLink.parentNode.replaceChild(newAuthLink, authLink);
+    // Não adiciona nenhum event listener, pois a navegação é feita via `href`
+  }
+}
+
+/**
  * Inicializa os eventos dos formulários de login, cadastro e "esqueceu senha".
  */
 function initAuthForms() {
@@ -66,6 +122,7 @@ function initAuthForms() {
   // Se não estiverem presentes, encerra
   if (!loginForm && !registerForm && !forgotForm) {
     console.warn("Nenhum formulário de autenticação encontrado.");
+    updateHeaderAuthLink(); // Garante que o link do cabeçalho seja atualizado mesmo sem forms
     return;
   }
 
@@ -136,6 +193,9 @@ function initAuthForms() {
         if (response.ok && data.role) {
           localStorage.setItem("userRole", data.role);
           localStorage.setItem("userId", data.userId);
+          
+          // ATUALIZAÇÃO CRÍTICA: Atualiza o link do cabeçalho após o login
+          updateHeaderAuthLink(); 
 
           showStatusModal(
             "Login Efetuado",
@@ -260,6 +320,12 @@ function initAuthForms() {
       );
     });
   }
+  
+  // ==============================================================
+  // 4. ATUALIZAÇÃO DO CABEÇALHO
+  // ==============================================================
+  // Chama a função para configurar o estado inicial do link do cabeçalho
+  updateHeaderAuthLink(); 
 }
 
 // Inicializa quando DOM estiver pronto
