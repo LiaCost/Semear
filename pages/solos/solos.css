@@ -196,8 +196,8 @@ a{
   padding: 1rem;
   box-shadow: 0 0 10px rgba(209, 196, 196, 0.6);
   transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; /* MUDANÇA: Ativa o flexbox para alinhamento */
-    flex-direction: column; /* MUDANÇA: Empilha os itens */
+  display: flex; /* MUDANÇA: Ativa o flexbox para alinhamento */
+  flex-direction: column; /* MUDANÇA: Empilha os itens */
 }
 
 .card:hover {
@@ -229,20 +229,36 @@ a{
     margin-bottom: 1rem;
 }
 
+/* 🔥 CORREÇÃO CRÍTICA: Texto expandido DEVE estar oculto por padrão */
 .texto-expandido {
     max-height: 0;
     overflow: hidden;
+    opacity: 0;
     font-size: 0.85rem;
     color: #e6e6e6;
     line-height: 1.5;
     text-align: center;
-    margin-top: 0.8rem;
-    transition: max-height 0.4s ease;
+    margin-top: 0;
+    margin-bottom: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
 }
 
+/* 🔥 CORREÇÃO CRÍTICA: Só expande quando o card específico tem a classe expanded */
 .card.expanded .texto-expandido {
-    max-height: 300px; /* altura máxima expandida */
+    max-height: 500px; /* Aumentado para garantir que todo o texto apareça */
+    opacity: 1;
+    margin-top: 0.8rem;
     margin-bottom: 1rem;
+}
+
+/* 🔥 CORREÇÃO CRÍTICA: Esconde o resumo quando expandido */
+.card.expanded .resumo {
+    display: none !important;
+}
+
+/* 🔥 CORREÇÃO CRÍTICA: Mostra o resumo quando NÃO está expandido */
+.card:not(.expanded) .resumo {
+    display: block !important;
 }
 
 .btn {
@@ -256,6 +272,8 @@ a{
   transition: 0.3s;
   width: 100%; /* MUDANÇA: Faz o botão ocupar 100% */
   margin-top: auto; /* MUDANÇA: Empurra para o final */
+  cursor: pointer;
+  border: none;
 }
 
 .btn:hover {
