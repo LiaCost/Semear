@@ -266,74 +266,33 @@ nav a.active::after {
     font-weight: 700;
 }
 
-/* --- Footer (Copiado do checkout.css) --- */
-footer {
-    background: #110703;
-    padding: 37px 0 30px;
-    margin-top: 60px;
-    /* Adiciona margem */
-}
-
-.footer-container {
-    max-width: 1440px;
-    margin: 0 auto;
+/* ===== RODAPÉ ===== */
+footer.main-footer { /* MUDANÇA: Seletor mais específico */
+    background: hsl(30, 100%, 4%);
     text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid #333;
+    color: #fff; /* MUDANÇA: Cor de texto padrão */
 }
 
 .footer-logo {
     width: 200px;
-    height: 60px;
-    margin: 0 auto 30px;
-}
-
-.footer-contact {
-    color: white;
-    font-size: 13px;
-    line-height: 1.8;
+    height: auto;
     margin-bottom: 30px;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 42px;
+.footer-contact-info { /* Adicionado */
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.social-icon {
-    width: 15px;
-    height: 15px;
-    color: white;
-}
-
-.footer-divider {
-    border: none;
-    border-top: 1px solid white;
-    margin: 20px auto;
-    max-width: 886px;
-}
-
-.footer-links {
+.social-icons { /* Adicionado */
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 30px;
-}
-
-.footer-links a {
-    color: white;
-    font-size: 13px;
-    text-decoration: none;
-}
-
-.footer-links span {
-    color: white;
-}
-
-.copyright {
-    color: white;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
 }
 
 /* ============================================================

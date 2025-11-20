@@ -56,11 +56,11 @@ nav a.active {
 nav a.active::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 1px;
-    background: white;
+    background-color: white;
 }
 .header-right {
     display: flex;
