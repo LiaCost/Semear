@@ -8,7 +8,7 @@ function initVendasPage(data) {
     const lojaLink = document.getElementById("nav-loja-catalogo"); // ID no HTML da Loja
     const cartLink = document.getElementById("cart-link-vendas");
     const logoLink = document.getElementById("home-link-vendas"); // ID no logo
-    
+    const promocoesLink = document.getElementById("nav-promocoes-link");
     // --- MUDANÇA AQUI: Adicionado o link para Catálogo ---
     const catalogoLink = document.getElementById("nav-catalogo-link");
     // ----------------------------------------------------
@@ -51,7 +51,19 @@ function initVendasPage(data) {
         });
     }
     // ----------------------
+    if (promocoesLink) {
+        promocoesLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/promocoes/promocoes.html');
+        });
+    }
 
+    if (lojaLink) {
+        lojaLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage('pages/vendas/vendas.html');
+        });
+    }
 
     // --- Lógica de Clique nos Cards para Detalhes do Produto ---
     const cardsDeProduto = document.querySelectorAll('.card-clicavel');
