@@ -18,9 +18,79 @@ body { background-color: var(--cor-fundo-main); color: white; font-family: var(-
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .section-divider { border: none; height: 1px; background-color: white; margin: 60px 0; }
 
-/* --- Header & Footer (Padronizado) --- */
-.main-header { background-color: var(--cor-fundo-header); display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 81px; }
-/* [O restante do CSS do Header e Footer deve ser copiado do catalogo.css para consistência] */
+/* =========================================== */
+/* --- 1. HEADER (PADRONIZADO) --- */
+/* =========================================== */
+.main-header {
+    background-color: var(--cor-fundo-header);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; /* Ajuste para centralização */
+    height: 81px; /* Altura Padronizada */
+}
+.main-nav ul { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
+.main-nav a { 
+    font-family: var(--font-principal); 
+    font-size: 13px; 
+    font-weight: 400; 
+    cursor: pointer; 
+    padding: 10px 0; 
+    position: relative; 
+    color: white; /* Garante que os links sem classe fiquem brancos */
+}
+.nav-item-ativo { font-weight: 800; }
+.nav-item-ativo::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 1px; 
+    background-color: white; 
+}
+.utility-bar { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    font-family: var(--font-principal); 
+    font-size: 13px; 
+}
+.utility-bar .icon-link { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    cursor: pointer; 
+}
+.utility-bar .nav-icon { 
+    width: 24px; 
+    height: 24px; 
+}
+.utility-bar .nav-item-destaque { 
+    font-weight: 600; 
+    font-size: 13px; 
+    cursor: pointer; 
+}
+.btn-entrar { 
+    background: rgba(140, 80, 34, 0.50); 
+    border-radius: 5px; 
+    outline: 1px white solid; 
+    padding: 7px 21px; 
+    font-size: 13px; 
+    font-weight: 400; 
+    backdrop-filter: blur(2px); 
+    cursor: pointer; 
+    color: white; 
+}
+.lang-selector .flag-icon { 
+    width: 18px; 
+    height: 18px; 
+}
+.lang-selector .arrow-down { 
+    width: 14px; 
+    height: 14px; 
+}
+/* [Fim do Header] */
 
 /* --- Seção Hero --- */
 .hero-section {
@@ -95,4 +165,59 @@ body { background-color: var(--cor-fundo-main); color: white; font-family: var(-
     font-family: var(--font-auxiliar);
     font-weight: 700;
     color: var(--cor-preco); /* Verde destaque */
+}
+
+/* =========================================== */
+/* --- 3. FOOTER (PADRONIZADO) --- */
+/* =========================================== */
+.main-footer {
+    background: var(--cor-fundo-header);
+    padding: 40px 20px;
+    text-align: center;
+    font-family: var(--font-principal);
+}
+.footer-logo {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 30px auto;
+}
+.footer-contact-info {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+    margin: 25px 0;
+}
+.social-icons img {
+    width: 15px;
+    height: 15px;
+}
+.footer-divider {
+    border: none;
+    height: 1px;
+    background: white;
+    margin: 20px auto;
+    max-width: 886px;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 400;
+}
+.footer-links span {
+    color: white;
+}
+.footer-copyright {
+    margin-top: 25px;
+    font-family: var(--font-auxiliar);
+    font-size: 12px;
+    font-weight: 400;
 }
