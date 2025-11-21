@@ -1,163 +1,224 @@
 <header class="main-header">
-    <a href="index.html" id="home-link-vendas" class="logo-link"> <img src="public/images/logo-semear.png" alt="Logo Semear">
+  <a href="#" id="home-link-vendas" class="logo-link">
+    <img src="public/images/logo-semear.png" alt="Logo Semear" />
+  </a>
+
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#" id="nav-inicio-link" class="nav-item">Início</a></li>
+      <li>
+        <a href="#" id="nav-promocoes-link" class="nav-item">Promoções</a>
+      </li>
+
+      <!-- Corrigido para funcionar com o JS -->
+      <li>
+        <a href="#" id="nav-catalogo-link" class="nav-item"
+          >Catálogo de Sementes</a
+        >
+      </li>
+
+      <!-- Adicionado ID necessário para navegação -->
+      <li>
+        <a href="#" id="nav-loja-catalogo" class="nav-item-ativo"
+          ><b>Loja</b></a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="utility-bar">
+    <a href="#" id="cart-link-vendas" class="icon-link" title="Carrinho">
+      <img
+        src="public/images/icon-park-outline-shopping.svg"
+        alt="Carrinho"
+        class="nav-icon"
+      />
     </a>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#" id="nav-inicio-link" class="nav-item">Início</a></li>
-            <li><a href="#" id="nav-promocoes-link" class="nav-item">Promoções</a></li>
-            <li><a href="#" id="nav-catalogo-link" class="nav-item">Catálogo de Sementes</a></li>
-            <li><a href="#" class="nav-item-ativo"><b>Loja</b></a></li>
-        </ul>
-    </nav>
+    <a href="#" class="icon-link" title="Acessibilidade">
+      <img
+        src="public/images/carbon-accessibility-alt.svg"
+        alt="Acessibilidade"
+        class="nav-icon"
+      />
+      <span>ACESSIBILIDADE</span>
+    </a>
 
-    <div class="utility-bar">
-        <a href="#" id="cart-link-vendas" class="icon-link" title="Carrinho">
-            <img src="public/images/icon-park-outline-shopping.svg" alt="Carrinho" class="nav-icon">
-        </a>
-        <a href="#" class="icon-link" title="Acessibilidade">
-            <img src="public/images/carbon-accessibility-alt.svg" alt="Acessibilidade" class="nav-icon">
-            <span>ACESSIBILIDADE</span>
-        </a>    
-        <a href="#" class="nav-item-destaque">FAQ</a>
-        <div class="lang-selector icon-link">
-            <img src="public/images/emojione-v-1-flag-for-brazil.svg" alt="Bandeira do Brasil" class="flag-icon">
-            <span>PT-BR</span>
-            <img src="public/images/weui-arrow-outlined.svg" alt="Selecionar idioma" class="arrow-down">
-        </div>
-        <a href="#" class="btn-entrar" id="login-link-vendas">Entrar</a>
+    <a href="#" class="nav-item-destaque">FAQ</a>
+
+    <div class="lang-selector icon-link">
+      <img
+        src="public/images/emojione-v-1-flag-for-brazil.svg"
+        alt="Bandeira do Brasil"
+        class="flag-icon"
+      />
+      <span>PT-BR</span>
+      <img
+        src="public/images/weui-arrow-outlined.svg"
+        alt="Selecionar idioma"
+        class="arrow-down"
+      />
     </div>
+
+    <!-- ID já esperado pelo JS -->
+    <a href="#" class="btn-entrar" id="login-link-vendas">Entrar</a>
+  </div>
 </header>
 
 <main>
-    <section class="hero-section" style="background-image: url('public/images/imagem-principal.png');">
-        <div class="hero-content">
-            <h1 class="titulo-hero">Cultive seus sonhos: Bem-vindo ao nosso e-commerce de sementes!</h1>
-            <p class="hero-descricao">Descubra um mundo de possibilidades com nossa seleção de sementes, desde flores exuberantes a hortas produtivas.</p>
-            <p class="hero-subtitulo">Navegue, escolha e comece a cultivar suas paixões!</p>
-            <a href="#" class="btn-cta">Comprar agora</a>
-        </div>
-    </section>
-
-    <div class="store-content">
-        <div class="container">
-            <section class="product-section">
-                <div class="section-header">
-                    <h2 class="secao-titulo">Favoritos dos clientes</h2>
-                </div>
-                
-                <div class="product-carousel">
-                <div class="product-card card-clicavel" data-id="arroz">
-                    <img src="public/images/arroz.jpg" alt="Semente de arroz">
-                    <div class="product-card-info">
-                        <h3 class="card-produto-nome">Semente de arroz: 10 sementes</h3>
-                        <p class="card-produto-preco">R$ 6,50</p>
-                    </div>
-                    <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                </div>
-                
-                <div class="product-card card-clicavel" data-id="lavanda">
-                    <img src="public/images/lavanda.jpg" alt="Semente de lavanda">
-                    <div class="product-card-info">
-                        <h3 class="card-produto-nome">Semente de lavanda: 15 sementes</h3>
-                        <p class="card-produto-preco">R$ 12,50</p>
-                    </div>
-                    <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                </div>
-                
-                <div class="product-card card-clicavel" data-id="pitaya">
-                    <img src="public/images/pitaya-2.jpg" alt="Semente de pitaya">
-                    <div class="product-card-info">
-                        <h3 class="card-produto-nome">Semente de pitaya: 10 sementes</h3>
-                        <p class="card-produto-preco">R$ 12,50</p>
-                    </div>
-                    <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                </div>
-                </div>
-            </section>
-            
-            <hr class="section-divider">
-
-            <section class="product-section">
-                <div class="section-header">
-                    <h2 class="secao-titulo">Sementes</h2>
-                    <select id="categoria-filtro" class="btn-filter-select">
-                        <option value="todos">Todos os Produtos</option>
-                        <option value="hortalicas">Hortaliças</option>
-                        <option value="frutas">Frutas</option>
-                        <option value="flores">Flores</option>
-                    </select>
-                </div>
-                
-                <div class="product-carousel" id="hortalicas-carousel">
-                </div>
-                
-                <div class="product-carousel" id="frutas-carousel" style="display: none;">
-                </div>
-
-                <div class="product-carousel">
-                    <div class="product-card">
-                        <img src="public/images/cenoura.png" alt="Semente de cenoura">
-                        <div class="product-card-info">
-                            <h3 class="card-produto-nome">Semente de cenoura: 20 sementes</h3>
-                            <p class="card-produto-preco">R$ 8,50</p>
-                        </div>
-                        <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="public/images/tomate.png" alt="Semente de tomate">
-                        <div class="product-card-info">
-                            <h3 class="card-produto-nome">Semente de tomate: 20 sementes</h3>
-                            <p class="card-produto-preco">R$ 6,50</p>
-                        </div>
-                        <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="public/images/pimentao.png" alt="Semente de pimentão">
-                        <div class="product-card-info">
-                            <h3 class="card-produto-nome">Semente de pimentão: 15 sementes</h3>
-                            <p class="card-produto-preco">R$ 6,50</p>
-                        </div>
-                        <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-            </section>
-        </div>
+  <section
+    class="hero-section"
+    style="background-image: url('public/images/imagem-principal.png')"
+  >
+    <div class="hero-content">
+      <h1 class="titulo-hero">
+        Cultive seus sonhos: Bem-vindo ao nosso e-commerce de sementes!
+      </h1>
+      <p class="hero-descricao">
+        Descubra um mundo de possibilidades com nossa seleção de sementes, desde
+        flores exuberantes a hortas produtivas.
+      </p>
+      <p class="hero-subtitulo">
+        Navegue, escolha e comece a cultivar suas paixões!
+      </p>
+      <a href="#" class="btn-cta">Comprar agora</a>
     </div>
+  </section>
+
+  <div class="store-content">
+    <div class="container">
+      <section class="product-section">
+        <div class="section-header">
+          <h2 class="secao-titulo">Favoritos dos clientes</h2>
+        </div>
+
+        <div class="product-carousel">
+          <div class="product-card card-clicavel" data-id="arroz">
+            <img src="public/images/arroz.jpg" alt="Semente de arroz" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">Semente de arroz: 10 sementes</h3>
+              <p class="card-produto-preco">R$ 6,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+
+          <div class="product-card card-clicavel" data-id="lavanda">
+            <img src="public/images/lavanda.jpg" alt="Semente de lavanda" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">Semente de lavanda: 15 sementes</h3>
+              <p class="card-produto-preco">R$ 12,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+
+          <div class="product-card card-clicavel" data-id="pitaya">
+            <img src="public/images/pitaya-2.jpg" alt="Semente de pitaya" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">Semente de pitaya: 10 sementes</h3>
+              <p class="card-produto-preco">R$ 12,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <section class="product-section">
+        <div class="section-header">
+          <h2 class="secao-titulo">Sementes</h2>
+          <select id="categoria-filtro" class="btn-filter-select">
+            <option value="todos">Todos os Produtos</option>
+            <option value="hortalicas">Hortaliças</option>
+            <option value="frutas">Frutas</option>
+            <option value="flores">Flores</option>
+          </select>
+        </div>
+
+        <div class="product-carousel" id="hortalicas-carousel"></div>
+
+        <div
+          class="product-carousel"
+          id="frutas-carousel"
+          style="display: none"
+        ></div>
+
+        <div class="product-carousel">
+          <div class="product-card">
+            <img src="public/images/cenoura.png" alt="Semente de cenoura" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">Semente de cenoura: 20 sementes</h3>
+              <p class="card-produto-preco">R$ 8,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+
+          <div class="product-card">
+            <img src="public/images/tomate.png" alt="Semente de tomate" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">Semente de tomate: 20 sementes</h3>
+              <p class="card-produto-preco">R$ 6,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+
+          <div class="product-card">
+            <img src="public/images/pimentao.png" alt="Semente de pimentão" />
+            <div class="product-card-info">
+              <h3 class="card-produto-nome">
+                Semente de pimentão: 15 sementes
+              </h3>
+              <p class="card-produto-preco">R$ 6,50</p>
+            </div>
+            <a href="#" class="btn-add-to-cart">Adicionar ao carrinho</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </main>
 
 <footer class="main-footer">
-    <div class="container">
-      <a href="index.html">
-        <img src="public/images/logo-semear.png" alt="Logo Semear" class="footer-logo"/>
-      </a>
-        
-        
-        <div class="footer-contact-info">
-            Conecte-se Conosco<br/><br/>
-            Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br/>
-            Endereço: Rua das Sementes, 123 - Brasília - DF
-        </div>
+  <div class="container">
+    <a href="#">
+      <img
+        src="public/images/logo-semear.png"
+        alt="Logo Semear"
+        class="footer-logo"
+      />
+    </a>
 
-        <div class="social-icons">
-            <a href="#"><img src="public/images/ic-baseline-facebook.svg" alt="Facebook"/></a>
-            <a href="#"><img src="public/images/ri-instagram-fill.svg" alt="Instagram"/></a>
-            <a href="#"><img src="public/images/mage-linkedin.svg" alt="Linkedin"/></a>
-            <a href="#"><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube"/></a>
-        </div>
-
-        <hr class="footer-divider">
-
-        <div class="footer-links">
-            <a href="#">Suporte e FAQ</a>
-            <span class="separator">|</span>
-            <a href="#">Política de Privacidade</a>
-            <span class="separator">|</span>
-            <a href="#">Termos de Uso</a>
-        </div>
-
-        <p class="footer-copyright">
-            © 2024 Semear - Todos os direitos reservados
-        </p>
+    <div class="footer-contact-info">
+      Conecte-se Conosco<br /><br />
+      Email: contato@semearhub.com | Telefone: +55 (61) 1234-5678<br />
+      Endereço: Rua das Sementes, 123 - Brasília - DF
     </div>
+
+    <div class="social-icons">
+      <a href="#"
+        ><img src="public/images/ic-baseline-facebook.svg" alt="Facebook"
+      /></a>
+      <a href="#"
+        ><img src="public/images/ri-instagram-fill.svg" alt="Instagram"
+      /></a>
+      <a href="#"
+        ><img src="public/images/mage-linkedin.svg" alt="Linkedin"
+      /></a>
+      <a href="#"
+        ><img src="public/images/mingcute-youtube-fill.svg" alt="YouTube"
+      /></a>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-links">
+      <a href="#">Suporte e FAQ</a>
+      <span class="separator">|</span>
+      <a href="#">Política de Privacidade</a>
+      <span class="separator">|</span>
+      <a href="#">Termos de Uso</a>
+    </div>
+
+    <p class="footer-copyright">© 2024 Semear - Todos os direitos reservados</p>
+  </div>
 </footer>

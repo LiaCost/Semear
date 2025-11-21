@@ -71,10 +71,18 @@ function initVendasPage(data) {
         card.addEventListener('click', (e) => {
             // Impede que o clique no botão "Adicionar ao carrinho" carregue a página
             if (e.target.classList.contains('btn-add-to-cart')) {
-                e.preventDefault();
-                console.log("Adicionado ao carrinho (lógica a ser implementada)");
-                return;
-            }
+    e.preventDefault();
+
+    const produto = {
+        idOferta: card.getAttribute("data-id"),
+        nome: card.getAttribute("data-nome"),
+        preco: parseFloat(card.getAttribute("data-preco")),
+        imagem: card.getAttribute("data-img")
+    };
+
+    adicionarAoCarrinho(produto);
+    return;
+}
 
             e.preventDefault();
             const produtoId = card.getAttribute('data-id');
@@ -113,4 +121,42 @@ function initVendasPage(data) {
     }
 
     // TODO: Adicionar lógica para o carrossel de produtos e filtros
+}
+
+// ==============================================
+//  FUNÇÕES OFICIAIS DO CARRINHO
+// ==============================================
+
+// Recupera o carrinho salvo
+function getCarrinho() {
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
+
+// Salva carrinho
+function saveCarrinho(carrinho) {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+// Adiciona um item ao carrinho
+function adicionarAoCarrinho(produto) {
+    let carrinho = getCarrinho();
+
+    // Verifica se item já existe
+    const existente = carrinho.find(item => item.idOferta === produto.idOferta);
+
+    if (existente) {
+        existente.quantidade += 1;
+    } else {
+        carrinho.push({
+            idOferta: produto.idOferta,
+            nome: produto.nome,
+            preco: produto.preco,
+            quantidade: 1,
+            imagem: produto.imagem || null
+        });
+    }
+
+    saveCarrinho(carrinho);
+
+    alert("Produto adicionado ao carrinho!");
 }
