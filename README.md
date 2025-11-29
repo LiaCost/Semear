@@ -47,8 +47,8 @@ Proporcionar um espaço de aprendizado acessível sobre as melhores práticas de
 - 💰 **Gestão de ofertas**: Controle preços e disponibilidade
 
 💠 Para Administradores
-- 🔧 **Painel Administrativo**: Gerenciamento completo da plataforma
-- 👥 **Gestão de Usuários**: Controle de cadastros e permissões
+- 🔧 **Painel administrativo**: Gerenciamento completo da plataforma
+- 👥 **Gestão de usuários**: Controle de cadastros e permissões
 - 📈 **Relatórios**: Análise de vendas e atividades
 
 🛠 Tecnologias
