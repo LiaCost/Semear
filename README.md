@@ -281,13 +281,13 @@ Contribuições são bem-vindas! Siga estes passos:
 
 
 👥 Equipe
-Lia Costa
-Sarah Silva
-Victor de Jesus
-Taís Barbosa
-Andressa Castro
+Lia Costa (https://github.com/LiaCost)
+Sarah Silva (https://github.com/sah524)
+Victor de Jesus (https://github.com/DVictor-js)
+Taís Barbosa (https://github.com/TaisBds)
+Andressa Castro (https://github.com/AndressaCst)
 
-Este projeto foi desenvolvido com 💚 por estudantes apaixonados por tecnologia e sustentabilidade.
+Este projeto foi desenvolvido com por estudantes da **Universidade Católica de Brasília**.
 
 
 📄 Licença © 2025 - Todos os direitos reservados.
@@ -296,6 +296,6 @@ Este projeto foi desenvolvido com 💚 por estudantes apaixonados por tecnologia
 
 **⭐ Se este projeto foi útil, considere dar uma estrela!**
 
-Feito com 💚 por estudantes do curso de TI
+Feito com 💚 por estudantes do curso de TI apaixonados por tecnologia e sustentabilidade.
 
 </div>
