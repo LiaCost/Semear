@@ -287,7 +287,7 @@ Victor de Jesus (https://github.com/DVictor-js)
 Taís Barbosa (https://github.com/TaisBds)
 Andressa Castro (https://github.com/AndressaCst)
 
-Este projeto foi desenvolvido com por estudantes da **Universidade Católica de Brasília**.
+Este projeto foi desenvolvido por estudantes da **Universidade Católica de Brasília**.
 
 
 📄 Licença © 2025 - Todos os direitos reservados.
