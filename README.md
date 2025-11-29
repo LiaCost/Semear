@@ -290,9 +290,7 @@ Andressa Castro
 Este projeto foi desenvolvido com 💚 por estudantes apaixonados por tecnologia e sustentabilidade.
 
 
-📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+📄 Licença © 2025 - Todos os direitos reservados.
 
 <div align="center">
 
