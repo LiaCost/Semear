@@ -15,7 +15,7 @@
 
 O **Semear** é uma plataforma digital que nasceu da necessidade de aproximar pequenos produtores de sementes nativas do consumidor final por meio de uma solução simples, acessível e eficiente.
 
-🎯 História do Projeto
+🎯 História do projeto
 
 O projeto surgiu no primeiro semestre, durante a disciplina de UX, como um protótipo desenvolvido para a **Embrapa**. Inicialmente, tratava-se apenas de um design no Figma, mas ao perceber seu potencial transformador, decidimos dar vida à ideia e construir um sistema real e funcional.
 
