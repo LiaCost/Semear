@@ -1,5 +1,3 @@
-🌱 Semear - Plataforma Digital de Sementes Nativas
-
 <div align="center">
 
 ![Semear Logo](public/images/logo-semear.png)
@@ -10,8 +8,6 @@
 [![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green.svg)](https://www.mongodb.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)
-
-[Sobre](#sobre) • [Funcionalidades](#funcionalidades) • [Tecnologias](#tecnologias) • [Instalação](#instalação) • [Uso](#uso) • [Estrutura](#estrutura) • [Contribuindo](#contribuindo)
 
 </div>
 
